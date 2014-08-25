@@ -1,4 +1,4 @@
-package codigo;
+package modelo;
 
 import excepciones.NuevaPasswordInválida;
 import excepciones.UsuarioNoExiste;
