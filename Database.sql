@@ -32,6 +32,7 @@ CREATE TABLE `usuarios` (
   `email` varchar(45) DEFAULT NULL,
   `fechaDeNacimiento` varchar(45) DEFAULT NULL,
   `contraseña` varchar(8) DEFAULT NULL,
+  `usuarioValidado` bit(1) DEFAULT b'0',
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
   UNIQUE KEY `nombreDeUsuario_UNIQUE` (`nombreDeUsuario`)
@@ -47,4 +48,4 @@ CREATE TABLE `usuarios` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-26 18:09:43
+-- Dump completed on 2014-08-30 19:09:29
