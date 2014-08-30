@@ -23,7 +23,7 @@ public class Sistema {
             e.printStackTrace();
         }
         try {
-            this.statementDeInsertar = connection.prepareStatement("INSERT  INTO usuarios (nombre, apellido, nombreDeUsuario, email, fechaDeNacimiento) VALUES  (?,?,?,?,?,?)");
+            this.statementDeInsertar = connection.prepareStatement("INSERT  INTO usuarios (nombre, apellido, nombreDeUsuario, email, fechaDeNacimiento) VALUES  (?,?,?,?,?)");
             statementDeInsertar.setString(1, usuarioNuevo.getNombre());
             statementDeInsertar.setString(2, usuarioNuevo.getApellido());
             statementDeInsertar.setString(3, usuarioNuevo.getNombreUsuario());
