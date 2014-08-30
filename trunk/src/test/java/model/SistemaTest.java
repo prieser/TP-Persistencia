@@ -48,9 +48,7 @@ public class SistemaTest {
     public void testRegistrarUsuarioPorPrimeraVez() throws UsuarioYaExisteException, SQLException {
         sistema.RegistrarUsuario(usuarioComunYCorriente);
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = Juan AND apellido = Gomez AND nombreDeUsuario = juangomez AND email = 'jgomez@gmail.com'");
-        ps.execute();
-        ps.getResultSet();
-        ps.get
+        ps.executeQuery();
         Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
     }
 
@@ -72,11 +70,22 @@ public class SistemaTest {
 
     @Test
     public void testCambiarPassword() {
-    	sistema.RegistrarUsuario(usuarioComunYCorriente);
-    	sistema.CambiarPassword("juangomez", "12345678", "87654321");
-    	PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contraseña = 87654321");
-        ps.execute();
-        Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
+
+        try {
+            sistema.RegistrarUsuario(usuarioComunYCorriente);
+        } catch (UsuarioYaExisteException e) {
+            e.printStackTrace();
+        }
+        try {
+            sistema.CambiarPassword("juangomez", "12345678", "87654321");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contraseña = 87654321");
+            ps.executeQuery();
+            Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
+        } catch (NuevaPasswordInválida nuevaPasswordInválida) {
+            nuevaPasswordInválida.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //TODO: ¿como podemos extraer el calor de la consulta para compararlo con el valor esperado?
     }
 
