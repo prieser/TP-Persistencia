@@ -47,8 +47,10 @@ public class SistemaTest {
     @Test
     public void testRegistrarUsuarioPorPrimeraVez() throws UsuarioYaExisteException, SQLException {
         sistema.RegistrarUsuario(usuarioComunYCorriente);
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = Juan AND apellido = Gomez AND nombreDeUsuario = juangomez AND email = jgomez@gmail.com");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = Juan AND apellido = Gomez AND nombreDeUsuario = juangomez AND email = 'jgomez@gmail.com'");
         ps.execute();
+        ps.getResultSet();
+        ps.get
         Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
     }
 
@@ -65,16 +67,17 @@ public class SistemaTest {
 
     @Test
     public void testIngresarUsuario() throws NuevaPasswordInválida, SQLException, UsuarioYaExisteException {
-    	sistema.RegistrarUsuario(usuarioComunYCorriente);
-    	sistema.CambiarPassword("juangomez", "12345678", "87654321");
-    	PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = Juan AND apellido = Gomez AND nombreDeUsuario = juangomez AND email = jgomez@gmail.com AND contraseña = 87654321");
-        ps.execute();
-        Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
+        fail("Not yet implemented");
     }
 
     @Test
     public void testCambiarPassword() {
-        fail("Not yet implemented");
+    	sistema.RegistrarUsuario(usuarioComunYCorriente);
+    	sistema.CambiarPassword("juangomez", "12345678", "87654321");
+    	PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contraseña = 87654321");
+        ps.execute();
+        Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
+        //TODO: ¿como podemos extraer el calor de la consulta para compararlo con el valor esperado?
     }
 
     /* Metodo auxiliar para conexion con la base de datos */
