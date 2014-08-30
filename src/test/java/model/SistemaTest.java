@@ -28,7 +28,7 @@ public class SistemaTest {
     @Before
     public void setUp() throws Exception {
         // Instancio el sistema y el usuario. Asigno estas instancias a las variables de clase. Por ultimo pido una conexion con la base de datos.
-        usuarioComunYCorriente = new Usuario("Juan", "Gomez", "juangomez", "jgomez@gmail.com", "01/08/2015");
+        usuarioComunYCorriente = new Usuario("Juan", "Gomez", "juangomez", "jgomez@gmail.com", "01/08/2015", "12345678");
         sistema = new Sistema();
         this.connection = this.getConnection();
     }

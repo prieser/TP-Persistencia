@@ -58,7 +58,23 @@ public class Sistema {
     }
 
     public void CambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInválida {
-
+    	
+    	try {
+            this.connection = this.getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    	 try {
+    		 
+    	 this.statementDeConsulta = connection.prepareStatement("UPDATE usuarios SET contraseña = ? WHERE nombreDeUsuario = ? AND contraseña = password");
+         statementDeConsulta.setString(1, nuevaPassword);
+         statementDeConsulta.setString(2, userName);
+         statementDeConsulta.execute();
+    	
+    	} catch (SQLException e) {
+        e.printStackTrace();
+    	}
+  	
     }
 
     /* Metodo auxiliar para conexion con la base de datos */
