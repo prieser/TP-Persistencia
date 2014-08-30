@@ -7,6 +7,15 @@ public class Usuario {
 	private String nombreUsuario;
 	private String email;
 	private String fechaDeNacimiento;
+	private String contraseña;
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -48,13 +57,14 @@ public class Usuario {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 
-	public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento) {
+	public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento , String contraseña) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
 		this.fechaDeNacimiento = fechaDeNacimiento;
+		this.contraseña = contraseña;
 	}
 
 	public Usuario() {
