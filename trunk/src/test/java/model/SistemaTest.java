@@ -15,6 +15,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import excepciones.NuevaPasswordInválida;
 import excepciones.UsuarioYaExisteException;
 
 public class SistemaTest {
@@ -63,8 +64,12 @@ public class SistemaTest {
     }
 
     @Test
-    public void testIngresarUsuario() {
-        fail("Not yet implemented");
+    public void testIngresarUsuario() throws NuevaPasswordInválida, SQLException, UsuarioYaExisteException {
+    	sistema.RegistrarUsuario(usuarioComunYCorriente);
+    	sistema.CambiarPassword("juangomez", "12345678", "87654321");
+    	PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = Juan AND apellido = Gomez AND nombreDeUsuario = juangomez AND email = jgomez@gmail.com AND contraseña = 87654321");
+        ps.execute();
+        Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
     }
 
     @Test
