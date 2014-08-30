@@ -31,6 +31,7 @@ CREATE TABLE `usuarios` (
   `nombreDeUsuario` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `fechaDeNacimiento` varchar(45) DEFAULT NULL,
+  `contraseña` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `idusuario_UNIQUE` (`idusuario`),
   UNIQUE KEY `nombreDeUsuario_UNIQUE` (`nombreDeUsuario`)
