@@ -36,7 +36,7 @@ public class Usuario {
     }
 
     public String getNombreUsuario() {
-        return nombreUsuario;
+        return this.nombreUsuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
@@ -88,6 +88,11 @@ public class Usuario {
 	
 	public boolean getActivo() {
 		return this.activo ;
+	}
+	
+	public boolean equals(Object obj){
+		Usuario usuario = (Usuario) obj;
+		return (usuario.getNombreUsuario() == this.getNombreUsuario());
 	}
 
 }
