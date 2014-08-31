@@ -11,6 +11,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for usuarios
 -- ----------------------------
+USE `database`;
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,

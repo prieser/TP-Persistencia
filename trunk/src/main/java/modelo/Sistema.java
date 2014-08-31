@@ -28,13 +28,13 @@ public class Sistema {
             e.printStackTrace();
         }
         try {
-            this.statementDeInsertar = connection.prepareStatement("INSERT  INTO usuarios (nombre, apellido, nombreDeUsuario, email, fechaDeNacimiento, contraseña) VALUES  (?,?,?,?,?,?)");
+            this.statementDeInsertar = connection.prepareStatement("INSERT  INTO usuarios (nombre, apellido, nombreDeUsuario, email, fechaDeNacimiento, contrasenia) VALUES  (?,?,?,?,?,?)");
             statementDeInsertar.setString(1, usuarioNuevo.getNombre());
             statementDeInsertar.setString(2, usuarioNuevo.getApellido());
             statementDeInsertar.setString(3, usuarioNuevo.getNombreUsuario());
             statementDeInsertar.setString(4, usuarioNuevo.getEmail());
             statementDeInsertar.setString(5, usuarioNuevo.getFechaDeNacimiento());
-            statementDeInsertar.setString(6, usuarioNuevo.getContraseña());
+            statementDeInsertar.setString(6, usuarioNuevo.getContrasenia());
 
             this.statementDeConsulta = connection.prepareStatement("SELECT  * FROM  usuarios WHERE nombreDeUsuario = ? AND email = ?");
             statementDeConsulta.setString(1, usuarioNuevo.getNombreUsuario());

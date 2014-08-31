@@ -44,10 +44,12 @@ public class SistemaTest {
         }
     }
 
-    @Test
+    @Test 
+    // Este es el test que me esta fallando. Me dice que en el asser espera 1 y le viene -1.
+    // Igual ahora esta fallando porque la bb espera en fechaDeNacimiento un Date y esta reciendo un String.
     public void testRegistrarUsuarioPorPrimeraVez() throws UsuarioYaExisteException, SQLException {
         sistema.RegistrarUsuario(usuarioComunYCorriente);
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = Juan AND apellido = Gomez AND nombreDeUsuario = juangomez AND email = 'jgomez@gmail.com'");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = 'Juan' AND apellido = 'Gomez' AND nombreDeUsuario = 'juangomez' AND email = 'jgomez@gmail.com'");
         ps.executeQuery();
         Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
     }
@@ -78,7 +80,7 @@ public class SistemaTest {
         }
         try {
             sistema.CambiarPassword("juangomez", "12345678", "87654321");
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contraseña = 87654321");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contrasenia = 87654321");
             ps.executeQuery();
             Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
         } catch (NuevaPasswordInválida nuevaPasswordInválida) {
