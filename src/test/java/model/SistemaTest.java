@@ -41,16 +41,9 @@ public class SistemaTest {
     }
 
     @Test 
-    // Este es el test que me esta fallando. Me dice que en el asser espera 1 y le viene -1.
-    // Igual ahora esta fallando porque la bb espera en fechaDeNacimiento un Date y esta reciendo un String.
     public void testRegistrarUsuarioPorPrimeraVez() throws Exception {
         sistema.RegistrarUsuario(usuarioComunYCorriente);
-        
-        Connection connection = this.repositorio.getConnection();
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = 'Juan' AND apellido = 'Gomez' AND nombreDeUsuario = 'juangomez' AND email = 'jgomez@gmail.com'");
-       
-        ps.executeQuery();
-        Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
+        Assert.assertTrue("El usuario se ha insertado correctamente:", this.repositorio.existe(usuarioComunYCorriente));
     }
 
     @Test(expected = UsuarioYaExisteException.class)
