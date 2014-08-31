@@ -15,6 +15,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import repository.UsuarioRepository;
 import excepciones.NuevaPasswordInválida;
 import excepciones.UsuarioYaExisteException;
 
@@ -23,33 +24,31 @@ public class SistemaTest {
     // Necesito tres variables de clase.
     private Usuario usuarioComunYCorriente;
     private Sistema sistema;
-    private Connection connection;
-    private PreparedStatement ps;
-
+    private UsuarioRepository repositorio;
+    
     @Before
     public void setUp() throws Exception {
-        // Instancio el sistema y el usuario. Asigno estas instancias a las variables de clase. Por ultimo pido una conexion con la base de datos.
-        usuarioComunYCorriente = new Usuario("Juan", "Gomez", "juangomez", "jgomez@gmail.com", "01/08/2015", "12345678");
-        sistema = new Sistema();
-        this.connection = this.getConnection();
+        this.usuarioComunYCorriente = new Usuario("Juan", "Gomez", "juangomez", "jgomez@gmail.com", "20150501", "12345678");
+        this.sistema = new Sistema();
+        this.repositorio = new UsuarioRepository();
     }
 
     @After
     public void tearDown() throws Exception {
-        if (this.connection != null) {
-            this.connection.close(); // Cierro la conexion con la base de datos
-        }
-        if (this.ps != null) {
-            this.ps.close(); // Cierro el statement.
-        }
+    	if (repositorio.existe(usuarioComunYCorriente)) {
+			repositorio.eliminar(usuarioComunYCorriente);
+		}
     }
 
     @Test 
     // Este es el test que me esta fallando. Me dice que en el asser espera 1 y le viene -1.
     // Igual ahora esta fallando porque la bb espera en fechaDeNacimiento un Date y esta reciendo un String.
-    public void testRegistrarUsuarioPorPrimeraVez() throws UsuarioYaExisteException, SQLException {
+    public void testRegistrarUsuarioPorPrimeraVez() throws Exception {
         sistema.RegistrarUsuario(usuarioComunYCorriente);
+        
+        Connection connection = this.repositorio.getConnection();
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombre = 'Juan' AND apellido = 'Gomez' AND nombreDeUsuario = 'juangomez' AND email = 'jgomez@gmail.com'");
+       
         ps.executeQuery();
         Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
     }
@@ -71,7 +70,7 @@ public class SistemaTest {
     }
 
     @Test
-    public void testCambiarPassword() {
+    public void testCambiarPassword() throws Exception {
 
         try {
             sistema.RegistrarUsuario(usuarioComunYCorriente);
@@ -80,6 +79,7 @@ public class SistemaTest {
         }
         try {
             sistema.CambiarPassword("juangomez", "12345678", "87654321");
+            Connection connection = this.repositorio.getConnection();
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contrasenia = 87654321");
             ps.executeQuery();
             Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());

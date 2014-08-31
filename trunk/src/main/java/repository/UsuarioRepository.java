@@ -130,9 +130,27 @@ import modelo.Usuario;
 		return UsuarioEncontrado;
 	}
 
-	public boolean eliminar(Usuario obj) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean eliminar(Usuario usuario) throws Exception {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		boolean elimino = false;
+		try{
+			if (this.existe(usuario)){
+				conn = this.getConnection();
+				ps = conn.prepareStatement("DELETE FROM usuarios WHERE nombreDeUsuario = ?");
+				ps.setString(1, usuario.getNombreUsuario());
+				ps.execute();
+				elimino = true ;
+			}
+		}finally{
+			if(ps != null){
+				ps.close();
+			}
+			if(conn != null){
+				conn.close();
+			}
+		}
+		return elimino ;
 	}
 
 	
