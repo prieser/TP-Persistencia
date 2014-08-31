@@ -16,9 +16,12 @@ public class UsuarioTest {
 		usuario.setEmail("sergio.edgardo.delgadillo@gmail.com");
 		usuario.setNombreUsuario("sdelgadillo");
 		usuario.setFechaDeNacimiento("20140804");
+		usuario.setCodigoDeValidacion("aj2");
+		usuario.setActivo(false);
+		usuario.setContrasenia("lalala");
+		
 		UsuarioRepository UserRepositorio = new UsuarioRepository();
-		UserRepositorio.existe(usuario);
-		//UserRepositorio.guardar(usuario);
+		UserRepositorio.guardar(usuario);
 		
 		
 	}		
