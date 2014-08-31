@@ -1,7 +1,9 @@
 package modelo;
 
 public interface Home<Objeto> {
-	public void guardar(Objeto obj) throws Exception;
+	public boolean guardar(Objeto obj) throws Exception;
 	public boolean existe(Objeto obj) throws Exception;
 	public boolean actualizar(Objeto obj) throws Exception;
+	public Objeto dameUno(Objeto obj) throws Exception;
+	public boolean eliminar(Objeto obj) throws Exception;
 }

@@ -7,14 +7,16 @@ public class Usuario {
     private String nombreUsuario;
     private String email;
     private String fechaDeNacimiento;
-    private String contraseña;
+    private String contrasenia;
+    private String codigoDeValidacion;
+    private boolean activo;
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getNombre() {
@@ -57,18 +59,35 @@ public class Usuario {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
-    public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento, String contraseña) {
+    public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento, String contrasenia) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.fechaDeNacimiento = fechaDeNacimiento;
-        this.contraseña = contraseña;
-    }
+        this.contrasenia = contrasenia;
+     }
 
     public Usuario() {
         super();
     }
+
+	public String getCodigoDeValidacion() {
+		return codigoDeValidacion;
+	}
+
+	public void setCodigoDeValidacion(String codigoDeValidacion) {
+		this.codigoDeValidacion = codigoDeValidacion;
+	}
+
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+	
+	public boolean getActivo() {
+		return this.activo ;
+	}
 
 }
