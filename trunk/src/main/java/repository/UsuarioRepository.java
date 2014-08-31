@@ -3,7 +3,6 @@ package repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import excepciones.UsuarioYaExisteException;
 import modelo.Home;
 import modelo.Usuario;
 
@@ -72,7 +71,7 @@ import modelo.Usuario;
 		PreparedStatement ps = null;
 		try{
 			conn = this.getConnection();
-			ps = conn.prepareStatement("update usuarios set nombre = ? ,apellido = ?, email = ?, fechaDeNacimiento = ? where nombreDeUsuario = ? ,codigoValidacion = ?,activo = ?,contrasenia = ?)");
+			ps = conn.prepareStatement("update usuarios set nombre = ? ,apellido = ?, email = ?, fechaDeNacimiento = ? ,codigoValidacion = ?, activo = ?, contrasenia = ? where nombreDeUsuario = ?)");
 			ps.setString(1, usuario.getNombre());
 			ps.setString(2, usuario.getApellido());
 			ps.setString(3, usuario.getEmail());
@@ -106,18 +105,18 @@ import modelo.Usuario;
 			ps = conn.prepareStatement("select * from usuarios where nombreDeUsuario= ? limit 0,1");
 			ps.setString(1, usuario.getNombreUsuario());
 			ResultSet rs = ps.executeQuery();
-			if (1 != rs.getRow()){
-				throw new UsuarioYaExisteException();
-			}
+//			if (1 != rs.getRow()){
+//				throw new UsuarioYaExisteException();
+//			}
 			while(rs.next()){
-				 usuario.setNombre(rs.getString("nombre"));
-				 usuario.setApellido(rs.getString("apellido"));
-				 usuario.setEmail(rs.getString("email"));
-				 usuario.setContrasenia(rs.getString("contrasenia"));
-				 usuario.setActivo(rs.getBoolean("activo"));
-				 usuario.setCodigoDeValidacion(rs.getString("codigoValidacion"));
-				 usuario.setNombreUsuario(rs.getString("nombreDeUsuario"));
-				 usuario.setFechaDeNacimiento(rs.getString("fechaDeNacimiento"));
+				UsuarioEncontrado.setNombre(rs.getString("nombre"));
+				UsuarioEncontrado.setApellido(rs.getString("apellido"));
+				UsuarioEncontrado.setEmail(rs.getString("email"));
+				UsuarioEncontrado.setContrasenia(rs.getString("contrasenia"));
+				UsuarioEncontrado.setActivo(rs.getBoolean("activo"));
+				UsuarioEncontrado.setCodigoDeValidacion(rs.getString("codigoValidacion"));
+				UsuarioEncontrado.setNombreUsuario(rs.getString("nombreDeUsuario"));
+				UsuarioEncontrado.setFechaDeNacimiento(rs.getString("fechaDeNacimiento"));
 			}
 
 			ps.close();
@@ -130,17 +129,18 @@ import modelo.Usuario;
 		return UsuarioEncontrado;
 	}
 
+
 	public boolean eliminar(Usuario usuario) throws Exception {
+		boolean updated = false;
 		Connection conn = null;
 		PreparedStatement ps = null;
-		boolean elimino = false;
 		try{
-			if (this.existe(usuario)){
-				conn = this.getConnection();
-				ps = conn.prepareStatement("DELETE FROM usuarios WHERE nombreDeUsuario = ?");
-				ps.setString(1, usuario.getNombreUsuario());
-				ps.execute();
-				elimino = true ;
+			conn = this.getConnection();
+			ps = conn.prepareStatement("delete from usuarios where nombreDeUsuario = ?");
+			ps.setString(1, usuario.getNombreUsuario());
+			ps.execute();
+			if (1 == ps.getUpdateCount()){
+				updated = true ;
 			}
 		}finally{
 			if(ps != null){
@@ -150,7 +150,8 @@ import modelo.Usuario;
 				conn.close();
 			}
 		}
-		return elimino ;
+		return updated;
+
 	}
 
 	
