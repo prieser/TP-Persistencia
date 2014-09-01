@@ -42,30 +42,20 @@ public class Sistema {
 
 	}
 
-	public void CambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInválida {
-
-		PreparedStatement statement;
-		Connection connection = null;
+	/** 
+	 * Este metodo cambia la contrasenia del usuario userName por una nueva. 
+	 * Antes de hacerlo, verifica que su password actual sea correcta.
+	 * @param userName
+	 * @param password
+	 * @param nuevaPassword
+	 * @throws Exception
+	 */
+	public void CambiarPassword(String userName, String password, String nuevaPassword) throws Exception {
+		
 		this.usuarioRepository = new UsuarioRepository();
-
-		try {
-			connection = this.usuarioRepository.getConnection();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if (usuarioRepository.sonValidosElUsernameYPassword(userName, password)) {
+			this.usuarioRepository.actualizarPassword(userName, nuevaPassword);
 		}
-
-		try {
-			statement = connection.prepareStatement("UPDATE usuarios SET contrasenia = ? WHERE nombreDeUsuario = ? AND contrasenia = ?");
-			statement.setString(1, nuevaPassword);
-			statement.setString(2, userName);
-			statement.setString(3, password);
-			statement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }
