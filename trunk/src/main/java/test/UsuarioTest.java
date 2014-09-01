@@ -23,7 +23,6 @@ public class UsuarioTest {
 		this.usuario1.setCodigoDeValidacion("aj2");
 		this.usuario1.setActivo(false);
 		this.usuario1.setContrasenia("lalala");	
-
 	}
 	
 	@After
@@ -42,7 +41,7 @@ public class UsuarioTest {
 	@Test
 	public void testAgregarYTraerUsuario() throws Exception{
 		this.userRepositorio.guardar(this.usuario1);
-		Usuario usuarioRecibido = this.userRepositorio.dameUno(this.usuario1);
+		Usuario usuarioRecibido = this.userRepositorio.dameUno("sdelgadillo");
 		Assert.assertTrue(this.usuario1.equals(usuarioRecibido));
 		System.out.println(this.usuario1.getNombreUsuario());
 		System.out.println(usuarioRecibido.getNombreUsuario());

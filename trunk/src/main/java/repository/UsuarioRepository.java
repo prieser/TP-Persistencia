@@ -96,14 +96,14 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 		return updated;
 	}
 
-	public Usuario dameUno(Usuario usuario) throws Exception {
+	public Usuario dameUno(String nombreUsuario) throws Exception {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Usuario UsuarioEncontrado = new Usuario();
 		try {
 			conn = this.getConnection();
 			ps = conn.prepareStatement("select * from usuarios where nombreDeUsuario= ? limit 0,1");
-			ps.setString(1, usuario.getNombreUsuario());
+			ps.setString(1,nombreUsuario);
 			ResultSet rs = ps.executeQuery();
 			// if (1 != rs.getRow()){
 			// throw new UsuarioYaExisteException();
@@ -137,74 +137,6 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 			conn = this.getConnection();
 			ps = conn.prepareStatement("delete from usuarios where nombreDeUsuario = ?");
 			ps.setString(1, usuario.getNombreUsuario());
-			ps.execute();
-			if (1 == ps.getUpdateCount()) {
-				updated = true;
-			}
-		} finally {
-			if (ps != null) {
-				ps.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		}
-		return updated;
-	}
-
-	/**
-	 * Este metodo recibe un nombre de usuario y una password y se encarga de validar si hay un usuario en la db que tenga esas credenciales. Este metodo se usa para verificar antes de cambiar el password y para el login de usuarios al sistema.
-	 * @param usuario
-	 * @return
-	 * @throws Exception
-	 */
-	public boolean sonValidosElUsernameYPassword(String username, String password) throws Exception {
-		Connection conn = null;
-		PreparedStatement ps = null;
-		boolean result = false;
-
-		try {
-			conn = this.getConnection();
-			ps = conn.prepareStatement("select 1 from usuarios where nombreDeUsuario= ? AND contrasenia = ? limit 0,1");
-			ps.setString(1, username);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
-			Integer filasEncontradas = 0;
-			while (rs.next()) {
-				filasEncontradas = rs.getInt("1");
-			}
-
-			if (1 == filasEncontradas) {
-				result = true;
-			}
-			ps.close();
-		} finally {
-			if (ps != null)
-				ps.close();
-			if (conn != null)
-				conn.close();
-		}
-		return result;
-	}
-
-	/**
-	 * Este metodo actualiza el password de un usuario por el recibido por parametros. 
-	 * Se asume que ya se verifico que el usuario pueda realizar esta operacion.
-	 * @param username
-	 * @param nuevaPassword
-	 * @return
-	 * @throws Exception
-	 */
-	public boolean actualizarPassword(String username, String nuevaPassword) throws Exception {
-		boolean updated = false;
-		Connection conn = null;
-		PreparedStatement ps = null;
-		try {
-			conn = this.getConnection();
-			ps = conn.prepareStatement("update usuarios set contrasenia = ? where nombreDeUsuario = ?");
-			ps.setString(1, nuevaPassword);
-			ps.setString(2, username);
-			
 			ps.execute();
 			if (1 == ps.getUpdateCount()) {
 				updated = true;
