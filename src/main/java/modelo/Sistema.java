@@ -2,6 +2,7 @@ package modelo;
 
 import repository.UsuarioRepository;
 import excepciones.NuevaPasswordInválidaException;
+import excepciones.PasswordIncorrectaException;
 import excepciones.UsuarioNoExiste;
 import excepciones.UsuarioYaExisteException;
 import excepciones.ValidaciónException;
@@ -47,10 +48,20 @@ public class Sistema {
 
 	}
 
-	public Usuario IngresarUsuario(String userName, String password)
-			throws UsuarioNoExiste {
-		return null;
-
+	public Usuario IngresarUsuario(String userName, String password) throws Exception {
+		this.usuarioRepository = new UsuarioRepository();
+		Usuario usuario = this.usuarioRepository.dameUno(userName);
+		
+		if (usuario == null) {
+			throw new UsuarioNoExiste();
+		}
+		
+		if (password.equals(usuario.getContrasenia()) && (usuario.getActivo() == true)) {
+			usuario = null;
+		} else {
+			throw new PasswordIncorrectaException();
+		}
+		return usuario;
 	}
 
 	/**
