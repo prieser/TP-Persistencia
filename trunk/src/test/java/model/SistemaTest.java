@@ -20,7 +20,8 @@ public class SistemaTest {
 
 	// Necesito tres variables de clase.
 	private Usuario usuarioComunYCorriente;
-	private Usuario usuarioRegistrado;
+	private Usuario usuarioRegistradoNoActivado;
+	private Usuario usuarioRegistradoActivado;
 	private Sistema sistema;
 	private UsuarioRepository repositorio;
 
@@ -30,8 +31,12 @@ public class SistemaTest {
 		this.sistema = new Sistema();
 		this.repositorio = new UsuarioRepository();
 
-		this.usuarioRegistrado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123", "xxxcodigoxxx");
-		this.repositorio.guardar(usuarioRegistrado);
+		this.usuarioRegistradoNoActivado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123", "xxxcodigoxxx",false);
+		this.repositorio.guardar(usuarioRegistradoNoActivado);
+		
+		this.usuarioRegistradoActivado = new Usuario("Juan", "Zamora", "juanzamora", "jzamora@gmail.com", "20130622", "asdqweasd", null, true);
+		this.repositorio.guardar(usuarioRegistradoActivado);
+		
 
 	}
 
@@ -46,8 +51,8 @@ public class SistemaTest {
 			repositorio.eliminar(usuarioComunYCorriente);
 		}
 
-		if (repositorio.existe(usuarioRegistrado)) {
-			repositorio.eliminar(usuarioRegistrado);
+		if (repositorio.existe(usuarioRegistradoNoActivado)) {
+			repositorio.eliminar(usuarioRegistradoNoActivado);
 		}
 	}
 
@@ -70,8 +75,10 @@ public class SistemaTest {
 	}
 
 	@Test
-	public void testIngresarUsuario() throws NuevaPasswordInválidaException, SQLException, UsuarioYaExisteException {
-		fail("Not yet implemented");
+	public void testIngresarUsuario() throws Exception {
+		Usuario usuarioEsperado = this.repositorio.dameUno("juanzamora");
+		Usuario usuarioIngresante = sistema.IngresarUsuario("juanzamora", "asdqweasd");
+		Assert.assertEquals(usuarioEsperado, usuarioIngresante);
 	}
 
 	@Test
