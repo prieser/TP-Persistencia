@@ -56,12 +56,15 @@ public class Sistema {
 			throw new UsuarioNoExiste();
 		}
 		
-		if (!(password.equals(usuario.getContrasenia()) && (usuario.isActivo()))) {
+		if ((password.equals(usuario.getContrasenia()) && (usuario.isActivo()))) {
+			return usuario;
+		}else{
 			throw new PasswordIncorrectaException();
-		} else {
-			usuario = null;
-		}
-		return usuario;
+		} 
+		
+		
+		
+	
 	}
 
 	/**
