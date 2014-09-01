@@ -2,9 +2,9 @@ package modelo;
 
 public class EnviadorDeMails {
 	
-	public boolean enviarMail (Mail unMail){
-	return true;		
-		
+	public boolean enviarMail (Mail unMail, Usuario usuario){
+		usuario.setCodigoDeValidacion(unMail.getBody());
+		return true;		
 	}
 
 }
