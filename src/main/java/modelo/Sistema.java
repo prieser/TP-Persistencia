@@ -7,7 +7,6 @@ import excepciones.NuevaPasswordInválidaException;
 import excepciones.PasswordIncorrectaException;
 import excepciones.UsuarioNoExiste;
 import excepciones.UsuarioYaExisteException;
-import excepciones.ValidaciónException;
 
 public class Sistema {
 
@@ -41,10 +40,9 @@ public class Sistema {
 	 */
 	public void ValidarCuenta(String codigoValidación) throws Exception {
 		this.usuarioRepository = new UsuarioRepository();
-		Usuario usuario = this.usuarioRepository
-				.dameUnoConCodigoDeValidacion(codigoValidación);
+		Usuario usuario = this.usuarioRepository.dameUnoConCodigoDeValidacion(codigoValidación);
 		if (usuario == null) {
-			throw new ValidaciónException();
+			throw new UsuarioNoExiste();
 		} else {
 			usuario.setActivo(true);
 			this.usuarioRepository.actualizar(usuario);
