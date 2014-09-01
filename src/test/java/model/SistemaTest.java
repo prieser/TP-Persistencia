@@ -1,9 +1,5 @@
 package model;
 
-import static org.junit.Assert.fail;
-
-import java.sql.SQLException;
-
 import junit.framework.Assert;
 import modelo.Sistema;
 import modelo.Usuario;
@@ -13,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import repository.UsuarioRepository;
-import excepciones.NuevaPasswordInválidaException;
 import excepciones.UsuarioYaExisteException;
 
 public class SistemaTest {
@@ -31,10 +26,13 @@ public class SistemaTest {
 		this.sistema = new Sistema();
 		this.repositorio = new UsuarioRepository();
 
-		this.usuarioRegistradoNoActivado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123", "xxxcodigoxxx",false);
+		this.usuarioRegistradoNoActivado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123");
+		this.usuarioRegistradoNoActivado.setCodigoDeValidacion("xxxcodigoxxx");
+		this.usuarioRegistradoNoActivado.setActivo(false);
 		this.repositorio.guardar(usuarioRegistradoNoActivado);
 		
-		this.usuarioRegistradoActivado = new Usuario("Juan", "Zamora", "juanzamora", "jzamora@gmail.com", "20130622", "asdqweasd", null, true);
+		this.usuarioRegistradoActivado = new Usuario("Juan", "Zamora", "juanzamora", "jzamora@gmail.com", "20130622", "asdqweasd");
+		this.usuarioRegistradoActivado.setActivo(true);
 		this.repositorio.guardar(usuarioRegistradoActivado);
 		
 
