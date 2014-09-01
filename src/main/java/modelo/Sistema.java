@@ -18,22 +18,18 @@ public class Sistema {
 
 	/**
 	 * Este metodo se encarga de registrar al usuario que recibe por parametros. Antes de eso verifica que no exista ya un usuario.
+	 * 
 	 * @param usuarioNuevo
 	 * @throws UsuarioYaExisteException
 	 */
-	public void RegistrarUsuario(Usuario usuarioNuevo) throws UsuarioYaExisteException {
+	public void RegistrarUsuario(Usuario usuarioNuevo) throws Exception {
 
 		this.usuarioRepository = new UsuarioRepository();
 
-		try {
-			if (!usuarioRepository.existe(usuarioNuevo)) {
-				this.usuarioRepository.guardar(usuarioNuevo);
-			} else {
-				throw new UsuarioYaExisteException();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (!usuarioRepository.existe(usuarioNuevo)) {
+			this.usuarioRepository.guardar(usuarioNuevo);
+		} else {
+			throw new UsuarioYaExisteException();
 		}
 	}
 
@@ -47,28 +43,29 @@ public class Sistema {
 	}
 
 	public void CambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInválida {
-//
-//		try {
-//			this.connection = this.getConnection();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		try {
-//
-//			this.statementDeConsulta = connection.prepareStatement("UPDATE usuarios SET contraseña = ? WHERE nombreDeUsuario = ? AND contraseña = password");
-//			statementDeConsulta.setString(1, nuevaPassword);
-//			statementDeConsulta.setString(2, userName);
-//			statementDeConsulta.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
+
+		PreparedStatement statement;
+		Connection connection = null;
+		this.usuarioRepository = new UsuarioRepository();
+
+		try {
+			connection = this.usuarioRepository.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try {
+			statement = connection.prepareStatement("UPDATE usuarios SET contrasenia = ? WHERE nombreDeUsuario = ? AND contrasenia = ?");
+			statement.setString(1, nuevaPassword);
+			statement.setString(2, userName);
+			statement.setString(3, password);
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
-	/* Metodo auxiliar para conexion con la base de datos */
-	private Connection getConnection() throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://localhost/database?user=root&password=root");
-	}
 }
