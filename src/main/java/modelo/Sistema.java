@@ -52,10 +52,10 @@ public class Sistema {
 	 */
 	public void CambiarPassword(String userName, String password, String nuevaPassword) throws Exception {
 		
-		this.usuarioRepository = new UsuarioRepository();
-		if (usuarioRepository.sonValidosElUsernameYPassword(userName, password)) {
-			this.usuarioRepository.actualizarPassword(userName, nuevaPassword);
-		}
+//		this.usuarioRepository = new UsuarioRepository();
+//		if (usuarioRepository.sonValidosElUsernameYPassword(userName, password)) {
+//			this.usuarioRepository.actualizarPassword(userName, nuevaPassword);
+//		}
 	}
 
 }
