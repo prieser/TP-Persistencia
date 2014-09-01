@@ -23,6 +23,7 @@ public class SistemaTest {
 
     // Necesito tres variables de clase.
     private Usuario usuarioComunYCorriente;
+    private Usuario usuarioRegistrado;
     private Sistema sistema;
     private UsuarioRepository repositorio;
     
@@ -31,12 +32,24 @@ public class SistemaTest {
         this.usuarioComunYCorriente = new Usuario("Juan", "Gomez", "juangomez", "jgomez@gmail.com", "20150501", "12345678");
         this.sistema = new Sistema();
         this.repositorio = new UsuarioRepository();
+        
+        this.usuarioRegistrado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123");
+        this.repositorio.guardar(usuarioRegistrado);
+        
     }
 
-    @After
+    /**
+     * Elimino los dos usuarios de prueba que podrian estar cargados en la base de datos.
+     * @throws Exception
+     */
+    @After 
     public void tearDown() throws Exception {
     	if (repositorio.existe(usuarioComunYCorriente)) {
 			repositorio.eliminar(usuarioComunYCorriente);
+		}
+    	
+    	if (repositorio.existe(usuarioRegistrado)) {
+			repositorio.eliminar(usuarioRegistrado);
 		}
     }
 
@@ -47,7 +60,7 @@ public class SistemaTest {
     }
 
     @Test(expected = UsuarioYaExisteException.class)
-    public void testRegistrarUsuarioQueYaExisteEnLaBaseDeDatos() throws UsuarioYaExisteException {
+    public void testRegistrarUsuarioQueYaExisteEnLaBaseDeDatos() throws Exception {
         sistema.RegistrarUsuario(usuarioComunYCorriente);
         sistema.RegistrarUsuario(usuarioComunYCorriente);
     }
@@ -66,28 +79,17 @@ public class SistemaTest {
     public void testCambiarPassword() throws Exception {
 
         try {
-            sistema.RegistrarUsuario(usuarioComunYCorriente);
-        } catch (UsuarioYaExisteException e) {
-            e.printStackTrace();
-        }
-        try {
-            sistema.CambiarPassword("juangomez", "12345678", "87654321");
+            this.sistema.CambiarPassword("josegodoy", "qwerty123", "nuevaContras");
+           
             Connection connection = this.repositorio.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreDeUsuario = juangomez AND contrasenia = 87654321");
+            PreparedStatement ps = connection.prepareStatement("SELECT 1 FROM usuarios WHERE nombreDeUsuario = 'josegodoy' AND contrasenia = 'nuevaContras'");
             ps.executeQuery();
-            Assert.assertEquals("Se espera se haya encontrado al usuario insertado:", 1, ps.getUpdateCount());
+            Assert.assertEquals("Se espera se encuentre al usuario que fue modificado:", 1, ps.getUpdateCount());
         } catch (NuevaPasswordInválida nuevaPasswordInválida) {
             nuevaPasswordInválida.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //TODO: ¿como podemos extraer el calor de la consulta para compararlo con el valor esperado?
+        //TODO: ¿como podemos extraer el valor de la consulta para compararlo con el valor esperado?
     }
-
-    /* Metodo auxiliar para conexion con la base de datos */
-    private Connection getConnection() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost/database?user=root&password=root");
-    }
-
 }
