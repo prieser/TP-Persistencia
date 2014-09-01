@@ -41,7 +41,8 @@ public class Sistema {
 	 */
 	public void ValidarCuenta(String codigoValidación) throws Exception {
 		this.usuarioRepository = new UsuarioRepository();
-		Usuario usuario = this.usuarioRepository.dameUnoConCodigoDeValidacion(codigoValidación);
+		Usuario usuario = this.usuarioRepository
+				.dameUnoConCodigoDeValidacion(codigoValidación);
 		if (usuario == null) {
 			throw new ValidaciónException();
 		} else {
@@ -51,23 +52,21 @@ public class Sistema {
 
 	}
 
-	public Usuario IngresarUsuario(String userName, String password) throws Exception {
+	public Usuario IngresarUsuario(String userName, String password)
+			throws Exception {
 		this.usuarioRepository = new UsuarioRepository();
 		Usuario usuario = this.usuarioRepository.dameUno(userName);
-		
+
 		if (usuario == null) {
 			throw new UsuarioNoExiste();
 		}
-		
+
 		if ((password.equals(usuario.getContrasenia()) && (usuario.isActivo()))) {
 			return usuario;
-		}else{
+		} else {
 			throw new PasswordIncorrectaException();
-		} 
-		
-		
-		
-	
+		}
+
 	}
 
 	/**
@@ -91,10 +90,8 @@ public class Sistema {
 			this.usuarioRepository.actualizar(usuario);
 		}
 	}
-	
+
 	private String generarCodigoValidacion() {
-     /*return (String) Math.random();*/
-		
 		char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		StringBuilder sb = new StringBuilder();
 		Random random = new Random();
@@ -104,20 +101,15 @@ public class Sistema {
 		}
 		String output = sb.toString();
 		return output;
-
 }
 	
 	private void mandarMailValidacion(Usuario unUsuario) {
-		
+
 		String codigo = this.generarCodigoValidacion();		
 		Mail mail = new Mail(codigo, "Codigo Validacion", unUsuario.getEmail(), "sistema@sistema.com");
 		EnviadorDeMails enviador = new EnviadorDeMails();
-		enviador.enviarMail(mail);
-		
-		
+		enviador.enviarMail(mail, unUsuario);
+
 	}
-	  
-	
-	
 
 }
