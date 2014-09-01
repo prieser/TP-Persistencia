@@ -1,16 +1,10 @@
 package modelo;
 
-import excepciones.NuevaPasswordInválida;
+import repository.UsuarioRepository;
+import excepciones.NuevaPasswordInválidaException;
 import excepciones.UsuarioNoExiste;
 import excepciones.UsuarioYaExisteException;
 import excepciones.ValidaciónException;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-import repository.UsuarioRepository;
 
 public class Sistema {
 
@@ -44,18 +38,21 @@ public class Sistema {
 
 	/** 
 	 * Este metodo cambia la contrasenia del usuario userName por una nueva. 
-	 * Antes de hacerlo, verifica que su password actual sea correcta.
+	 * Antes de hacerlo, verifica que su password actual sea correcta. Si es incorrecta lanza una excepcion.
 	 * @param userName
-	 * @param password
+	 * @param viejaPassword
 	 * @param nuevaPassword
 	 * @throws Exception
 	 */
-	public void CambiarPassword(String userName, String password, String nuevaPassword) throws Exception {
-		
-//		this.usuarioRepository = new UsuarioRepository();
-//		if (usuarioRepository.sonValidosElUsernameYPassword(userName, password)) {
-//			this.usuarioRepository.actualizarPassword(userName, nuevaPassword);
-//		}
+	public void CambiarPassword(String userName, String viejaPassword, String nuevaPassword) throws Exception {
+		this.usuarioRepository = new UsuarioRepository();
+		Usuario usuario = this.usuarioRepository.dameUno(userName);
+		if (viejaPassword.equals(usuario.getContrasenia())) {
+			usuario.setContrasenia(nuevaPassword);
+			this.usuarioRepository.actualizar(usuario);
+		} else {
+			throw new NuevaPasswordInválidaException();
+		}
 	}
 
 }
