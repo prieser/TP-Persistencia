@@ -201,9 +201,9 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 		PreparedStatement ps = null;
 		try {
 			conn = this.getConnection();
-			ps = conn.prepareStatement("update usuarios set contrasenia = ? where nombreDeUsuario = ?)");
-			ps.setString(1, username);
-			ps.setString(2, nuevaPassword);
+			ps = conn.prepareStatement("update usuarios set contrasenia = ? where nombreDeUsuario = ?");
+			ps.setString(1, nuevaPassword);
+			ps.setString(2, username);
 			
 			ps.execute();
 			if (1 == ps.getUpdateCount()) {
