@@ -86,7 +86,7 @@ public class Usuario {
 		this.activo = activo;
 	}
 	
-	public boolean getActivo() {
+	public boolean isActivo() {
 		return this.activo ;
 	}
 	

@@ -23,7 +23,7 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 				ps.setString(4, usuario.getEmail());
 				ps.setString(5, usuario.getFechaDeNacimiento());
 				ps.setString(6, usuario.getCodigoDeValidacion());
-				ps.setBoolean(7, usuario.getActivo());
+				ps.setBoolean(7, usuario.isActivo());
 				ps.setString(8, usuario.getContrasenia());
 				ps.execute();
 				guardoObjecto = true;
@@ -78,7 +78,7 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 			ps.setString(3, usuario.getEmail());
 			ps.setString(4, usuario.getFechaDeNacimiento());
 			ps.setString(5, usuario.getCodigoDeValidacion());
-			ps.setBoolean(6, usuario.getActivo());
+			ps.setBoolean(6, usuario.isActivo());
 			ps.setString(7, usuario.getContrasenia());
 			ps.setString(8, usuario.getNombreUsuario());
 			ps.execute();
