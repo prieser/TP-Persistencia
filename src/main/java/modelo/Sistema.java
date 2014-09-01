@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Random;
+
 import repository.UsuarioRepository;
 import excepciones.NuevaPasswordInválidaException;
 import excepciones.PasswordIncorrectaException;
@@ -23,6 +25,7 @@ public class Sistema {
 		this.usuarioRepository = new UsuarioRepository();
 
 		if (!usuarioRepository.existe(usuarioNuevo)) {
+			this.mandarMailValidacion(usuarioNuevo);
 			this.usuarioRepository.guardar(usuarioNuevo);
 		} else {
 			throw new UsuarioYaExisteException();
@@ -88,5 +91,25 @@ public class Sistema {
 			this.usuarioRepository.actualizar(usuario);
 		}
 	}
+	
+	private int generarCodigoValidacion() {
+     /*return (String) Math.random();*/
+		
+		Random rand = new Random();  	
+		return rand.nextInt();
+				}
+	
+	private void mandarMailValidacion(Usuario unUsuario) {
+		
+		int codigo = this.generarCodigoValidacion();		
+		Mail mail = new Mail(codigo, "Codigo Validacion", unUsuario.getEmail(), "sistema@sistema.com");
+		EnviadorDeMails enviador = new EnviadorDeMails();
+		enviador.enviarMail(mail);
+		
+		
+	}
+	  
+	
+	
 
 }
