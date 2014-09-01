@@ -92,16 +92,24 @@ public class Sistema {
 		}
 	}
 	
-	private int generarCodigoValidacion() {
+	private String generarCodigoValidacion() {
      /*return (String) Math.random();*/
 		
-		Random rand = new Random();  	
-		return rand.nextInt();
-				}
+		char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+		for (int i = 0; i < 20; i++) {
+		    char c = chars[random.nextInt(chars.length)];
+		    sb.append(c);
+		}
+		String output = sb.toString();
+		return output;
+
+}
 	
 	private void mandarMailValidacion(Usuario unUsuario) {
 		
-		int codigo = this.generarCodigoValidacion();		
+		String codigo = this.generarCodigoValidacion();		
 		Mail mail = new Mail(codigo, "Codigo Validacion", unUsuario.getEmail(), "sistema@sistema.com");
 		EnviadorDeMails enviador = new EnviadorDeMails();
 		enviador.enviarMail(mail);
