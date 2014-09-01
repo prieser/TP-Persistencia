@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import repository.UsuarioRepository;
-import excepciones.NuevaPasswordInválida;
+import excepciones.NuevaPasswordInválidaException;
 import excepciones.UsuarioYaExisteException;
 
 public class SistemaTest {
@@ -72,15 +72,14 @@ public class SistemaTest {
 	}
 
 	@Test
-	public void testIngresarUsuario() throws NuevaPasswordInválida, SQLException, UsuarioYaExisteException {
+	public void testIngresarUsuario() throws NuevaPasswordInválidaException, SQLException, UsuarioYaExisteException {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testCambiarPassword() throws Exception {
 
-		this.sistema.CambiarPassword("josegodoy", "qwerty123", "nuevaContras");
-		Assert.assertTrue("Se espera se encuentre al usuario que fue modificado:", this.repositorio.sonValidosElUsernameYPassword("josegodoy", "nuevaContras"));
+		sistema.CambiarPassword("josegodoy", "qwerty123", "nuevaContras");
+		Assert.assertEquals("Se espera que las password se haya modificado correctamente:","nuevaContras", this.repositorio.dameUno("josegodoy").getContrasenia());
 	}
-	// TODO: ¿como podemos extraer el valor de la consulta para compararlo con el valor esperado?
 }

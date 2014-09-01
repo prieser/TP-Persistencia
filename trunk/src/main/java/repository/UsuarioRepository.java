@@ -72,15 +72,15 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 		PreparedStatement ps = null;
 		try {
 			conn = this.getConnection();
-			ps = conn.prepareStatement("update usuarios set nombre = ? ,apellido = ?, email = ?, fechaDeNacimiento = ? ,codigoValidacion = ?, activo = ?, contrasenia = ? where nombreDeUsuario = ?)");
+			ps = conn.prepareStatement("update usuarios set nombre = ? ,apellido = ?, email = ?, fechaDeNacimiento = ? ,codigoValidacion = ?, activo = ?, contrasenia = ? where nombreDeUsuario = ?");
 			ps.setString(1, usuario.getNombre());
 			ps.setString(2, usuario.getApellido());
 			ps.setString(3, usuario.getEmail());
 			ps.setString(4, usuario.getFechaDeNacimiento());
-			ps.setString(5, usuario.getNombreUsuario());
-			ps.setString(6, usuario.getCodigoDeValidacion());
-			ps.setBoolean(7, usuario.getActivo());
-			ps.setString(8, usuario.getContrasenia());
+			ps.setString(5, usuario.getCodigoDeValidacion());
+			ps.setBoolean(6, usuario.getActivo());
+			ps.setString(7, usuario.getContrasenia());
+			ps.setString(8, usuario.getNombreUsuario());
 			ps.execute();
 			if (1 == ps.getUpdateCount()) {
 				updated = true;
@@ -118,8 +118,8 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 				UsuarioEncontrado.setNombreUsuario(rs.getString("nombreDeUsuario"));
 				UsuarioEncontrado.setFechaDeNacimiento(rs.getString("fechaDeNacimiento"));
 			}
-
 			ps.close();
+			
 		} finally {
 			if (ps != null)
 				ps.close();
