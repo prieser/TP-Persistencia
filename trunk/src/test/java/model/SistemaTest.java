@@ -69,7 +69,7 @@ public class SistemaTest {
 	@Test
 	public void testValidarCuenta() throws Exception {
 		sistema.ValidarCuenta("xxxcodigoxxx");
-		Assert.assertTrue("Se espera que el usuario se encuentre activo:", this.repositorio.dameUnoConCodigoDeValidacion("xxxcodigoxxx").getActivo());
+		Assert.assertTrue("Se espera que el usuario se encuentre activo:", this.repositorio.dameUnoConCodigoDeValidacion("xxxcodigoxxx").isActivo());
 	}
 
 	@Test
