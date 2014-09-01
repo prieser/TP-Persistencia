@@ -36,8 +36,8 @@ public class Sistema {
 	 * @throws Exception
 	 */
 	public void ValidarCuenta(String codigoValidación) throws Exception {
-		Usuario usuario = this.usuarioRepository
-				.dameUnoConCodigoDeValidacion(codigoValidación);
+		this.usuarioRepository = new UsuarioRepository();
+		Usuario usuario = this.usuarioRepository.dameUnoConCodigoDeValidacion(codigoValidación);
 		if (usuario == null) {
 			throw new ValidaciónException();
 		} else {
