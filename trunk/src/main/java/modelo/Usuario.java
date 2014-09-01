@@ -69,18 +69,6 @@ public class Usuario {
         this.contrasenia = contrasenia;
      }
     
-    public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento, String contrasenia, String codigoDeValidacion, Boolean activo) {
-        super();
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.nombreUsuario = nombreUsuario;
-        this.email = email;
-        this.fechaDeNacimiento = fechaDeNacimiento;
-        this.contrasenia = contrasenia;
-        this.codigoDeValidacion = codigoDeValidacion;
-        this.activo = activo;
-     }
-
     public Usuario() {
         super();
     }
