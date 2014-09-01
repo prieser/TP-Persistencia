@@ -39,15 +39,15 @@ public class UsuarioTest {
 		this.usuario1Actualizado.setContrasenia("lololo");
 		
 		//Otro usuario
-		this.usuario1Actualizado = new Usuario();
-		this.usuario1Actualizado.setNombre("Pablo");
-		this.usuario1Actualizado.setApellido("Riester");
-		this.usuario1Actualizado.setEmail("pablo.riestrl@gmail.com");
-		this.usuario1Actualizado.setNombreUsuario("priestre");
-		this.usuario1Actualizado.setFechaDeNacimiento("20140805");
-		this.usuario1Actualizado.setCodigoDeValidacion("aj3");
-		this.usuario1Actualizado.setActivo(false);
-		this.usuario1Actualizado.setContrasenia("lololo");
+		this.usuario2 = new Usuario();
+		this.usuario2.setNombre("Pablo");
+		this.usuario2.setApellido("Riester");
+		this.usuario2.setEmail("pablo.riestrl@gmail.com");
+		this.usuario2.setNombreUsuario("priestre");
+		this.usuario2.setFechaDeNacimiento("20140805");
+		this.usuario2.setCodigoDeValidacion("aj3");
+		this.usuario2.setActivo(false);
+		this.usuario2.setContrasenia("lololo");
 	}
 	
 	@After
@@ -62,13 +62,30 @@ public class UsuarioTest {
 		Assert.assertTrue(this.userRepositorio.guardar(this.usuario1));
 		Assert.assertFalse(this.userRepositorio.guardar(this.usuario1));
 	}
-	
-	@Test
+		@Test
 	public void testAgregarYTraerUsuario() throws Exception{
-		this.userRepositorio.guardar(this.usuario1);
-	//	Usuario usuarioRecibido = this.userRepositorio.dameUno(this.usuario1);
-	//	Assert.assertEquals(this.usuario1.getNombreUsuario(),usuarioRecibido.getNombreUsuario());
+		Assert.assertTrue(this.userRepositorio.guardar(this.usuario1));
+		Usuario usuario = this.userRepositorio.dameUno("sdelgadillo");
+		Assert.assertTrue(this.usuario1.equals(usuario));
+		Assert.assertFalse(this.usuario1.equals(this.usuario2));
 	}
 	
+		@Test
+		public void testActualizarUsuario() throws Exception{
+			String nombreUsuario = this.usuario1.getNombreUsuario();
+			this.userRepositorio.guardar(this.usuario1);
+			Assert.assertTrue(this.userRepositorio.actualizar(this.usuario1Actualizado));
+			Usuario usuario = this.userRepositorio.dameUno(nombreUsuario);
+			Assert.assertEquals(usuario, this.usuario1Actualizado) ;
+		}
+		
+		@Test
+		public void testActualizarDosVecesUsuario() throws Exception{
+			String nombreUsuario = this.usuario1.getNombreUsuario();
+			this.userRepositorio.guardar(this.usuario1);
+			Assert.assertTrue(this.userRepositorio.actualizar(this.usuario1Actualizado));
+			Usuario usuario = this.userRepositorio.dameUno(nombreUsuario);
+			Assert.assertEquals(usuario, this.usuario1Actualizado) ;
+		}
 	
 }

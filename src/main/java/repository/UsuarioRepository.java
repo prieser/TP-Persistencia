@@ -85,6 +85,7 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 			if (1 == ps.getUpdateCount()) {
 				updated = true;
 			}
+			ps.close();
 		} finally {
 			if (ps != null) {
 				ps.close();
