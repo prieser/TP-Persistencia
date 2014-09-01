@@ -2,9 +2,6 @@ package model;
 
 import static org.junit.Assert.fail;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import junit.framework.Assert;
@@ -33,7 +30,7 @@ public class SistemaTest {
 		this.sistema = new Sistema();
 		this.repositorio = new UsuarioRepository();
 
-		this.usuarioRegistrado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123");
+		this.usuarioRegistrado = new Usuario("Jose", "Godoy", "josegodoy", "jgodoy@gmail.com", "20140501", "qwerty123", "xxxcodigoxxx");
 		this.repositorio.guardar(usuarioRegistrado);
 
 	}
@@ -67,8 +64,9 @@ public class SistemaTest {
 	}
 
 	@Test
-	public void testValidarCuenta() {
-		fail("Not yet implemented");
+	public void testValidarCuenta() throws Exception {
+		sistema.ValidarCuenta("xxxcodigoxxx");
+		Assert.assertTrue("Se espera que el usuario se encuentre activo:", this.repositorio.dameUnoConCodigoDeValidacion("xxxcodigoxxx").getActivo());
 	}
 
 	@Test

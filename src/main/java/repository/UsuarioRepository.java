@@ -128,6 +128,39 @@ public class UsuarioRepository extends Repository implements Home<Usuario> {
 		}
 		return UsuarioEncontrado;
 	}
+	
+	public Usuario dameUnoConCodigoDeValidacion(String codigoDeValidacion) throws Exception {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		Usuario UsuarioEncontrado = new Usuario();
+		try {
+			conn = this.getConnection();
+			ps = conn.prepareStatement("select * from usuarios where codigoValidacion = ? limit 0,1");
+			ps.setString(1,codigoDeValidacion);
+			ResultSet rs = ps.executeQuery();
+			// if (1 != rs.getRow()){
+			// throw new UsuarioYaExisteException();
+			// }
+			while (rs.next()) {
+				UsuarioEncontrado.setNombre(rs.getString("nombre"));
+				UsuarioEncontrado.setApellido(rs.getString("apellido"));
+				UsuarioEncontrado.setEmail(rs.getString("email"));
+				UsuarioEncontrado.setContrasenia(rs.getString("contrasenia"));
+				UsuarioEncontrado.setActivo(rs.getBoolean("activo"));
+				UsuarioEncontrado.setCodigoDeValidacion(rs.getString("codigoValidacion"));
+				UsuarioEncontrado.setNombreUsuario(rs.getString("nombreDeUsuario"));
+				UsuarioEncontrado.setFechaDeNacimiento(rs.getString("fechaDeNacimiento"));
+			}
+			ps.close();
+			
+		} finally {
+			if (ps != null)
+				ps.close();
+			if (conn != null)
+				conn.close();
+		}
+		return UsuarioEncontrado;
+	}
 
 	public boolean eliminar(Usuario usuario) throws Exception {
 		boolean updated = false;
