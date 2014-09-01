@@ -62,7 +62,7 @@ public class UsuarioTest {
 		Assert.assertTrue(this.userRepositorio.guardar(this.usuario1));
 		Assert.assertFalse(this.userRepositorio.guardar(this.usuario1));
 	}
-		@Test
+	@Test
 	public void testAgregarYTraerUsuario() throws Exception{
 		Assert.assertTrue(this.userRepositorio.guardar(this.usuario1));
 		Usuario usuario = this.userRepositorio.dameUno("sdelgadillo");
@@ -87,5 +87,11 @@ public class UsuarioTest {
 			Usuario usuario = this.userRepositorio.dameUno(nombreUsuario);
 			Assert.assertEquals(usuario, this.usuario1Actualizado) ;
 		}
-	
+		
+		@Test
+		public void testEliminaUsuario() throws Exception{
+			Assert.assertFalse(this.userRepositorio.eliminar(this.usuario1));
+			this.userRepositorio.guardar(this.usuario1);
+			Assert.assertTrue(this.userRepositorio.eliminar(this.usuario1));		
+		}
 }
