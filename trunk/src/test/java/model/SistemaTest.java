@@ -35,7 +35,6 @@ public class SistemaTest {
 		this.usuarioRegistradoActivado.setActivo(true);
 		this.repositorio.guardar(usuarioRegistradoActivado);
 		
-
 	}
 
 	/**

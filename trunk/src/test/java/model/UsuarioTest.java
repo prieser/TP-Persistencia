@@ -1,4 +1,4 @@
-package test;
+package model;
 import junit.framework.Assert;
 import modelo.Usuario;
 
