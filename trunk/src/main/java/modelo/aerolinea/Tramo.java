@@ -51,4 +51,8 @@ public class Tramo {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
+	public Object getAsientosSinReservar() {
+		// Deberia retornar los asientos disponibles
+		return null;
+	}
 }
