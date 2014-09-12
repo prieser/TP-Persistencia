@@ -13,7 +13,7 @@ public class Empresa {
     
     
     
-    public void reservarAsiento(Tramo tramo , Asiento asiento , Usuario usuario) {
+    public void reservarAsiento(Tramo tramo , Asiento asiento , Usuario usuario ) {
    
 /*    	recorrer la lista de asientos sacadas desde el tramo
  * preguntar si el asiento esta ocupado si no esta ocupado reservarlo enviadonle el metodo al asiento
