@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import modelo.Home;
-import modelo.Usuario;
+import modelo.usuario.Home;
+import modelo.usuario.Usuario;
 
 public class UsuarioRepository extends Repository implements Home<Usuario> {
 
