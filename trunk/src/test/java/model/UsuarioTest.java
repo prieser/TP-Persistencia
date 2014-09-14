@@ -1,6 +1,6 @@
 package model;
 import junit.framework.Assert;
-import modelo.Usuario;
+import modelo.usuario.Usuario;
 
 import org.junit.After;
 import org.junit.Before;
