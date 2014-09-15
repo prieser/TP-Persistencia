@@ -13,8 +13,10 @@ public class Aerolinea {
     private String nombre;
     private String direccion;
     
-    public Aerolinea(String nombre2, String direccion2) {
+    public Aerolinea(String nombre, String direccion) {
 		super();
+		this.nombre = nombre;
+		this.direccion = direccion;
 	}
 
 	public Collection<Vuelo> getVuelos() {

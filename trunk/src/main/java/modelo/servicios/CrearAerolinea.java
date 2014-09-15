@@ -16,9 +16,9 @@ import modelo.aerolinea.Aerolinea;
 		}
 
 		public Aerolinea execute() {
-			Aerolinea A = new Aerolinea(nombre, direccion);
-			new AerolineaDAO().save(A);
-			return A;
+			Aerolinea a = new Aerolinea(nombre, direccion);
+			new AerolineaDAO().save(a);
+			return a;
 		}
 	}
 	
