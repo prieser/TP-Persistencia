@@ -13,7 +13,11 @@ public class Aerolinea {
     private String nombre;
     private String direccion;
     
-    public Collection<Vuelo> getVuelos() {
+    public Aerolinea(String nombre2, String direccion2) {
+		super();
+	}
+
+	public Collection<Vuelo> getVuelos() {
 		return vuelos;
 	}
 
