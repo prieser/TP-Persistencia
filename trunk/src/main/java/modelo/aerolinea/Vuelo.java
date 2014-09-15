@@ -7,4 +7,17 @@ import java.util.Collection;
  */
 public class Vuelo {
 	private Collection<Tramo> tramos;
+	
+	public int getCantidadTramos(){
+		return this.tramos.size();
+	}
+	
+	/*
+	 * Se debera agregar la logica para que los tramos no se puedan pisar? 
+	 * 
+	 * */
+	
+	public void agregarTramo(Tramo tramo){
+		this.tramos.add(tramo);
+	}
 }
