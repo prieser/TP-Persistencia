@@ -7,7 +7,6 @@ import modelo.usuario.Usuario;
  */
 public class Asiento {
 	
-	private boolean reservado;
 	private Usuario usuario;
 	private Categoria categoria;
 	private int numero;
@@ -20,11 +19,9 @@ public class Asiento {
 		this.numero = numero;
 	}
 	public boolean estaReservado() {
-		return reservado;
+		return (this.getUsuario() != null);
 	}
-	public void setReservado(boolean reservado) {
-		this.reservado = reservado;
-	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -39,7 +36,6 @@ public class Asiento {
 	}
 	
 	public void reservarAsiento (Usuario usuario){
-		this.setReservado(true);
 		this.setUsuario(usuario);
 		
 	}
