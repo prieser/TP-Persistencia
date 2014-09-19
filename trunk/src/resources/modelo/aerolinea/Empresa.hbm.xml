@@ -13,10 +13,10 @@
 			<column name="nombre" length="20" not-null="true" unique="true" />
 		</property>
 
-		<!-- <set name="aerolineas"> -->
-		<!-- <key column="idAerolineas" not-null="true"/> -->
-		<!-- <one-to-many class="modelo.aerolinea.Aerolinea"/> -->
-		<!-- </set> -->
+		<set name="aerolineas">
+			<key column="idAerolineas" not-null="true" />
+			<one-to-many class="modelo.aerolinea.Aerolinea" />
+		</set>
 
 	</class>
 </hibernate-mapping>
