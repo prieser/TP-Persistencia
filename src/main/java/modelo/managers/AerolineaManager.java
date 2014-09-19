@@ -1,7 +1,10 @@
-package modelo.servicios;
+package modelo.managers;
 
 import modelo.aerolinea.Aerolinea;
 import modelo.daos.SessionManager;
+import modelo.servicios.ConsultarAerolinea;
+import modelo.servicios.CrearAerolinea;
+import modelo.servicios.ModificarAerolinea;
 
 public class AerolineaManager {
 	

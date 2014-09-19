@@ -8,6 +8,11 @@
             <column name="A_ID" />
             <generator class="identity" />
         </id>
+        
+        <set name="vuelos" >
+            <key column="vuelos" />
+            <one-to-many class="A_VUELO" />
+        </set>
 
         <property name="nombre" type="string">
             <column name="A_NOMBRE" length="20" not-null="true" unique="false" />
