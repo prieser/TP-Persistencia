@@ -9,6 +9,10 @@
             <generator class="identity"/>
         </id>
 
+        <property name="nombreDeLaEmpresa" type="string">
+            <column name="nombre" length="20" not-null="true" unique="true" />
+        </property>
+
 
         <set name="aerolineas">
             <key column="idAerolineas" not-null="true"/>

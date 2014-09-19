@@ -10,6 +10,7 @@ import modelo.usuario.Usuario;
 public class Empresa {
 
     private Integer idEmpresa;
+    private String nombreDeLaEmpresa;
     private Collection<Aerolinea> aerolineas;
 
     public Integer getIdEmpresa() {
@@ -26,6 +27,18 @@ public class Empresa {
 
     public void setAerolineas(Collection<Aerolinea> aerolineas) {
         this.aerolineas = aerolineas;
+    }
+
+    public String getNombreDeLaEmpresa() {
+        return nombreDeLaEmpresa;
+    }
+
+    public void setNombreDeLaEmpresa(String nombreDeLaEmpresa) {
+        this.nombreDeLaEmpresa = nombreDeLaEmpresa;
+    }
+
+    public Empresa(String nombreParaLaEmpresa) {
+        this.nombreDeLaEmpresa = nombreParaLaEmpresa;
     }
 
     public void reservarAsiento(Tramo tramo, Asiento asiento, Usuario usuario) {
