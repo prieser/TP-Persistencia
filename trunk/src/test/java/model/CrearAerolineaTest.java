@@ -1,6 +1,6 @@
 package model;
 
-import modelo.servicios.AerolineaManager;
+import modelo.managers.AerolineaManager;
 
 public class CrearAerolineaTest extends AbstractHibernateTest {
 	

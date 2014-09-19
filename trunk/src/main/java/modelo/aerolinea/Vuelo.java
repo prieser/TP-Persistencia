@@ -7,7 +7,21 @@ import java.util.Collection;
  */
 public class Vuelo {
 	private Collection<Tramo> tramos;
+	private int id;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Vuelo(int id) {
+		super();
+		this.id = id;
+	}
+
 	public int getCantidadTramos(){
 		return this.tramos.size();
 	}
