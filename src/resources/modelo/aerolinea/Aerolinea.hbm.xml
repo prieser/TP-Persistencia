@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
- 
-<hibernate-mapping>
-    <class name="modelo.aerolinea.Aerolinea" table="aerolineas" >
-        <id name="id" type="java.lang.Integer">
-            <column name="A_ID" />
-            <generator class="identity" />
-        </id>
-        
-        <set name="vuelos" >
-            <key column="vuelos" />
-            <one-to-many class="A_VUELO" />
-        </set>
 
-        <property name="nombre" type="string">
-            <column name="A_NOMBRE" length="20" not-null="true" unique="false" />
-        </property>
-                
-        <property name="direccion" type="string">
-            <column name="A_DIRECCION" length="20" not-null="true" unique="false" />
-        </property>
-      </class>
+<hibernate-mapping>
+	<class name="modelo.aerolinea.Aerolinea" table="aerolineas">
+		<id name="id" type="java.lang.Integer">
+			<column name="A_ID" />
+			<generator class="identity" />
+		</id>
+
+		<!-- <set name="vuelos" > -->
+		<!-- <key column="vuelos" /> -->
+		<!-- <one-to-many class="A_VUELO" /> -->
+		<!-- </set> -->
+
+		<property name="nombre" type="string">
+			<column name="A_NOMBRE" length="20" not-null="true" unique="false" />
+		</property>
+
+		<property name="direccion" type="string">
+			<column name="A_DIRECCION" length="20" not-null="true" unique="false" />
+		</property>
+	</class>
 </hibernate-mapping>

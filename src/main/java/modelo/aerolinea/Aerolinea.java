@@ -2,18 +2,25 @@ package modelo.aerolinea;
 
 import java.util.Collection;
 
-
 /**
  * Created by Pablo Rieser on 11/09/2014.
  */
 public class Aerolinea {
 
-    private int id;
+	private int id;
 	private Collection<Vuelo> vuelos;
-    private String nombre;
-    private String direccion;
-    
-    public Aerolinea(String nombre, String direccion) {
+	private String nombre;
+	private String direccion;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Aerolinea(String nombre, String direccion) {
 		super();
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -43,8 +50,8 @@ public class Aerolinea {
 		this.direccion = direccion;
 	}
 
-	public Collection<Vuelo> vuelosOfertados(){
-    	return this.vuelos ;
-    	
-    }
+	public Collection<Vuelo> vuelosOfertados() {
+		return this.vuelos;
+
+	}
 }
