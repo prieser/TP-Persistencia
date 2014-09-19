@@ -14,11 +14,12 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
 
+        <mapping resource="modelo/aerolinea/Empresa.hbm.xml"></mapping>
+        
         <mapping resource="/aerolinea/Aerolinea.hbm.xml"></mapping>
-<!--         <mapping resource="/aerolinea/Asiento.hbm.xml"></mapping> -->
-<!--         <mapping resource="/aerolinea/Empresa.hbm.xml"></mapping> -->
-<!--         <mapping resource="/aerolinea/Tramo.hbm.xml"></mapping> -->
-<!--         <mapping resource="/aerolinea/Vuelo.hbm.xml"></mapping> -->
+        <mapping resource="/aerolinea/Asiento.hbm.xml"></mapping>
+        <mapping resource="/aerolinea/Tramo.hbm.xml"></mapping>
+        <mapping resource="/aerolinea/Vuelo.hbm.xml"></mapping>
 		
     </session-factory>
 </hibernate-configuration>
