@@ -3,21 +3,20 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="modelo.aerolinea.Empresa" table="Empresas">
-        <id name="idEmpresa" type="java.lang.Integer">
-            <column name="IdEmpresa"/>
-            <generator class="identity"/>
-        </id>
+	<class name="modelo.aerolinea.Empresa" table="Empresas">
+		<id name="idEmpresa" type="java.lang.Integer">
+			<column name="IdEmpresa" />
+			<generator class="identity" />
+		</id>
 
-        <property name="nombreDeLaEmpresa" type="string">
-            <column name="nombre" length="20" not-null="true" unique="true" />
-        </property>
+		<property name="nombreDeLaEmpresa" type="string">
+			<column name="nombre" length="20" not-null="true" unique="true" />
+		</property>
 
+		<!-- <set name="aerolineas"> -->
+		<!-- <key column="idAerolineas" not-null="true"/> -->
+		<!-- <one-to-many class="modelo.aerolinea.Aerolinea"/> -->
+		<!-- </set> -->
 
-        <set name="aerolineas">
-            <key column="idAerolineas" not-null="true"/>
-            <one-to-many class="modelo.aerolinea.Aerolinea"/>
-        </set>
-
-    </class>
+	</class>
 </hibernate-mapping>
