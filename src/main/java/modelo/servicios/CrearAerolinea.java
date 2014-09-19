@@ -5,7 +5,8 @@ import modelo.aerolinea.Aerolinea;
 
 
 	public class CrearAerolinea implements Operation<Aerolinea> {
-		private String nombre;
+
+        private String nombre;
 		private String direccion;
 		
 
