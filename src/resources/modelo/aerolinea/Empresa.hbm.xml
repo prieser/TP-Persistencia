@@ -5,17 +5,17 @@
 <hibernate-mapping>
 
 	<class name="modelo.aerolinea.Empresa" table="Empresas">
-		<id name="idEmpresa" type="java.lang.Integer">
-			<column name="IdEmpresa" />
+		<id name="IdEmpresa" type="java.lang.Integer">
+			<column name="IDEmpresa" />
 			<generator class="identity" />
 		</id>
 
 		<property name="nombreDeLaEmpresa" type="string">
-			<column name="nombre" length="20" not-null="true" unique="true" />
+			<column name="Nombre" length="20" not-null="true" unique="true" />
 		</property>
 
 		<set name="aerolineas">
-			<key column="idAerolineas" not-null="true" />
+			<key column="EmpresaAlaQuePertenece" not-null="true" />
 			<one-to-many class="modelo.aerolinea.Aerolinea" />
 		</set>
 

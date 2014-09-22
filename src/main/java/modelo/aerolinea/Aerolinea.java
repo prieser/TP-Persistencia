@@ -7,18 +7,11 @@ import java.util.Collection;
  */
 public class Aerolinea {
 
-	private int id;
+	private int idAerolinea;
 	private Collection<Vuelo> vuelos;
 	private String nombre;
 	private String direccion;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public Aerolinea(String nombre, String direccion) {
 		super();
@@ -53,5 +46,13 @@ public class Aerolinea {
 	public Collection<Vuelo> vuelosOfertados() {
 		return this.vuelos;
 
+	}
+
+	public int getIdAerolinea() {
+		return idAerolinea;
+	}
+
+	public void setIdAerolinea(int idAerolinea) {
+		this.idAerolinea = idAerolinea;
 	}
 }
