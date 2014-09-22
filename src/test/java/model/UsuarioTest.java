@@ -103,26 +103,26 @@ public class UsuarioTest {
         Assert.assertTrue(this.userRepositorio.eliminar(this.usuario1));
     }
     
-    @Test
-    public void testReservarAsientoEnUnTramo() throws AsientoYaReservadoException {
-    	new TramoManager().crearTramo("elOrigen", "elDestino", new Date(20140316) , new Date(20140315), 100);
-    	
-    	
-    	Asiento asientoAReservar = new Asiento(23);
-    	tramoDeVuelo.getAsientos().add(asientoAReservar);
-    	
-    	this.usuario1.reservarAsiento(23, tramoDeVuelo);
-    	Assert.assertEquals(usuario1, asientoAReservar.getOcupante());
-    }
-    
-    @Test (expected = AsientoYaReservadoException.class)
-    public void testReservarAsientoQueYaEstaOcupado() throws AsientoYaReservadoException {
-    	Tramo tramoDeVuelo = new Tramo();
-    	Asiento asientoAReservar = new Asiento(15);
-    	asientoAReservar.setOcupante(new Usuario());
-    	tramoDeVuelo.getAsientos().add(asientoAReservar);
-    	
-    	this.usuario1.reservarAsiento(15, tramoDeVuelo);
-    }
+//    @Test
+//    public void testReservarAsientoEnUnTramo() throws AsientoYaReservadoException {
+//    	new TramoManager().crearTramo("elOrigen", "elDestino", new Date(20140316) , new Date(20140315), 100);
+//    	
+//    	
+//    	Asiento asientoAReservar = new Asiento(23);
+//    	tramoDeVuelo.getAsientos().add(asientoAReservar);
+//    	
+//    	this.usuario1.reservarAsiento(23, tramoDeVuelo);
+//    	Assert.assertEquals(usuario1, asientoAReservar.getOcupante());
+//    }
+//    
+//    @Test (expected = AsientoYaReservadoException.class)
+//    public void testReservarAsientoQueYaEstaOcupado() throws AsientoYaReservadoException {
+//    	Tramo tramoDeVuelo = new Tramo();
+//    	Asiento asientoAReservar = new Asiento(15);
+//    	asientoAReservar.setOcupante(new Usuario());
+//    	tramoDeVuelo.getAsientos().add(asientoAReservar);
+//    	
+//    	this.usuario1.reservarAsiento(15, tramoDeVuelo);
+//    }
 
 }

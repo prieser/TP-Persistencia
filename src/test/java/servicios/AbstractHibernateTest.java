@@ -1,9 +1,8 @@
 package servicios;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
 import junit.framework.TestCase;
+
+import org.hibernate.SessionFactory;
 
 public abstract class AbstractHibernateTest extends TestCase {
 
