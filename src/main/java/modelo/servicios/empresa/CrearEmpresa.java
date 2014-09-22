@@ -1,4 +1,4 @@
-package modelo.servicios.Empresa;
+package modelo.servicios.empresa;
 
 import modelo.aerolinea.Empresa;
 import modelo.daos.EmpresaDAO;

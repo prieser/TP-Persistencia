@@ -1,4 +1,4 @@
-package model;
+package servicios;
 
 import modelo.managers.AerolineaManager;
 

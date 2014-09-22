@@ -1,8 +1,11 @@
 package model;
 
+import java.util.Date;
+
 import junit.framework.Assert;
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
+import modelo.managers.TramoManager;
 import modelo.usuario.Usuario;
 
 import org.junit.After;
@@ -102,7 +105,9 @@ public class UsuarioTest {
     
     @Test
     public void testReservarAsientoEnUnTramo() throws AsientoYaReservadoException {
-    	Tramo tramoDeVuelo = new Tramo();
+    	new TramoManager().crearTramo("elOrigen", "elDestino", new Date(20140316) , new Date(20140315), 100);
+    	
+    	
     	Asiento asientoAReservar = new Asiento(23);
     	tramoDeVuelo.getAsientos().add(asientoAReservar);
     	
