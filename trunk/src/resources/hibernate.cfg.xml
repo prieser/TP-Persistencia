@@ -16,10 +16,10 @@
 
 		<mapping resource="modelo/aerolinea/Empresa.hbm.xml"></mapping>
 		<mapping resource="modelo/aerolinea/Aerolinea.hbm.xml"></mapping>
+		<mapping resource="modelo/aerolinea/Vuelo.hbm.xml"></mapping>
 
 		<!-- <mapping resource="modelo/aerolinea/Asiento.hbm.xml"></mapping> -->
 		<!-- <mapping resource="modelo/aerolinea/Tramo.hbm.xml"></mapping> -->
-		<!-- <mapping resource="modelo/aerolinea/Vuelo.hbm.xml"></mapping> -->
 
 	</session-factory>
 </hibernate-configuration>

@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
- 
+
 <hibernate-mapping>
-    <class name="modelo.aerolinea.Vuelo" table="vuelos" >
-        <id name="id" type="java.lang.Integer">
-            <column name="A_ID" />
-            <generator class="identity" />
-        </id>
-        
-        <set name="tramos" >
-            <key column="tramos" />
-            <one-to-many class="V_TRAMO" />
-        </set>
-      </class>
+	<class name="modelo.aerolinea.Vuelo" table="Vuelos">
+		<id name="id" type="java.lang.Integer">
+			<column name="IdVuelo" />
+			<generator class="identity" />
+		</id>
+
+		<!-- <set name="tramos" > -->
+		<!-- <key column="tramos" /> -->
+		<!-- <one-to-many class="V_TRAMO" /> -->
+		<!-- </set> -->
+
+	</class>
 </hibernate-mapping>
