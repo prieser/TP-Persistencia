@@ -3,6 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
+
 	<class name="modelo.aerolinea.Empresa" table="Empresas">
 		<id name="idEmpresa" type="java.lang.Integer">
 			<column name="IdEmpresa" />

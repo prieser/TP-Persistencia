@@ -1,12 +1,13 @@
 package modelo.aerolinea;
 
+import excepciones.AsientoYaReservadoException;
+import modelo.usuario.Usuario;
+
+import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * Created by Pablo Rieser on 11/09/2014.
- */
 public class Tramo {
-    private Collection<Asiento> asientos;
+    private ArrayList<Asiento> asientos;
     private String origen;
     private String destino;
     private String horaDeLlegada;
@@ -14,11 +15,11 @@ public class Tramo {
     private int precio;
 
 
-    public Collection<Asiento> getAsientos() {
+    public ArrayList<Asiento> getAsientos() {
         return asientos;
     }
 
-    public void setAsientos(Collection<Asiento> asientos) {
+    public void setAsientos(ArrayList<Asiento> asientos) {
         this.asientos = asientos;
     }
 
@@ -65,5 +66,19 @@ public class Tramo {
     public Object getAsientosSinReservar() {
         // Deberia retornar los asientos disponibles
         return null;
+    }
+
+
+    public void reservarAsiento(int numeroDeAsiento, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
+        Asiento asientoBuscado = this.getAsiento(numeroDeAsiento);
+        if (!asientoBuscado.estaReservado()) {
+           asientoBuscado.reservarAsiento(usuarioQueQuiereReservar);
+        } else {
+            throw new AsientoYaReservadoException("El asiento que quiere reservar ya esta ocupado");
+        }
+    }
+
+    private Asiento getAsiento(int numeroDeAsiento) {
+        return this.getAsientos().get(numeroDeAsiento);
     }
 }

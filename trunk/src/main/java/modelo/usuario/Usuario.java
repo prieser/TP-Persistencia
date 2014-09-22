@@ -1,5 +1,8 @@
 package modelo.usuario;
 
+import excepciones.AsientoYaReservadoException;
+import modelo.aerolinea.Tramo;
+
 public class Usuario {
 
     private String nombre;
@@ -10,6 +13,20 @@ public class Usuario {
     private String contrasenia;
     private String codigoDeValidacion;
     private boolean activo;
+
+    public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento, String contrasenia) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nombreUsuario = nombreUsuario;
+        this.email = email;
+        this.fechaDeNacimiento = fechaDeNacimiento;
+        this.contrasenia = contrasenia;
+    }
+
+    public Usuario() {
+        super();
+    }
 
     public String getContrasenia() {
         return contrasenia;
@@ -59,62 +76,51 @@ public class Usuario {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
-    public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento, String contrasenia) {
-        super();
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.nombreUsuario = nombreUsuario;
-        this.email = email;
-        this.fechaDeNacimiento = fechaDeNacimiento;
-        this.contrasenia = contrasenia;
-     }
-    
-    public Usuario() {
-        super();
+    public String getCodigoDeValidacion() {
+        return codigoDeValidacion;
     }
 
-	public String getCodigoDeValidacion() {
-		return codigoDeValidacion;
-	}
+    public void setCodigoDeValidacion(String codigoDeValidacion) {
+        this.codigoDeValidacion = codigoDeValidacion;
+    }
 
-	public void setCodigoDeValidacion(String codigoDeValidacion) {
-		this.codigoDeValidacion = codigoDeValidacion;
-	}
+    public boolean isActivo() {
+        return this.activo;
+    }
 
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
-	
-	public boolean isActivo() {
-		return this.activo ;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
+        return result;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
-		return result;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Usuario other = (Usuario) obj;
+        if (nombreUsuario == null) {
+            if (other.nombreUsuario != null)
+                return false;
+        } else if (!nombreUsuario.equals(other.nombreUsuario))
+            return false;
+        return true;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (nombreUsuario == null) {
-			if (other.nombreUsuario != null)
-				return false;
-		} else if (!nombreUsuario.equals(other.nombreUsuario))
-			return false;
-		return true;
-	}
-	
+    public void reservarAsiento(int numeroDeAsiento, Tramo tramoParaElQueQuieroReservar) throws AsientoYaReservadoException {
+        tramoParaElQueQuieroReservar.reservarAsiento(numeroDeAsiento, this);
+    }
+
 
 }
