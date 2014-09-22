@@ -1,18 +1,38 @@
 package modelo.aerolinea;
 
-import excepciones.AsientoYaReservadoException;
-import modelo.usuario.Usuario;
-
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
+
+import modelo.usuario.Usuario;
+import excepciones.AsientoYaReservadoException;
 
 public class Tramo {
-	private ArrayList<Asiento> asientos = new ArrayList<Asiento>();
+	private ArrayList<Asiento> asientos;
+	private int idTramo;
 	private String origen;
 	private String destino;
-	private String horaDeLlegada;
-	private String horaDeSalida;
+	private Date horaDeLlegada;
+	private Date horaDeSalida;
 	private int precio;
+
+	public Tramo(String origen, String destino,
+			Date horaDeLlegada, Date horaDeSalida, int precio) {
+		super();
+		this.origen = origen;
+		this.destino = destino;
+		this.horaDeSalida = horaDeSalida;
+		this.horaDeLlegada = horaDeLlegada;
+		this.precio = precio;
+		this.asientos = new ArrayList<Asiento>();
+	}
+
+	public int getIdTramo() {
+		return idTramo;
+	}
+
+	public void setIdTramo(int idTramo) {
+		this.idTramo = idTramo;
+	}
 
 	public ArrayList<Asiento> getAsientos() {
 		return asientos;
@@ -38,19 +58,19 @@ public class Tramo {
 		this.destino = destino;
 	}
 
-	public String getHoraDeLlegada() {
+	public Date getHoraDeLlegada() {
 		return horaDeLlegada;
 	}
 
-	public void setHoraDeLlegada(String horaDeLlegada) {
+	public void setHoraDeLlegada(Date horaDeLlegada) {
 		this.horaDeLlegada = horaDeLlegada;
 	}
 
-	public String getHoraDeSalida() {
+	public Date getHoraDeSalida() {
 		return horaDeSalida;
 	}
 
-	public void setHoraDeSalida(String horaDeSalida) {
+	public void setHoraDeSalida(Date horaDeSalida) {
 		this.horaDeSalida = horaDeSalida;
 	}
 
@@ -67,12 +87,15 @@ public class Tramo {
 		return null;
 	}
 
-	public void reservarAsiento(int numeroDeAsiento, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
+	public void reservarAsiento(int numeroDeAsiento,
+			Usuario usuarioQueQuiereReservar)
+			throws AsientoYaReservadoException {
 		Asiento asientoBuscado = this.getAsiento(numeroDeAsiento);
 		if (!asientoBuscado.estaReservado()) {
 			asientoBuscado.reservarAsiento(usuarioQueQuiereReservar);
 		} else {
-			throw new AsientoYaReservadoException("El asiento que quiere reservar ya esta ocupado");
+			throw new AsientoYaReservadoException(
+					"El asiento que quiere reservar ya esta ocupado");
 		}
 	}
 

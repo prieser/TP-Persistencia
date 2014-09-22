@@ -1,7 +1,7 @@
-package model;
+package servicios;
 
 import modelo.aerolinea.Empresa;
-import modelo.servicios.Empresa.EmpresaManager;
+import modelo.managers.EmpresaManager;
 
 import org.junit.After;
 import org.junit.Before;

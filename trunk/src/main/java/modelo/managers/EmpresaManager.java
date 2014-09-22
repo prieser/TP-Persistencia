@@ -1,7 +1,10 @@
-package modelo.servicios.Empresa;
+package modelo.managers;
 
 import modelo.aerolinea.Empresa;
 import modelo.daos.SessionManager;
+import modelo.servicios.empresa.ConsultarEmpresa;
+import modelo.servicios.empresa.CrearEmpresa;
+import modelo.servicios.empresa.ModificarEmpresa;
 
 public class EmpresaManager {
 

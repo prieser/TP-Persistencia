@@ -9,10 +9,10 @@
 			<generator class="identity" />
 		</id>
 
-		<!-- <set name="tramos" > -->
-		<!-- <key column="tramos" /> -->
-		<!-- <one-to-many class="V_TRAMO" /> -->
-		<!-- </set> -->
+		<set name="tramos" table="Vuelos_Tramos">
+			<key column="tramos" />
+			<many-to-many class="modelo.aerolinea.Tramo" />
+		</set>
 
 	</class>
 </hibernate-mapping>
