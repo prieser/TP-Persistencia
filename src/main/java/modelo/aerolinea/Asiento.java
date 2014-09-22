@@ -42,8 +42,14 @@ public class Asiento {
 
     public void reservarAsiento(Usuario usuario) {
         this.setOcupante(usuario);
-
     }
+
+	public Asiento(int numero) {
+		super();
+		this.numero = numero;
+	}
+    
+    
 
 
 }

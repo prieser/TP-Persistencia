@@ -11,5 +11,5 @@ public class EmpresaDAO {
     public void save(Empresa empresaAGurdar) {
         SessionManager.getSession().saveOrUpdate(empresaAGurdar);
     }
-
+    
 }
