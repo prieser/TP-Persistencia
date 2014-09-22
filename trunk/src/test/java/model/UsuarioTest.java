@@ -1,10 +1,15 @@
 package model;
 
 import junit.framework.Assert;
+import modelo.aerolinea.Asiento;
+import modelo.aerolinea.Tramo;
 import modelo.usuario.Usuario;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import excepciones.AsientoYaReservadoException;
 import repository.UsuarioRepository;
 
 public class UsuarioTest {
@@ -93,6 +98,16 @@ public class UsuarioTest {
         Assert.assertFalse(this.userRepositorio.eliminar(this.usuario1));
         this.userRepositorio.guardar(this.usuario1);
         Assert.assertTrue(this.userRepositorio.eliminar(this.usuario1));
+    }
+    
+    @Test
+    public void testReservarAsientoEnUnTramo() throws Exception, AsientoYaReservadoException {
+    	Tramo tramoDeVuelo = new Tramo();
+    	Asiento asientoAReservar = new Asiento(23);
+    	tramoDeVuelo.getAsientos().add(asientoAReservar);
+    	
+    	this.usuario1.reservarAsiento(23, tramoDeVuelo);
+    	Assert.assertEquals(usuario1, asientoAReservar.getOcupante());
     }
 
 }
