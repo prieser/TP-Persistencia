@@ -1,34 +1,39 @@
 package modelo.aerolinea;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Vuelo {
-	private Collection<Tramo> tramos;
-	private int id;
-	
-	public int getId() {
-		return id;
-	}
+    private Collection<Tramo> tramos;
+    private int id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Collection<Tramo> getTramos() {
+        return tramos;
+    }
 
-	public Vuelo(int id) {
-		super();
-		this.id = id;
-	}
+    public void setTramos(Collection<Tramo> tramos) {
+        this.tramos = tramos;
+    }
 
-	public int getCantidadTramos(){
-		return this.tramos.size();
-	}
-	
-	/*
-	 * Se debera agregar la logica para que los tramos no se puedan pisar? 
-	 * 
-	 * */
-	
-	public void agregarTramo(Tramo tramo){
-		this.tramos.add(tramo);
-	}
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Vuelo(int id) {
+        this.id = id;
+        this.tramos = new ArrayList<Tramo>();
+    }
+
+    public int getCantidadTramos() {
+        return this.tramos.size();
+    }
+
+    public void agregarTramo(Tramo tramo) {
+        this.tramos.add(tramo);
+    }
+
 }

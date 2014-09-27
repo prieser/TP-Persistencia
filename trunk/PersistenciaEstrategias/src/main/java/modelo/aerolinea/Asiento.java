@@ -7,9 +7,9 @@ import modelo.usuario.Usuario;
  */
 public class Asiento {
 
+    private int numero;
     private Usuario ocupante;
     private Categoria categoria;
-    private int numero;
 
 
     public int getNumero() {

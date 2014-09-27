@@ -5,12 +5,12 @@
 <hibernate-mapping>
 	<class name="modelo.aerolinea.Vuelo" table="Vuelos">
 		<id name="id" type="java.lang.Integer">
-			<column name="IdVuelo" />
+			<column name="ID_VUELO" />
 			<generator class="identity" />
 		</id>
 
-		<set name="tramos" table="Vuelos_Tramos">
-			<key column="tramos" />
+		<set name="tramos" table="vuelos_y_tramos">
+			<key column="VUELO" />
 			<many-to-many class="modelo.aerolinea.Tramo" />
 		</set>
 

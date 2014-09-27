@@ -4,7 +4,7 @@ import modelo.aerolinea.Aerolinea;
 import modelo.daos.SessionManager;
 import modelo.servicios.ConsultarAerolinea;
 import modelo.servicios.CrearAerolinea;
-import modelo.servicios.ModificarAerolinea;
+import modelo.servicios.ModificarNombreAerolinea;
 
 public class AerolineaManager {
 	
@@ -17,8 +17,8 @@ public class AerolineaManager {
 		SessionManager.runInSession(new CrearAerolinea(nombre, direccion));
 	}
 
-	public Aerolinea modificarNombre(int id, String nombre, String direccion) {
-		return SessionManager.runInSession(new ModificarAerolinea(id,nombre,direccion));
+	public Aerolinea modificarNombre(int id, String nombre) {
+		return SessionManager.runInSession(new ModificarNombreAerolinea(id,nombre));
 	}
 
 }

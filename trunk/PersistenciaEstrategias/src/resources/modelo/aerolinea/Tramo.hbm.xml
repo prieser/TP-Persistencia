@@ -5,32 +5,32 @@
 <hibernate-mapping>
 	<class name="modelo.aerolinea.Tramo" table="Tramos">
 		<id name="idTramo" type="java.lang.Integer">
-			<column name="IdTramo" />
+			<column name="ID_TRAMO" />
 			<generator class="identity" />
 		</id>
 
 		<property name="origen" type="string">
-			<column name="origen" length="20" not-null="true" />
+			<column name="ORIGEN" length="20" not-null="true" />
 		</property>
 
 		<property name="destino" type="string">
-			<column name="destino" length="20" not-null="true" />
+			<column name="DESTINO" length="20" not-null="true" />
 		</property>
 
 		<property name="horaDeLlegada" type="date">
-			<column name="horaDeLlegada" length="20" not-null="true" />
+			<column name="HORA_LLEGADA" length="20" not-null="true" />
 		</property>
 
 		<property name="horaDeSalida" type="date">
-			<column name="horaDeSalida" length="20" not-null="true" />
+			<column name="HORA_SALIDA" length="20" not-null="true" />
 		</property>
 
 		<property name="precio" type="int">
-			<column name="precio" length="20" not-null="true" />
+			<column name="PRECIO" length="20" not-null="true" />
 		</property>
 
-		<set name="asientos" table="Tramo_Asientos">
-			<key column="asientos" />
+		<set name="asientos" table="tramo_y_asientos">
+			<key column="ASIENTO" />
 			<many-to-many class="modelo.aerolinea.Asiento" />
 		</set>
 
