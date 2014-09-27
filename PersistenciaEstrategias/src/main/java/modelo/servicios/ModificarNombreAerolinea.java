@@ -3,17 +3,15 @@ package modelo.servicios;
 import modelo.aerolinea.Aerolinea;
 import modelo.daos.AerolineaDAO;
 
-public class ModificarAerolinea implements Operation<Aerolinea>{
+public class ModificarNombreAerolinea implements Operation<Aerolinea>{
 
 	
 	private String nombre;
 	private int id;
-	private String direccion;
 
-	public ModificarAerolinea(int id,String nombre,String direccion) {
+	public ModificarNombreAerolinea(int id,String nombre) {
 		super();
 		this.nombre = nombre;
-		this.direccion = direccion;
 		this.id = id;
 	}
 
