@@ -11,6 +11,7 @@ import org.junit.Test;
 import repository.UsuarioRepository;
 import excepciones.UsuarioYaExisteException;
 
+@SuppressWarnings("deprecation")
 public class SistemaTest {
 
 	// Necesito tres variables de clase.

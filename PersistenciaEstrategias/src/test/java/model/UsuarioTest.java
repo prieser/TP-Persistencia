@@ -1,20 +1,16 @@
 package model;
 
-import java.util.Date;
 
 import junit.framework.Assert;
-import modelo.aerolinea.Asiento;
-import modelo.aerolinea.Tramo;
-import modelo.managers.TramoManager;
 import modelo.usuario.Usuario;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import excepciones.AsientoYaReservadoException;
 import repository.UsuarioRepository;
 
+@SuppressWarnings("deprecation")
 public class UsuarioTest {
     public Usuario usuario1;
     public Usuario usuario1Actualizado;
