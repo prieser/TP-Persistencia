@@ -29,4 +29,5 @@ public class EmpresaServicioTest extends AbstractHibernateTest {
 		assertEquals("Empresa Modificada", empresaModificada.getNombreDeLaEmpresa());
 	}
 
+
 }

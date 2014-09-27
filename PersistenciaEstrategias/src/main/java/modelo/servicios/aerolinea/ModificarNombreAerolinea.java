@@ -1,9 +1,10 @@
-package modelo.servicios;
+package modelo.servicios.aerolinea;
 
 import modelo.aerolinea.Aerolinea;
 import modelo.daos.AerolineaDAO;
+import modelo.servicios.Operation;
 
-public class ModificarNombreAerolinea implements Operation<Aerolinea>{
+public class ModificarNombreAerolinea implements Operation<Aerolinea> {
 
 	
 	private String nombre;

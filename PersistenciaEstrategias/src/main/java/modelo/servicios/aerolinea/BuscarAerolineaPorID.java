@@ -1,13 +1,14 @@
-package modelo.servicios;
+package modelo.servicios.aerolinea;
 
 import modelo.aerolinea.Aerolinea;
 import modelo.daos.AerolineaDAO;
+import modelo.servicios.Operation;
 
-public class ConsultarAerolinea implements Operation<Aerolinea> {
+public class BuscarAerolineaPorID implements Operation<Aerolinea> {
 
 private int id;
 	
-	public ConsultarAerolinea(int id) {
+	public BuscarAerolineaPorID(int id) {
 		super();
 		this.id = id;
 	}
