@@ -4,9 +4,12 @@
 <hibernate-mapping>
 
     <class name="modelo.aerolinea.Asiento" table="asientos">
-        <id name="numero" type="java.lang.Integer">
+        <id name="idAsiento" type="java.lang.Integer">
             <column name="ID_ASIENTO"/>
             <generator class="identity"/>
         </id>
+    <property name="numero" type="string">
+			<column name="NUMERO_ASIENTO" length="20" not-null="true" unique="true" />
+		</property>
     </class>
 </hibernate-mapping>

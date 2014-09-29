@@ -7,12 +7,21 @@ import modelo.usuario.Usuario;
  */
 public class Asiento {
 
+	private int IdAsiento;
     private int numero;
     private Usuario ocupante;
     private Categoria categoria;
 
 
-    public int getNumero() {
+    public int getIdAsiento() {
+		return IdAsiento;
+	}
+
+	public void setIdAsiento(int idAsiento) {
+		IdAsiento = idAsiento;
+	}
+
+	public int getNumero() {
         return numero;
     }
 
