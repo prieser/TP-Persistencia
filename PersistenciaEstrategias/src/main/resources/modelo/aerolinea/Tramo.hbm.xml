@@ -29,7 +29,7 @@
 			<column name="PRECIO" length="20" not-null="true" />
 		</property>
 
-		<set name="asientos" table="tramo_y_asientos">
+		<set name="asientos" table="tramo_y_asientos"  cascade="all">
 			<key column="ASIENTO" />
 			<many-to-many class="modelo.aerolinea.Asiento" />
 		</set>

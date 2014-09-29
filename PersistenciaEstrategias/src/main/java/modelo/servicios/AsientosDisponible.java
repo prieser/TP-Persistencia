@@ -1,6 +1,8 @@
 package modelo.servicios;
 
-import java.util.Set;
+
+import java.util.List;
+
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -8,7 +10,7 @@ import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
 
-public class AsientosDisponible implements Operation<Set<Asiento>> {
+public class AsientosDisponible implements Operation<List<Asiento>> {
 
     private int idTramo;
 
@@ -19,14 +21,12 @@ public class AsientosDisponible implements Operation<Set<Asiento>> {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Set<Asiento> execute() {
-		
+	public List<Asiento> execute() {
 	 	Session session = SessionManager.getSession();
-	 	Query query = session.createQuery("SELECT asientos FROM Tramo as tramo join Tramo.asientos as asientos where tramo.idTramo = :nombreParametro");
+	 	Query query = session.createQuery("SELECT asientos FROM Tramo as tramo join tramo.asientos as asientos where tramo.idTramo = :nombreParametro");
         query.setParameter("nombreParametro", this.idTramo);
-		@SuppressWarnings("rawtypes")
-		Set resultado =  (Set) query.list();
-        return resultado ;
+		return  query.list();
+
 	}
 
 }
