@@ -1,13 +1,13 @@
 package modelo.aerolinea;
 
-import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.HashSet;
+import java.util.Set;
 import modelo.usuario.Usuario;
 import excepciones.AsientoYaReservadoException;
 
 public class Tramo {
-	private ArrayList<Asiento> asientos;
+	private Set<Asiento> asientos;
 	private int idTramo;
 	private String origen;
 	private String destino;
@@ -23,7 +23,7 @@ public class Tramo {
 		this.horaDeSalida = horaDeSalida;
 		this.horaDeLlegada = horaDeLlegada;
 		this.precio = precio;
-		this.asientos = new ArrayList<Asiento>();
+		this.asientos = new HashSet<Asiento>();
 	}
 
 	public int getIdTramo() {
@@ -34,11 +34,11 @@ public class Tramo {
 		this.idTramo = idTramo;
 	}
 
-	public ArrayList<Asiento> getAsientos() {
+	public Set<Asiento> getAsientos() {
 		return asientos;
 	}
 
-	public void setAsientos(ArrayList<Asiento> asientos) {
+	public void setAsientos(Set<Asiento> asientos) {
 		this.asientos = asientos;
 	}
 
