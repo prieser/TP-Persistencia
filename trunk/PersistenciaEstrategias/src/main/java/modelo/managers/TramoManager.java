@@ -15,6 +15,10 @@ public class TramoManager {
 	public Tramo consultarTramo(int id) {
 		return SessionManager.runInSession(new ConsultarTramo(id));
 	}
+	
+	public Object guardarTramo(Tramo tramo) {
+		return SessionManager.runInSession(new GuardarTramo(tramo));
+	}
 
 	public void crearTramo(String origen, String destino, Date horarioLlegada,Date horarioSalida, int precio) {
 		SessionManager.runInSession(new CrearTramo(origen, destino, horarioLlegada, horarioSalida, precio));
