@@ -18,6 +18,10 @@ public class Aerolinea {
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
+	
+	public Aerolinea() {
+
+	}
 
 	public Collection<Vuelo> getVuelos() {
 		return vuelos;
