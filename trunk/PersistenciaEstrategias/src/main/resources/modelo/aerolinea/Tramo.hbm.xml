@@ -9,23 +9,23 @@
 			<generator class="identity" />
 		</id>
 
-		<property name="origen" type="string">
+		<property name="origen" type="java.lang.String">
 			<column name="ORIGEN" length="20" not-null="true" />
 		</property>
 
-		<property name="destino" type="string">
+		<property name="destino" type="java.lang.String">
 			<column name="DESTINO" length="20" not-null="true" />
 		</property>
 
-		<property name="horaDeLlegada" type="date">
+		<property name="horaDeLlegada" type="java.util.Date">
 			<column name="HORA_LLEGADA" length="20" not-null="true" />
 		</property>
 
-		<property name="horaDeSalida" type="date">
+		<property name="horaDeSalida" type="java.util.Date">
 			<column name="HORA_SALIDA" length="20" not-null="true" />
 		</property>
 
-		<property name="precio" type="int">
+		<property name="precio" type="java.lang.Integer">
 			<column name="PRECIO" length="20" not-null="true" />
 		</property>
 

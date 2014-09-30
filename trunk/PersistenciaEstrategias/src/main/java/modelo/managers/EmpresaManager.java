@@ -1,10 +1,13 @@
 package modelo.managers;
 
 import modelo.aerolinea.Empresa;
+import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
+import modelo.servicios.ReservarVuelo;
 import modelo.servicios.empresa.ConsultarEmpresa;
 import modelo.servicios.empresa.CrearEmpresa;
 import modelo.servicios.empresa.ModificarEmpresa;
+import modelo.usuario.Usuario;
 
 public class EmpresaManager {
 
@@ -18,5 +21,9 @@ public class EmpresaManager {
 
     public Empresa modificarEmpresa(int id, String nombreDeLaEmpresa) {
         return SessionManager.runInSession(new ModificarEmpresa(id, nombreDeLaEmpresa));
+    }
+
+    public Tramo reservarAsiento(int numeroDeAsiento, Usuario usuario, Tramo tramo) {
+        return SessionManager.runInSession(new ReservarVuelo(numeroDeAsiento, usuario, tramo));
     }
 }
