@@ -8,6 +8,7 @@ import modelo.servicios.Operation;
 
 public class CrearTramo implements Operation<Tramo> {
 
+    private String codigoDelTramo;
 	private String origen;
 	private String destino;
 	private Date horaDeLlegada;
@@ -16,9 +17,10 @@ public class CrearTramo implements Operation<Tramo> {
 	
 	
 
-	public CrearTramo(String origen, String destino, Date horaDeLlegada,
+	public CrearTramo(String codigoDelTramo, String origen, String destino, Date horaDeLlegada,
 			Date horaDeSalida, int precio) {
 		super();
+        this.codigoDelTramo = codigoDelTramo;
 		this.origen = origen;
 		this.destino = destino;
 		this.horaDeLlegada = horaDeLlegada;
@@ -30,7 +32,7 @@ public class CrearTramo implements Operation<Tramo> {
 
 	@Override
 	public Tramo execute() {
-		Tramo tramoAGuardar = new Tramo(origen, destino, horaDeLlegada, horaDeSalida, precio);
+		Tramo tramoAGuardar = new Tramo(codigoDelTramo, origen, destino, horaDeLlegada, horaDeSalida, precio);
         new TramoDAO().save(tramoAGuardar);
         return tramoAGuardar;
 	}

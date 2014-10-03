@@ -3,13 +3,21 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="modelo.aerolinea.Asiento" table="asientos">
+    <class name="modelo.aerolinea.Asiento" table="Asientos">
+
         <id name="idAsiento" type="java.lang.Integer">
             <column name="ID_ASIENTO"/>
             <generator class="identity"/>
         </id>
-    <property name="numero" type="java.lang.Integer">
-			<column name="NUMERO_ASIENTO" length="20" not-null="true" unique="true" />
-		</property>
+
+        <property name="numero" type="java.lang.Integer">
+            <column name="NUMERO_ASIENTO" length="20" not-null="true" unique="true"/>
+        </property>
+
+        <set name="ocupante" table="Asientos_Y_Usuarios"  cascade="all">
+            <key column="OCUPANTE" />
+            <many-to-many class="modelo.aerolinea.Asiento" />
+        </set>
+
     </class>
 </hibernate-mapping>

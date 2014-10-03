@@ -37,7 +37,7 @@ public class TraerAsientoTramoTest  extends AbstractHibernateTest {
 		this.asientos1y2y3.add(asiento1);
 		this.asientos1y2y3.add(asiento2);
 		this.asientos1y2y3.add(asiento3);
-		this.tramo = new Tramo("asd", "asd", new Date(20140101), new Date(20140101), 11);
+		this.tramo = new Tramo("ASD185", "asd", "asd", new Date(20140101), new Date(20140101), 11);
 	}
 
 	@After
