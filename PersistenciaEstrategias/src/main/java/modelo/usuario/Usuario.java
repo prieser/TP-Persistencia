@@ -28,6 +28,14 @@ public class Usuario {
         super();
     }
 
+    public Usuario(String nombreDelUsuario, String apellidoDelUsuario) {
+        super();
+        this.nombre = nombreDelUsuario;
+        this.apellido = apellidoDelUsuario;
+    }
+
+
+
     public String getContrasenia() {
         return contrasenia;
     }

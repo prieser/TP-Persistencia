@@ -3,27 +3,39 @@ package modelo.aerolinea;
 import modelo.usuario.Usuario;
 import excepciones.AsientoYaReservadoException;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Tramo {
-    private Set<Asiento> asientos;
+
     private int idTramo;
+    private String codigoDelTramo;
+    private Set<Asiento> asientos;
     private String origen;
     private String destino;
     private Date horaDeLlegada;
     private Date horaDeSalida;
     private int precio;
 
-    public Tramo(String origen, String destino, Date horaDeLlegada, Date horaDeSalida, int precio) {
+    public Tramo(String codigoDelTramo, String origen, String destino, Date horaDeLlegada, Date horaDeSalida, int precio) {
         super();
+        this.codigoDelTramo = codigoDelTramo;
         this.origen = origen;
         this.destino = destino;
         this.horaDeSalida = horaDeSalida;
         this.horaDeLlegada = horaDeLlegada;
         this.precio = precio;
         this.asientos = new HashSet<Asiento>();
+    }
+
+    public Tramo() {
+    }
+
+    public String getCodigoDelTramo() {
+        return codigoDelTramo;
+    }
+
+    public void setCodigoDelTramo(String codigoDelTramo) {
+        this.codigoDelTramo = codigoDelTramo;
     }
 
     public int getIdTramo() {

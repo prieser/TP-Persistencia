@@ -1,4 +1,4 @@
-package modelo.servicios;
+package modelo.servicios.tramo;
 
 import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
@@ -15,6 +15,10 @@ public class ReservarVuelo implements Operation<Tramo> {
     private Tramo tramoAreservar;
     private Usuario usuarioQueQuiereReservar;
 
+    /**
+     * Esta operacion espera un tramo, asiento y usuario que realiza la reserva. Si el asiento ya esta reservado lanza una excepcion.
+     * @return
+     */
     public ReservarVuelo(int numeroDeAsientoAReservar, Usuario usuarioQueQuiereReservar, Tramo tramoAReservar) {
         this.numeroDeAsientoAReservar = numeroDeAsientoAReservar;
         this.usuarioQueQuiereReservar = usuarioQueQuiereReservar;
@@ -23,7 +27,7 @@ public class ReservarVuelo implements Operation<Tramo> {
 
     @Override
     public Tramo execute() {
-        Tramo tramoBuscado = new TramoManager().consultarTramo(this.tramoAreservar.getIdTramo());
+        Tramo tramoBuscado = new TramoManager().buscarTramoPorCodigo(this.tramoAreservar.getCodigoDelTramo());
         try {
             tramoBuscado.reservarAsiento(this.numeroDeAsientoAReservar, this.usuarioQueQuiereReservar);
         } catch (AsientoYaReservadoException e) {

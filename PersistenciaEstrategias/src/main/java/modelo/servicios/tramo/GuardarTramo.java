@@ -1,4 +1,4 @@
-package modelo.managers;
+package modelo.servicios.tramo;
 
 import modelo.aerolinea.Tramo;
 import modelo.daos.TramoDAO;

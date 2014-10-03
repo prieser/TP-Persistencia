@@ -3,7 +3,7 @@ package modelo.managers;
 import modelo.aerolinea.Empresa;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
-import modelo.servicios.ReservarVuelo;
+import modelo.servicios.tramo.ReservarVuelo;
 import modelo.servicios.empresa.ConsultarEmpresa;
 import modelo.servicios.empresa.CrearEmpresa;
 import modelo.servicios.empresa.ModificarEmpresa;
