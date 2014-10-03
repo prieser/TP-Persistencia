@@ -118,4 +118,21 @@ public class Tramo {
         }
         return asientoBuscado;
     }
+    
+ public void reservarAsiento(Set<Asiento> numeroDeAsientos, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
+           	
+    	for (Asiento asiento : numeroDeAsientos) {
+    		Asiento asientoBuscado = this.getAsiento(asiento.getIdAsiento());    	   	
+        if (!asientoBuscado.estaReservado()) {
+            asientoBuscado.reservarAsiento(usuarioQueQuiereReservar);
+        } else {
+            throw new AsientoYaReservadoException(
+                    "El asiento que quiere reservar ya esta ocupado");
+        }
+        }
+    }
+    
+    
+    
+    
 }
