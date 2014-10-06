@@ -14,10 +14,7 @@
             <column name="NUMERO_ASIENTO" length="20" not-null="true" unique="true"/>
         </property>
 
-        <set name="ocupante" table="Asientos_Y_Usuarios"  cascade="all">
-            <key column="OCUPANTE" />
-            <many-to-many class="modelo.aerolinea.Asiento" />
-        </set>
+       <many-to-one name="ocupante"  column="idUsuario" />
 
     </class>
 </hibernate-mapping>

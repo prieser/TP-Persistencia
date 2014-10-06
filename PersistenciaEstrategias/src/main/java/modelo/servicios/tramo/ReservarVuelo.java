@@ -1,12 +1,13 @@
 package modelo.servicios.tramo;
 
-import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
-import modelo.managers.TramoManager;
 import modelo.servicios.Operation;
 import modelo.usuario.Usuario;
+
 import org.hibernate.Session;
+
+import excepciones.AsientoYaReservadoException;
 
 public class ReservarVuelo implements Operation<Tramo> {
 
@@ -27,7 +28,7 @@ public class ReservarVuelo implements Operation<Tramo> {
 
     @Override
     public Tramo execute() {
-        Tramo tramoBuscado = new TramoManager().buscarTramoPorCodigo(this.tramoAreservar.getCodigoDelTramo());
+        Tramo tramoBuscado = new BuscarTramoPorCodigo(this.tramoAreservar.getCodigoDelTramo()).execute();
         try {
             tramoBuscado.reservarAsiento(this.numeroDeAsientoAReservar, this.usuarioQueQuiereReservar);
         } catch (AsientoYaReservadoException e) {
