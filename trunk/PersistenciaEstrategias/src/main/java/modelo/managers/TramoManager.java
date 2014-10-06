@@ -1,15 +1,14 @@
 package modelo.managers;
 
-import java.util.Date;
-import java.util.List;
-
-
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
 import modelo.servicios.AsientosDisponible;
 import modelo.servicios.tramo.*;
 import modelo.usuario.Usuario;
+
+import java.util.Date;
+import java.util.List;
 
 public class TramoManager {
 

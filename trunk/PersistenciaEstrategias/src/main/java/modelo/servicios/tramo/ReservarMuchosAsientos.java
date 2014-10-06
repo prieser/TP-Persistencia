@@ -1,20 +1,16 @@
 package modelo.servicios.tramo;
 
 
-import java.util.Set;
-
-import modelo.aerolinea.Aerolinea;
+import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
-import modelo.daos.TramoDAO;
 import modelo.servicios.Operation;
 import modelo.usuario.Usuario;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import excepciones.AsientoYaReservadoException;
+import java.util.Set;
 
 public class ReservarMuchosAsientos implements Operation<Tramo> {
 

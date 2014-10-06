@@ -5,8 +5,6 @@ import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
 import modelo.managers.UsuarioManager;
 import modelo.usuario.Usuario;
-
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

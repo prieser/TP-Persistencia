@@ -1,12 +1,11 @@
 package servicios;
 
-import java.util.Date;
-
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
-
 import org.junit.Before;
+
+import java.util.Date;
 
 
 public class TramoServicioTest extends AbstractHibernateTest {
@@ -25,9 +24,9 @@ public class TramoServicioTest extends AbstractHibernateTest {
     public void testConsultarTramo() {
         // creo un tramo y le guardo tres asientos.
         Tramo unTramo = new Tramo("ARG205", "Buenos Aires", "Motevideo", new Date(15 / 03 / 2015), new Date(15 / 03 / 2015), 300);
-        unTramo.getAsientos().add(new Asiento(21));
-        unTramo.getAsientos().add(new Asiento(22));
-        unTramo.getAsientos().add(new Asiento(23));
+        unTramo.getAsientos().add(new Asiento(44));
+        unTramo.getAsientos().add(new Asiento(45));
+        unTramo.getAsientos().add(new Asiento(46));
 
         manager.guardarTramo(unTramo);
         Tramo tramoObtenido = manager.consultarTramo(unTramo.getIdTramo());

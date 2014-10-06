@@ -1,10 +1,10 @@
 package modelo.servicios.tramo;
 
-import java.util.Date;
-
 import modelo.aerolinea.Tramo;
 import modelo.daos.TramoDAO;
 import modelo.servicios.Operation;
+
+import java.util.Date;
 
 public class CrearTramo implements Operation<Tramo> {
 

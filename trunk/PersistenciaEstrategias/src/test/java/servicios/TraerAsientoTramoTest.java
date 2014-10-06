@@ -1,18 +1,17 @@
 package servicios;
 
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TraerAsientoTramoTest  extends AbstractHibernateTest {
     

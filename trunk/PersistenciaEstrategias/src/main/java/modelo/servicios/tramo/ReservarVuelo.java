@@ -1,13 +1,11 @@
 package modelo.servicios.tramo;
 
+import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
 import modelo.servicios.Operation;
 import modelo.usuario.Usuario;
-
 import org.hibernate.Session;
-
-import excepciones.AsientoYaReservadoException;
 
 public class ReservarVuelo implements Operation<Tramo> {
 
