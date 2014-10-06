@@ -4,7 +4,8 @@ import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
 
 public class Usuario {
-
+    
+	private int idUsuario;
     private String nombre;
     private String apellido;
     private String nombreUsuario;
@@ -36,7 +37,15 @@ public class Usuario {
 
 
 
-    public String getContrasenia() {
+    public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getContrasenia() {
         return contrasenia;
     }
 

@@ -18,7 +18,7 @@ public class BuscarTramoPorCodigo implements Operation<Tramo> {
     @Override
     public Tramo execute() {
         Session session = SessionManager.getSession();
-        Query query = session.createQuery("from Tramos where CODIGO_TRAMO = :codigoDelTramo");
+        Query query = session.createQuery("from Tramo where codigoDelTramo = :codigoDelTramo");
         query.setParameter("codigoDelTramo", this.codigoDelTramoBuscado);
         query.setMaxResults(1);
         return (Tramo) query.uniqueResult();
