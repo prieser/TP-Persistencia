@@ -30,17 +30,13 @@ public class ReservarVueloTest extends AbstractHibernateTest {
 		this.asiento22 = new Asiento(22);
 		this.asientos1y2.add(asiento21);
 		this.asientos1y2.add(asiento22);
-        
-        
     }
     
-
-	
     @Test
     public void testReservarVueloCorrectamente() {
-        Usuario usuario = new Usuario("Ramiro", "Lopez");
+        Usuario usuario = new Usuario("Joaquin", "Soto");
         managerUsuario.guardarUsuario(usuario);
-        Tramo tramo = new Tramo("ARG701", "Buenos Aires", "Montevideo", new Date(15 / 03 / 2015), new Date(15 / 03 / 2015), 300);
+        Tramo tramo = new Tramo("ARG703", "Buenos Aires", "Montevideo", new Date(15 / 03 / 2015), new Date(15 / 03 / 2015), 300);
         tramo.getAsientos().add(new Asiento(21));
         manager.guardarTramo(tramo);
             
