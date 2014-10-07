@@ -7,8 +7,10 @@ import modelo.servicios.AsientosDisponible;
 import modelo.servicios.tramo.*;
 import modelo.usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class TramoManager {
 
@@ -40,4 +42,7 @@ public class TramoManager {
         return SessionManager.runInSession(new BuscarTramoPorCodigo(codigoDelTramoBuscado));
     }
 
+    public Tramo reservarMuchosAsientos(ArrayList<Integer> asientos , Usuario usuarioQueLoQuiereReservar ,Tramo tramo){
+        return SessionManager.runInSession(new ReservarMuchosAsientos(asientos, usuarioQueLoQuiereReservar, tramo));
+    }
 }

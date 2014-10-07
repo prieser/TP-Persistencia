@@ -14,10 +14,6 @@ public class EmpresaServicioTest extends AbstractHibernateTest {
 		this.manager = new EmpresaManager();
 	}
 
-	@After
-	public void tearDown() {
-	}
-
     public void testCrearEmpresa() throws Exception {
         manager.crearEmpresa("Empresa Nueva");
     }

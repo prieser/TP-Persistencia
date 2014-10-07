@@ -10,16 +10,6 @@ public class AerolineaServicioTest extends AbstractHibernateTest {
 
     private AerolineaManager manager = new AerolineaManager();
 
-	@Before
-	public void setUp() {
-		this.manager = new AerolineaManager();
-	}
-
-	@After
-	public void tearDown() {
-	}
-	
-	
 	public void testCrearAerolinea() throws Exception {
         manager.crearAerolinea("AA", "La Pampa 99");
 	}

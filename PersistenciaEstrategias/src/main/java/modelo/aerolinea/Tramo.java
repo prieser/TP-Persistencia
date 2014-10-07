@@ -3,6 +3,7 @@ package modelo.aerolinea;
 import excepciones.AsientoYaReservadoException;
 import modelo.usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -120,15 +121,13 @@ public class Tramo {
         }
         return asientoBuscado;
     }
-    
- public void reservarAsiento(Set<Asiento> numeroDeAsientos, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
-           	
-    	for (Asiento asiento : numeroDeAsientos) {
-    		this.reservarAsiento(asiento.getNumero(), usuarioQueQuiereReservar);	   	
 
-        }
+    public void reservarAsiento(ArrayList<Integer> numeroDeAsientos, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
+        for (int numero : numeroDeAsientos) {
+            this.reservarAsiento(numero, usuarioQueQuiereReservar);
         }
     }
+}
     
     
     
