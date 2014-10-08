@@ -127,6 +127,20 @@ public class Tramo {
             this.reservarAsiento(numero, usuarioQueQuiereReservar);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tramo tramo = (Tramo) o;
+        if (!codigoDelTramo.equals(tramo.codigoDelTramo)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return codigoDelTramo.hashCode();
+    }
 }
     
     
