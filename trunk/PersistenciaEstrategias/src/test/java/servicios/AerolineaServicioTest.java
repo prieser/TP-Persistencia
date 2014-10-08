@@ -2,8 +2,6 @@ package servicios;
 
 import modelo.aerolinea.Aerolinea;
 import modelo.managers.AerolineaManager;
-import org.junit.After;
-import org.junit.Before;
 
 
 public class AerolineaServicioTest extends AbstractHibernateTest {

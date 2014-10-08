@@ -3,7 +3,9 @@ package servicios;
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Date;
 
@@ -30,5 +32,6 @@ public class TramoServicioTest extends AbstractHibernateTest {
 
         manager.guardarTramo(unTramo);
         Tramo tramoObtenido = manager.consultarTramo(unTramo.getIdTramo());
+        Assert.assertEquals(unTramo, tramoObtenido);
     }
 }
