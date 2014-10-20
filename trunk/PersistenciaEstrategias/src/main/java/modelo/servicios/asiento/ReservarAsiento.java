@@ -21,7 +21,7 @@ public class ReservarAsiento implements Operation<Asiento> {
 	@Override
 	public Asiento execute() {
 		Asiento asientoBuscado = new AsientoManager().buscarAsiento(numeroDelAsientoAReservar);
-		asientoBuscado.
+		return asientoBuscado;
 	}
 	
 	
