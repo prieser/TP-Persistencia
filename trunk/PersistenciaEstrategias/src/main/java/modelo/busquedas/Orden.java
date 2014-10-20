@@ -6,5 +6,4 @@ public class Orden {
 	private String clave;
 	private String valor;
 	
-
 }
