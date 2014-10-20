@@ -1,18 +1,19 @@
 package modelo.busquedas.operadores;
 
 import modelo.busquedas.Criterio;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
-import java.util.Set;
-
-public class And implements Operador {
-
-    public static And(Criterio primerCriterio, Criterio segundoCriterio) {
-        Criterio criterio1 = primerCriterio;
-        Criterio criterio2 = segundoCriterio;
-
-        criterio1.consultar();
-        criterio2.consultar();
-
+public class And extends Operador {
+	
+    public And(Criterio primerCriterio, Criterio segundoCriterio) {
+        this.criterio1 = primerCriterio;
+        this.criterio2 = segundoCriterio;
+    }
+    
+    public Criterion getRestriction() {
+    	Criterion criterion = Restrictions.and(Restrictions.eq(criterio1.getClave(), criterio1.getValor()), Restrictions.eq(criterio1.getClave(), criterio1.getValor()));
+		return criterion;
     }
 
 }
