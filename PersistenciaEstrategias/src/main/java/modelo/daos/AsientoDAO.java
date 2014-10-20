@@ -8,8 +8,7 @@ public class AsientoDAO {
 		return (Asiento)SessionManager.getSession().get(Asiento.class, idAsiento);
 	}
 
-	public Object save(Asiento asiento) {
+	public void save(Asiento asiento) {
 		SessionManager.getSession().saveOrUpdate(asiento);
-		return null;
 	}
 }

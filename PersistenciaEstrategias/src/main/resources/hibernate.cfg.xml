@@ -21,7 +21,8 @@
 		<mapping resource="modelo/aerolinea/Tramo.hbm.xml"></mapping>
 		<mapping resource="modelo/aerolinea/Asiento.hbm.xml"></mapping>
 		<mapping resource="modelo/aerolinea/Usuario.hbm.xml"></mapping>
-
+		<mapping resource="modelo/busquedas/Criterio.hbm.xml>"></mapping>
+		<mapping resource="modelo/busquedas/Orden.hbm.xml"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
