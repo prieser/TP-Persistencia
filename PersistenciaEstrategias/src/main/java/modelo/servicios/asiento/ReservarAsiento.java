@@ -1,7 +1,6 @@
 package modelo.servicios.asiento;
 
 import modelo.aerolinea.Asiento;
-import modelo.daos.AsientoDAO;
 import modelo.managers.AsientoManager;
 import modelo.servicios.Operation;
 import modelo.usuario.Usuario;
