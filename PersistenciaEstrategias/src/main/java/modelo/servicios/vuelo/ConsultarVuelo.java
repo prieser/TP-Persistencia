@@ -1,7 +1,8 @@
-package modelo.servicios;
+package modelo.servicios.vuelo;
 
 import modelo.aerolinea.Vuelo;
 import modelo.daos.VueloDAO;
+import modelo.servicios.Operation;
 
 public class ConsultarVuelo implements Operation<Vuelo> {
 	
