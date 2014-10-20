@@ -1,4 +1,4 @@
-package modelo.servicios;
+package modelo.servicios.asiento;
 
 public class GuardarAsiento {
 

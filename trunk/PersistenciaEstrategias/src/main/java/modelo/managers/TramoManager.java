@@ -3,7 +3,7 @@ package modelo.managers;
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
-import modelo.servicios.AsientosDisponible;
+import modelo.servicios.asiento.AsientosDisponible;
 import modelo.servicios.tramo.*;
 import modelo.usuario.Usuario;
 

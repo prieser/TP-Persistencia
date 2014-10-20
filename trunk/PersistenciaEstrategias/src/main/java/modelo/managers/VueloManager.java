@@ -2,8 +2,8 @@ package modelo.managers;
 
 import modelo.aerolinea.Vuelo;
 import modelo.daos.SessionManager;
-import modelo.servicios.ConsultarVuelo;
-import modelo.servicios.CrearVuelo;
+import modelo.servicios.vuelo.ConsultarVuelo;
+import modelo.servicios.vuelo.CrearVuelo;
 
 
 public class VueloManager {
