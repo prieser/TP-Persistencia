@@ -7,7 +7,8 @@ public abstract class Criterio {
 	public int getIdCriterio() {
 		return idCriterio;
 	}
-	public void setIdCriterio(int idCriterio) {
+
+    public void setIdCriterio(int idCriterio) {
 		this.idCriterio = idCriterio;
 	}
 

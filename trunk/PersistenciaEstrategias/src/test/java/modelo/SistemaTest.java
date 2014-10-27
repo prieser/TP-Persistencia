@@ -1,4 +1,4 @@
-package model;
+package modelo;
 
 import excepciones.UsuarioYaExisteException;
 import junit.framework.Assert;
