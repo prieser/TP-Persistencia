@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="modelo.busquedas.Criterio" table="Criterios">
+	<class name="modelo.busquedas.CriterioSimple" table="Criterios">
 		<id name="idCriterio" type="java.lang.Integer">
 			<column name="ID_CRITERIO" />
 			<generator class="identity" />
