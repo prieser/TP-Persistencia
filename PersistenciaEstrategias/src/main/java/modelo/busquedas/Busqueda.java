@@ -4,8 +4,26 @@ import java.util.ArrayList;
 
 public class Busqueda {
 
+
     private ArrayList<Criterio> criterios;
     private Orden orden;
+
+    public ArrayList<Criterio> getCriterios() {
+        return criterios;
+    }
+
+    public void setCriterios(ArrayList<Criterio> criterios) {
+        this.criterios = criterios;
+    }
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
+
 
     public void agregarCriterio(Criterio criterioAAgregar) {
         this.criterios.add(criterioAAgregar);
