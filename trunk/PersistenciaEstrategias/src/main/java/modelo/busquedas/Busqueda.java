@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class Busqueda {
 
-
-    private ArrayList<Criterio> criterios;
+    private ArrayList<Criterio> criterios = new ArrayList<Criterio>();
     private Orden orden;
-
+    
     public ArrayList<Criterio> getCriterios() {
         return criterios;
     }
@@ -36,9 +35,9 @@ public class Busqueda {
             query = query + unCriterio.getQuery();
 
         }
+        
         query += this.orden.getQuery();
         return query;
-
 
     }
 }
