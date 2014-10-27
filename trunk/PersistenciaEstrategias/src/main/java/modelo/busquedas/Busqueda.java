@@ -12,11 +12,19 @@ public class Busqueda {
 	}
 
 	public String getQuery() {
-        String query = "SELECT * FROM Vuelos WHERE ";
+		String query = "from Vuelo WHERE";
+
 		for (Criterio unCriterio : this.criterios) {
+			query+= unCriterio.getQuery() ;
             query = query + unCriterio.getQuery();
+
 		}
-        return  query;
+
+			query+= this.orden.getQuery();
+	
+		return query;
+
+
 	}
 }
 	
