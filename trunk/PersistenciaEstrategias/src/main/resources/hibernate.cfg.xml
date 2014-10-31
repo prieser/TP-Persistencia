@@ -6,7 +6,7 @@
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
-		<property name="hibernate.connection.url">jdbc:mysql://localhost/miDatabase</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/database</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
 
@@ -22,7 +22,7 @@
 		<mapping resource="modelo/aerolinea/Asiento.hbm.xml"></mapping>
 		<mapping resource="modelo/aerolinea/Usuario.hbm.xml"></mapping>
 		<mapping resource="modelo/busquedas/Criterio.hbm.xml"></mapping>
-		<mapping resource="modelo/busquedas/Orden.hbm.xml"></mapping>
+		<!--<mapping resource="modelo/busquedas/Orden.hbm.xml"></mapping>-->
 
 	</session-factory>
 </hibernate-configuration>
