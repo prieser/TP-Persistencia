@@ -32,6 +32,5 @@
 				<column name="OPERADOR" length="20" not-null="false" unique="false" />
 			</property>
 		</subclass>
-	</class>
 
 </hibernate-mapping>

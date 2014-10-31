@@ -122,7 +122,7 @@ public class Tramo {
         return asientoBuscado;
     }
 
-    public void reservarAsiento(ArrayList<Integer> numeroDeAsientos, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
+    public void reservarAsientos(ArrayList<Integer> numeroDeAsientos, Usuario usuarioQueQuiereReservar) throws AsientoYaReservadoException {
         for (int numero : numeroDeAsientos) {
             this.reservarAsiento(numero, usuarioQueQuiereReservar);
         }
