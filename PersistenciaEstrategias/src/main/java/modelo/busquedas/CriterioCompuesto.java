@@ -8,6 +8,9 @@ public class CriterioCompuesto extends Criterio {
     private Criterio criterio2;
     private Operador operador;
 
+    public CriterioCompuesto() {
+    }
+
     public Criterio getCriterio1() {
         return criterio1;
     }

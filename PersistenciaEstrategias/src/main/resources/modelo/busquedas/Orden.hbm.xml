@@ -9,10 +9,6 @@
 			<generator class="identity" />
 		</id>
 		
-		<property name="clave" type="string">
-			<column name="CLAVE" length="20" not-null="true" unique="false" />
-		</property>
-
 		<property name="valor" type="string">
 			<column name="VALOR" length="20" not-null="true" unique="false" />
 		</property>

@@ -1,6 +1,7 @@
 package modelo.daos;
 
 import modelo.busquedas.Criterio;
+import org.hibernate.Session;
 
 public class CriterioDAO {
 
