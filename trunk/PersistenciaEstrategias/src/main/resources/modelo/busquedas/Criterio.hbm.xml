@@ -22,6 +22,19 @@
         </subclass>
 
         <subclass name="modelo.busquedas.CriterioCompuesto" discriminator-value="Compuesto">
+
+            <!--DEJO LOS DOS ENFOQUES QUE ENCONTRE PARA MAPPEAR ESTO-->
+
+           <!--<component name="criterio1" class="modelo.busquedas.Criterio">-->
+               <!--<property name="idCriterio" column="ID_CRITERIO1" />-->
+           <!--</component>-->
+            <!--<component name="criterio2" class="modelo.busquedas.Criterio">-->
+                <!--<property name="idCriterio" column="ID_CRITERIO2" />-->
+            <!--</component>-->
+            <!--<property name="operador" type="java.lang.String">-->
+                <!--<column name="OPERADOR" length="20" not-null="false" unique="false"/>-->
+            <!--</property>-->
+
             <property name="criterio1" type="java.lang.Integer">
                 <column name="ID_CRITERIO1" length="20" not-null="false" unique="false"/>
             </property>
@@ -31,6 +44,8 @@
             <property name="operador" type="java.lang.String">
                 <column name="OPERADOR" length="20" not-null="false" unique="false"/>
             </property>
+
+
         </subclass>
     </class>
 

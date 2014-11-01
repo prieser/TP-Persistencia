@@ -11,6 +11,9 @@ public class CriterioSimple extends Criterio {
         this.valor = valor;
     }
 
+    public CriterioSimple() {
+    }
+
     public String getClave() {
         return clave;
     }
