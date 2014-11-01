@@ -4,33 +4,34 @@
 
 <hibernate-mapping>
 
-	<class name="modelo.busquedas.Criterio" table="Criterios">
-		<id name="idCriterio" type="java.lang.Integer">
-			<column name="ID_CRITERIO" />
-			<generator class="native" />
-		</id>
+    <class name="modelo.busquedas.Criterio" table="Criterios">
+        <id name="idCriterio" type="java.lang.Integer">
+            <column name="ID_CRITERIO"/>
+            <generator class="native"/>
+        </id>
 
-		<discriminator column="TIPO_CRITERIO" type="string" />
+        <discriminator column="TIPO_CRITERIO" type="string"/>
 
-		<subclass name="modelo.busquedas.CriterioSimple" discriminator-value="Simple">
-			<property name="clave" type="string">
-				<column name="CLAVE" length="20" not-null="false" unique="false" />
-			</property>
-			<property name="valor" type="string">
-				<column name="VALOR" length="20" not-null="false" unique="false" />
-			</property>
-		</subclass>
+        <subclass name="modelo.busquedas.CriterioSimple" discriminator-value="Simple">
+            <property name="clave" type="string">
+                <column name="CLAVE" length="20" not-null="false" unique="false"/>
+            </property>
+            <property name="valor" type="string">
+                <column name="VALOR" length="20" not-null="false" unique="false"/>
+            </property>
+        </subclass>
 
-		<subclass name="modelo.busquedas.CriterioCompuesto" discriminator-value="Compuesto">
-			<property name="criterio1" type="modelo.busquedas.Criterio">
-				<column name="ID_CRITERIO1" length="20" not-null="false" unique="false" />
-			</property>
-			<property name="criterio2" type="modelo.busquedas.Criterio">
-				<column name="ID_CRITERIO2" length="20" not-null="false" unique="false" />
-			</property>
-			<property name="operador" type="modelo.busquedas.Operador">
-				<column name="OPERADOR" length="20" not-null="false" unique="false" />
-			</property>
-		</subclass>
+        <subclass name="modelo.busquedas.CriterioCompuesto" discriminator-value="Compuesto">
+            <property name="criterio1" type="java.lang.Integer">
+                <column name="ID_CRITERIO1" length="20" not-null="false" unique="false"/>
+            </property>
+            <property name="criterio2" type="java.lang.Integer">
+                <column name="ID_CRITERIO2" length="20" not-null="false" unique="false"/>
+            </property>
+            <property name="operador" type="java.lang.String">
+                <column name="OPERADOR" length="20" not-null="false" unique="false"/>
+            </property>
+        </subclass>
+    </class>
 
 </hibernate-mapping>
