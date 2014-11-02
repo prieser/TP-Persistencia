@@ -8,6 +8,11 @@ public class Vuelo {
     private Set<Tramo> tramos = new HashSet<Tramo>();
     private int id;
 
+    public Vuelo(int id) {
+        this.id = id;
+        this.tramos = new HashSet<Tramo>();
+    }
+
     public Set<Tramo> getTramos() {
         return tramos;
     }
@@ -22,11 +27,6 @@ public class Vuelo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Vuelo(int id) {
-        this.id = id;
-        this.tramos = new HashSet<Tramo>();
     }
 
     public int getCantidadTramos() {

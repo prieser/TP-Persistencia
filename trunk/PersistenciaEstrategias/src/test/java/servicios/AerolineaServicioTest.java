@@ -8,9 +8,9 @@ public class AerolineaServicioTest extends AbstractHibernateTest {
 
     private AerolineaManager manager = new AerolineaManager();
 
-	public void testCrearAerolinea() throws Exception {
+    public void testCrearAerolinea() throws Exception {
         manager.crearAerolinea("AA", "La Pampa 99");
-	}
+    }
 
     public void testBuscarAerolineaPorNombre() {
         manager.crearAerolinea("AeroPlus", "Corrientes 123");

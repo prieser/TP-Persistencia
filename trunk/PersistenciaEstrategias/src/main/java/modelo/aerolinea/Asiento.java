@@ -7,21 +7,31 @@ import modelo.usuario.Usuario;
  */
 public class Asiento {
 
-	private int IdAsiento;
+    private int IdAsiento;
     private int numero;
     private Usuario ocupante;
     private Categoria categoria;
 
 
+    public Asiento(int numero) {
+        super();
+        this.numero = numero;
+    }
+
+    public Asiento() {
+        super();
+
+    }
+
     public int getIdAsiento() {
-		return IdAsiento;
-	}
+        return IdAsiento;
+    }
 
-	public void setIdAsiento(int idAsiento) {
-		IdAsiento = idAsiento;
-	}
+    public void setIdAsiento(int idAsiento) {
+        IdAsiento = idAsiento;
+    }
 
-	public int getNumero() {
+    public int getNumero() {
         return numero;
     }
 
@@ -53,38 +63,27 @@ public class Asiento {
         this.setOcupante(usuario);
     }
 
-	public Asiento(int numero) {
-		super();
-		this.numero = numero;
-	}
-    
-	public Asiento() {
-		super();
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + numero;
+        return result;
+    }
 
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + numero;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Asiento other = (Asiento) obj;
-		if (numero != other.numero)
-			return false;
-		return true;
-	}
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Asiento other = (Asiento) obj;
+        if (numero != other.numero)
+            return false;
+        return true;
+    }
 
 
 }

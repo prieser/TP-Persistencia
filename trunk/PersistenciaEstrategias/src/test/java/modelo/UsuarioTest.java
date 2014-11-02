@@ -96,7 +96,7 @@ public class UsuarioTest {
         this.userRepositorio.guardar(this.usuario1);
         Assert.assertTrue(this.userRepositorio.eliminar(this.usuario1));
     }
-    
+
 //    @Test
 //    public void testReservarAsientoEnUnTramo() throws AsientoYaReservadoException {
 //    	new TramoManager().crearTramo("elOrigen", "elDestino", new Date(20140316) , new Date(20140315), 100);

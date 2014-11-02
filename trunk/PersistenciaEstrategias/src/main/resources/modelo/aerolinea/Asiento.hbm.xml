@@ -14,7 +14,7 @@
             <column name="NUMERO_ASIENTO" length="20" not-null="true" unique="true"/>
         </property>
 
-       <many-to-one name="ocupante"  column="idUsuario" lazy="false" />
+        <many-to-one name="ocupante" column="idUsuario" lazy="false"/>
 
     </class>
 </hibernate-mapping>
