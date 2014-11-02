@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="modelo.aerolinea.Asiento" table="Asientos">
+
+        <id name="idAsiento" type="java.lang.Integer">
+            <column name="ID_ASIENTO"/>
+            <generator class="identity"/>
+        </id>
+
+        <property name="numero" type="java.lang.Integer">
+            <column name="NUMERO_ASIENTO" length="20" not-null="true" unique="true"/>
+        </property>
+
+       <many-to-one name="ocupante"  column="idUsuario" lazy="false" />
+
+    </class>
+</hibernate-mapping>
