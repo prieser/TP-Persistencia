@@ -3,7 +3,7 @@ package modelo.servicios;
 import modelo.busquedas.Criterio;
 import modelo.busquedas.CriterioCompuesto;
 import modelo.busquedas.operadores.Operador;
-import modelo.daos.CriterioDAO;
+import modelo.daos.GenericDAO;
 
 /**
  * Created by prieser on 01/11/14.
@@ -24,7 +24,7 @@ public class CrearCriterioCompuesto implements Operation<Criterio> {
 
     public Criterio execute() {
         Criterio a = new CriterioCompuesto(criterio1, criterio2, operation);
-        new CriterioDAO().save(a);
+        new GenericDAO<Criterio>(Criterio.class).save(a);
         return a;
     }
 }

@@ -1,49 +1,49 @@
 package modelo.usuario;
 
 public class Mail {
-	private String body;
-	private String subject;
-	private String to;
-	private String from;
+    private String body;
+    private String subject;
+    private String to;
+    private String from;
 
-	public String getBody() {
-		return body;
-	}
+    public Mail(String body, String subject, String to, String from) {
+        super();
+        this.body = body;
+        this.subject = subject;
+        this.to = to;
+        this.from = from;
+    }
 
-	public void setBody(String body) {
-		this.body = body;
-	}
+    public String getBody() {
+        return body;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public void setBody(String body) {
+        this.body = body;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public String getTo() {
-		return to;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public void setTo(String to) {
-		this.to = to;
-	}
+    public String getTo() {
+        return to;
+    }
 
-	public String getFrom() {
-		return from;
-	}
+    public void setTo(String to) {
+        this.to = to;
+    }
 
-	public void setFrom(String from) {
-		this.from = from;
-	}
+    public String getFrom() {
+        return from;
+    }
 
-	public Mail(String body, String subject, String to, String from) {
-		super();
-		this.body = body;
-		this.subject = subject;
-		this.to = to;
-		this.from = from;
-	}
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
 }

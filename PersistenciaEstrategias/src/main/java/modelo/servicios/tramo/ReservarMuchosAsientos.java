@@ -3,7 +3,6 @@ package modelo.servicios.tramo;
 
 import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
-import modelo.managers.TramoManager;
 import modelo.servicios.Operation;
 import modelo.usuario.Usuario;
 

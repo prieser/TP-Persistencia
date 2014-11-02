@@ -41,7 +41,7 @@ public class TramoManager {
         return SessionManager.runInSession(new BuscarTramoPorCodigo(codigoDelTramoBuscado));
     }
 
-    public Tramo reservarMuchosAsientos(ArrayList<Integer> asientos , Usuario usuarioQueLoQuiereReservar ,Tramo tramo){
+    public Tramo reservarMuchosAsientos(ArrayList<Integer> asientos, Usuario usuarioQueLoQuiereReservar, Tramo tramo) {
         return SessionManager.runInSession(new ReservarMuchosAsientos(asientos, usuarioQueLoQuiereReservar, tramo));
     }
 }

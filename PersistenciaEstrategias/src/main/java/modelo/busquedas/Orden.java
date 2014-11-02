@@ -17,12 +17,12 @@ public class Orden {
         return valor;
     }
 
-    public String getQuery() {
-        return "order by " + this.getValor();
-    }
-
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public String getQuery() {
+        return "order by " + this.getValor();
     }
 
 }

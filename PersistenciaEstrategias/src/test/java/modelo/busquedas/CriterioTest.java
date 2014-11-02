@@ -1,8 +1,6 @@
 package modelo.busquedas;
 
 import modelo.busquedas.operadores.And;
-import modelo.busquedas.operadores.Operador;
-import modelo.daos.CriterioDAO;
 import modelo.managers.CriteriosManager;
 import org.junit.Test;
 

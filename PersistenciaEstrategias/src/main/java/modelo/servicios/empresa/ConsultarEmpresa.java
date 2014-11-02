@@ -1,7 +1,7 @@
 package modelo.servicios.empresa;
 
 import modelo.aerolinea.Empresa;
-import modelo.daos.EmpresaDAO;
+import modelo.daos.GenericDAO;
 import modelo.servicios.Operation;
 
 public class ConsultarEmpresa implements Operation<Empresa> {
@@ -15,7 +15,7 @@ public class ConsultarEmpresa implements Operation<Empresa> {
 
     public Empresa execute() {
         Empresa EmpresaQueBusco;
-        EmpresaQueBusco = new EmpresaDAO().get(id);
+        EmpresaQueBusco = (Empresa) new GenericDAO<Empresa>(Empresa.class).get(id);
         return EmpresaQueBusco;
     }
 
