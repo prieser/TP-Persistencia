@@ -5,7 +5,6 @@ import modelo.busquedas.operadores.Operador;
 import modelo.daos.SessionManager;
 import modelo.servicios.CrearCriterioCompuesto;
 import modelo.servicios.CrearCriterioSimple;
-import modelo.servicios.CrearCriterioSimple;
 
 /**
  * Created by prieser on 01/11/14.

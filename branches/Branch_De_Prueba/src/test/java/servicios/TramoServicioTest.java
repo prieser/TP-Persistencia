@@ -5,23 +5,22 @@ import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.util.Date;
 
 
 public class TramoServicioTest extends AbstractHibernateTest {
-	
-	private TramoManager manager;
-	
-	@Before
-	public void setUp() {
-		this.manager = new TramoManager();
-	}
 
-	public void testCrearTramo() throws Exception {
-		manager.crearTramo("BRA101", "Brasil", "Argentina", new Date(01/01/2000), new Date(01/01/2000), 1100);
-	}
+    private TramoManager manager;
+
+    @Before
+    public void setUp() {
+        this.manager = new TramoManager();
+    }
+
+    public void testCrearTramo() throws Exception {
+        manager.crearTramo("BRA101", "Brasil", "Argentina", new Date(01 / 01 / 2000), new Date(01 / 01 / 2000), 1100);
+    }
 
     public void testConsultarTramo() {
         // creo un tramo y le guardo tres asientos.

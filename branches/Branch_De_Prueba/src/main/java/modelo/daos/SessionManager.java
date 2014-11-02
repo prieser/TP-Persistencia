@@ -23,7 +23,7 @@ public class SessionManager {
         return sessionFactory;
     }
 
-    public static <T> T runInSession(Operation<T> cmd){
+    public static <T> T runInSession(Operation<T> cmd) {
         SessionFactory sessionFactory = SessionManager.getSessionFactory();
         Transaction transaction = null;
         T result = null;

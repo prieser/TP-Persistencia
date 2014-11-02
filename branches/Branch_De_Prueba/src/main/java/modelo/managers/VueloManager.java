@@ -7,14 +7,14 @@ import modelo.servicios.vuelo.CrearVuelo;
 
 
 public class VueloManager {
-	
-	
-	public Vuelo consultarAerolinea(int id) {
-		return SessionManager.runInSession(new ConsultarVuelo(id));
-	}
 
-	public void crearVuelo(int id) {
-		SessionManager.runInSession(new CrearVuelo(id));
-	}
+
+    public Vuelo consultarAerolinea(int id) {
+        return SessionManager.runInSession(new ConsultarVuelo(id));
+    }
+
+    public void crearVuelo(int id) {
+        SessionManager.runInSession(new CrearVuelo(id));
+    }
 
 }

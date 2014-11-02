@@ -1,6 +1,5 @@
 package servicios;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
