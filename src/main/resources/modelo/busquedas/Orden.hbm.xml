@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="modelo.busquedas.Orden" table="Orden">
-		<id name="idOrden" type="java.lang.Integer">
-			<column name="ID_ORDEN" />
-			<generator class="identity" />
-		</id>
-		
-		<property name="valor" type="string">
-			<column name="VALOR" length="20" not-null="true" unique="false" />
-		</property>
-		
-	</class>
+    <class name="modelo.busquedas.Orden" table="Orden">
+        <id name="idOrden" type="java.lang.Integer">
+            <column name="ID_ORDEN"/>
+            <generator class="identity"/>
+        </id>
+
+        <property name="valor" type="string">
+            <column name="VALOR" length="20" not-null="true" unique="false"/>
+        </property>
+
+    </class>
 </hibernate-mapping>

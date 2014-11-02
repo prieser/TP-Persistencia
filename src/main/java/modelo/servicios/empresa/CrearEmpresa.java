@@ -1,7 +1,7 @@
 package modelo.servicios.empresa;
 
 import modelo.aerolinea.Empresa;
-import modelo.daos.EmpresaDAO;
+import modelo.daos.GenericDAO;
 import modelo.servicios.Operation;
 
 public class CrearEmpresa implements Operation<Empresa> {
@@ -17,7 +17,7 @@ public class CrearEmpresa implements Operation<Empresa> {
     @Override
     public Empresa execute() {
         Empresa empresaAGuardar = new Empresa(nombre);
-        new EmpresaDAO().save(empresaAGuardar);
+        new GenericDAO<Empresa>(Empresa.class).save(empresaAGuardar);
         return empresaAGuardar;
     }
 }

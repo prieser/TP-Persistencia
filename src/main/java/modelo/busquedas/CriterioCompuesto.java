@@ -11,6 +11,13 @@ public class CriterioCompuesto extends Criterio {
     public CriterioCompuesto() {
     }
 
+    public CriterioCompuesto(Criterio criterioSimple1, Criterio criterioSimple2, Operador operador) {
+        super();
+        this.criterio1 = criterioSimple1;
+        this.criterio2 = criterioSimple2;
+        this.operador = operador;
+    }
+
     public Criterio getCriterio1() {
         return criterio1;
     }
@@ -32,13 +39,6 @@ public class CriterioCompuesto extends Criterio {
     }
 
     public void setOperador(Operador operador) {
-        this.operador = operador;
-    }
-
-    public CriterioCompuesto(Criterio criterioSimple1, Criterio criterioSimple2, Operador operador) {
-        super();
-        this.criterio1 = criterioSimple1;
-        this.criterio2 = criterioSimple2;
         this.operador = operador;
     }
 

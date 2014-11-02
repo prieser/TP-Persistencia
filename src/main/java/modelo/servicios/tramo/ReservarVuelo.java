@@ -16,6 +16,7 @@ public class ReservarVuelo implements Operation<Tramo> {
 
     /**
      * Esta operacion espera un tramo, asiento y usuario que realiza la reserva. Si el asiento ya esta reservado lanza una excepcion.
+     *
      * @return
      */
     public ReservarVuelo(int numeroDeAsientoAReservar, Usuario usuarioQueQuiereReservar, Tramo tramoAReservar) {
