@@ -1,17 +1,17 @@
 package modelo.busquedas;
 
-import modelo.busquedas.operadores.Operador;
+import modelo.busquedas.operadores.Operador2;
 
 public class CriterioCompuesto extends Criterio {
 
     private Criterio criterio1;
     private Criterio criterio2;
-    private Operador operador;
+    private Operador2 operador;
 
     public CriterioCompuesto() {
     }
 
-    public CriterioCompuesto(Criterio criterioSimple1, Criterio criterioSimple2, Operador operador) {
+    public CriterioCompuesto(Criterio criterioSimple1, Criterio criterioSimple2, Operador2 operador) {
         super();
         this.criterio1 = criterioSimple1;
         this.criterio2 = criterioSimple2;
@@ -34,11 +34,11 @@ public class CriterioCompuesto extends Criterio {
         this.criterio2 = criterio2;
     }
 
-    public Operador getOperador() {
+    public Operador2 getOperador() {
         return operador;
     }
 
-    public void setOperador(Operador operador) {
+    public void setOperador(Operador2 operador) {
         this.operador = operador;
     }
 
