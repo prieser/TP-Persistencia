@@ -2,16 +2,18 @@ package modelo.busquedas;
 
 import java.util.ArrayList;
 
+import modelo.busquedas.operadores.Operador;
+
 public class Busqueda {
 
-    private ArrayList<Criterio> criterios = new ArrayList<Criterio>();
+    private ArrayList<Operador> criterios = new ArrayList<Operador>();
     private Orden orden;
 
-    public ArrayList<Criterio> getCriterios() {
+    public ArrayList<Operador> getCriterios() {
         return criterios;
     }
 
-    public void setCriterios(ArrayList<Criterio> criterios) {
+    public void setCriterios(ArrayList<Operador> criterios) {
         this.criterios = criterios;
     }
 
@@ -24,14 +26,14 @@ public class Busqueda {
     }
 
 
-    public void agregarCriterio(Criterio criterioAAgregar) {
+    public void agregarCriterio(Operador criterioAAgregar) {
         this.criterios.add(criterioAAgregar);
     }
 
     public String getQuery() {
         String query = "from Vuelo WHERE";
 
-        for (Criterio unCriterio : this.criterios) {
+        for (Operador unCriterio : this.criterios) {
             query = query + unCriterio.getQuery();
 
         }
