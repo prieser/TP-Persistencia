@@ -1,6 +1,6 @@
 package modelo.usuario;
 
-import excepciones.NuevaPasswordInválidaException;
+import excepciones.NuevaPasswordInvalidaException;
 import excepciones.PasswordIncorrectaException;
 import excepciones.UsuarioNoExiste;
 import excepciones.UsuarioYaExisteException;
@@ -38,9 +38,9 @@ public class Sistema {
      * @param codigoValidación
      * @throws Exception
      */
-    public void ValidarCuenta(String codigoValidación) throws Exception {
+    public void ValidarCuenta(String codigoValidacion) throws Exception {
         this.usuarioRepository = new UsuarioRepository();
-        Usuario usuario = this.usuarioRepository.dameUnoConCodigoDeValidacion(codigoValidación);
+        Usuario usuario = this.usuarioRepository.dameUnoConCodigoDeValidacion(codigoValidacion);
         if (usuario == null) {
             throw new UsuarioNoExiste();
         } else {
@@ -82,7 +82,7 @@ public class Sistema {
         this.usuarioRepository = new UsuarioRepository();
         Usuario usuario = this.usuarioRepository.dameUno(userName);
         if (viejaPassword.equals(nuevaPassword)) {
-            throw new NuevaPasswordInválidaException();
+            throw new NuevaPasswordInvalidaException();
         } else {
             usuario.setContrasenia(nuevaPassword);
             this.usuarioRepository.actualizar(usuario);
