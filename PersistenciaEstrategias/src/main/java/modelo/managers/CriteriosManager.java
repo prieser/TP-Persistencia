@@ -1,7 +1,7 @@
 package modelo.managers;
 
 import modelo.busquedas.Criterio;
-import modelo.busquedas.operadores.Operador;
+import modelo.busquedas.operadores.Operador2;
 import modelo.daos.SessionManager;
 import modelo.servicios.CrearCriterioCompuesto;
 import modelo.servicios.CrearCriterioSimple;
@@ -15,7 +15,7 @@ public class CriteriosManager {
         SessionManager.runInSession(new CrearCriterioSimple(clave, valor));
     }
 
-    public void crearCriterioCompuesto(Criterio c1, Criterio c2, Operador op) {
+    public void crearCriterioCompuesto(Criterio c1, Criterio c2, Operador2 op) {
         SessionManager.runInSession(new CrearCriterioCompuesto(c1, c2, op));
     }
 }

@@ -2,7 +2,7 @@ package modelo.servicios;
 
 import modelo.busquedas.Criterio;
 import modelo.busquedas.CriterioCompuesto;
-import modelo.busquedas.operadores.Operador;
+import modelo.busquedas.operadores.Operador2;
 import modelo.daos.GenericDAO;
 
 /**
@@ -12,10 +12,10 @@ public class CrearCriterioCompuesto implements Operation<Criterio> {
 
     private Criterio criterio1;
     private Criterio criterio2;
-    private Operador operation;
+    private Operador2 operation;
 
 
-    public CrearCriterioCompuesto(Criterio criterio1, Criterio criterio2, Operador operation) {
+    public CrearCriterioCompuesto(Criterio criterio1, Criterio criterio2, Operador2 operation) {
         super();
         this.criterio1 = criterio1;
         this.criterio2 = criterio2;
