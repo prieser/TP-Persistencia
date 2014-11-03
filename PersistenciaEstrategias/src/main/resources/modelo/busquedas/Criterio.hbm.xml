@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 
-    <class name="modelo.busquedas.Criterio" table="Criterios">
+    <class name="modelo.busquedas.Criterio" abstract="true" table="Criterios">
         <id name="idCriterio" type="java.lang.Integer">
             <column name="ID_CRITERIO"/>
             <generator class="native"/>
@@ -22,8 +22,21 @@
         </subclass>
 
         <subclass name="modelo.busquedas.CriterioCompuesto" discriminator-value="Compuesto">
+            <property name="criterio1" type="modelo.busquedas.Criterio">
+                <column name="ID_CRITERIO1"/>
+            </property>
+            <property name="criterio2" type="modelo.busquedas.Criterio">
+                <column name="ID_CRITERIO2"/>
+            </property>
+            <property name="operador" type="modelo.busquedas.operadores.Operador">
+                <column name="OPERADOR" length="20" not-null="false" unique="false"/>
+            </property>
+        </subclass>
+    </class>
 
-            <!--DEJO LOS DOS ENFOQUES QUE ENCONTRE PARA MAPPEAR ESTO-->
+</hibernate-mapping>
+
+    <!--DEJO LOS DOS ENFOQUES QUE ENCONTRE PARA MAPPEAR ESTO-->
 
             <!--<component name="criterio1" class="modelo.busquedas.Criterio">-->
             <!--<property name="idCriterio" column="ID_CRITERIO1" />-->
@@ -34,19 +47,3 @@
             <!--<property name="operador" type="java.lang.String">-->
             <!--<column name="OPERADOR" length="20" not-null="false" unique="false"/>-->
             <!--</property>-->
-
-            <property name="criterio1" type="java.lang.Integer">
-                <column name="ID_CRITERIO1" length="20" not-null="false" unique="false"/>
-            </property>
-            <property name="criterio2" type="java.lang.Integer">
-                <column name="ID_CRITERIO2" length="20" not-null="false" unique="false"/>
-            </property>
-            <property name="operador" type="java.lang.String">
-                <column name="OPERADOR" length="20" not-null="false" unique="false"/>
-            </property>
-
-
-        </subclass>
-    </class>
-
-</hibernate-mapping>
