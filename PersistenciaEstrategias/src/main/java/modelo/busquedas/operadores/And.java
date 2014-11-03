@@ -2,7 +2,7 @@ package modelo.busquedas.operadores;
 
 import modelo.busquedas.Componente;
 
-public class And extends Operador {
+public class And extends Operador implements Componente {
 	
 	public And(Componente criterio1, Componente criterio2) {
 		super(criterio1, criterio2);
