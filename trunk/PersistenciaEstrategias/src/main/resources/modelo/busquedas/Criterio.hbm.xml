@@ -4,40 +4,17 @@
 
 <hibernate-mapping>
 
-    <class name="modelo.busquedas.Criterio" abstract="true" table="Criterios">
-        <id name="idCriterio" type="java.lang.Integer">
-            <column name="ID_CRITERIO"/>
-            <generator class="native"/>
-        </id>
-
-        <discriminator column="TIPO_CRITERIO" type="string"/>
-
-        <subclass name="modelo.busquedas.CriterioSimple" discriminator-value="Simple">
-            <property name="clave" type="string">
-                <column name="CLAVE" length="20" not-null="false" unique="false"/>
-            </property>
-            <property name="valor" type="string">
-                <column name="VALOR" length="20" not-null="false" unique="false"/>
-            </property>
-        </subclass>
-
-        <subclass name="modelo.busquedas.CriterioCompuesto" discriminator-value="Compuesto">
-        	<many-to-one name="criterio1" lazy="false" cascade="all"/>
-        	<many-to-one name="criterio2" lazy="false" cascade="all"/>
-<!--         	<many-to-one name="operador" column="operador" lazy="false"/> -->
-        </subclass>
-    </class>
+	<class name="modelo.busquedas.Criterio" table="Criterios">
+		<id name="idCriterio" type="java.lang.Integer">
+			<column name="ID_CRITERIO" />
+			<generator class="identity" />
+		</id>
+		<property name="clave" type="string">
+			<column name="CLAVE" length="20" not-null="false" unique="false" />
+		</property>
+		<property name="valor" type="string">
+			<column name="VALOR" length="20" not-null="false" unique="false" />
+		</property>
+	</class>
 
 </hibernate-mapping>
-
-    <!--DEJO LOS DOS ENFOQUES QUE ENCONTRE PARA MAPPEAR ESTO-->
-
-            <!--<component name="criterio1" class="modelo.busquedas.Criterio">-->
-            <!--<property name="idCriterio" column="ID_CRITERIO1" />-->
-            <!--</component>-->
-            <!--<component name="criterio2" class="modelo.busquedas.Criterio">-->
-            <!--<property name="idCriterio" column="ID_CRITERIO2" />-->
-            <!--</component>-->
-            <!--<property name="operador" type="java.lang.String">-->
-            <!--<column name="OPERADOR" length="20" not-null="false" unique="false"/>-->
-            <!--</property>-->

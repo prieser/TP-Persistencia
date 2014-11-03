@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="modelo.busquedas.operadores.Operador" abstract="true" table="Operadores">
+		<id name="idOperador" type="java.lang.Integer">
+			<column name="ID_CRITERIO" />
+			<generator class="identity" />
+		</id>
+		<discriminator column="TIPO_OPERACION" type="string" />
+
+		<any name="criterio1" id-type="java.lang.Integer" meta-type="string">
+			<meta-value value="CRIT" class="modelo.busquedas.Criterio" />
+			<meta-value value="OPER" class="modelo.busquedas.operadores.Operador" />
+
+			<column name="criterio1"></column>
+			<column name="tipo_criterio1" sql-type="VARCHAR" precision="4"></column>
+		</any>
+
+		<any name="criterio2" id-type="java.lang.Integer" meta-type="string">
+			<meta-value value="CRIT" class="modelo.busquedas.Criterio" />
+			<meta-value value="OPER" class="modelo.busquedas.operadores.Operador" />
+
+			<column name="criterio2"></column>
+			<column name="tipo_criterio2" sql-type="VARCHAR" precision="4"></column>
+		</any>
+
+		<subclass name="modelo.busquedas.operadores.Or"
+			discriminator-value="OR" />
+		<subclass name="modelo.busquedas.operadores.And"
+			discriminator-value="AND" />
+	</class>
+</hibernate-mapping>

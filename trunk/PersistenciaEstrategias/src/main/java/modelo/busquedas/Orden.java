@@ -5,6 +5,10 @@ public class Orden {
     private int idOrden;
     private String valor;
 
+    public Orden(String valor) {
+        this.setValor(valor);
+    }
+    
     public int getIdOrden() {
         return idOrden;
     }
