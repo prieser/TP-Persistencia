@@ -1,6 +1,6 @@
 package excepciones;
 
 @SuppressWarnings("serial")
-public class ValidaciónException extends Exception {
+public class ValidacionException extends Exception {
 
 }
