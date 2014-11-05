@@ -2,6 +2,9 @@ package modelo.usuario;
 
 import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
+import modelo.busquedas.Busqueda;
+
+import java.util.ArrayList;
 
 public class Usuario {
 

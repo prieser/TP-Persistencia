@@ -1,11 +1,23 @@
 package modelo.busquedas;
 
+import modelo.usuario.Usuario;
+
 import java.util.ArrayList;
 
 public class Busqueda {
 
+    private int idBusqueda;
     private ArrayList<Componente> criterios = new ArrayList<Componente>();
     private Orden orden;
+    private Usuario usuario;
+
+    public int getIdBusqueda() {
+        return idBusqueda;
+    }
+
+    public void setIdBusqueda(int idBusqueda) {
+        this.idBusqueda = idBusqueda;
+    }
 
     public ArrayList<Componente> getCriterios() {
         return criterios;
@@ -23,6 +35,13 @@ public class Busqueda {
         this.orden = orden;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public void agregarCriterio(Componente criterioAAgregar) {
         this.criterios.add(criterioAAgregar);

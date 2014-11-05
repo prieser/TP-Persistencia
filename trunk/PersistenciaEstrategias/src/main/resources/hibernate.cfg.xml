@@ -21,6 +21,7 @@
         <mapping resource="modelo/aerolinea/Tramo.hbm.xml"></mapping>
         <mapping resource="modelo/aerolinea/Asiento.hbm.xml"></mapping>
         <mapping resource="modelo/aerolinea/Usuario.hbm.xml"></mapping>
+        <mapping resource="modelo/aerolinea/Busqueda.hbm.xml"></mapping>
         <mapping resource="modelo/busquedas/Orden.hbm.xml"></mapping>
         <mapping resource="modelo/busquedas/Criterio.hbm.xml"></mapping>
         <mapping resource="modelo/busquedas/Operador.hbm.xml"></mapping>
