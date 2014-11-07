@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import modelo.aerolinea.Vuelo;
 import modelo.busquedas.Busqueda;
 import modelo.daos.SessionManager;
+import modelo.servicios.busqueda.BuscarVuelos;
 import modelo.usuario.Usuario;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class BusquedaManager {
-	
+
     @SuppressWarnings("unchecked")
 	public ArrayList<Busqueda> traerBusquedas(Usuario usuario) {
     	Session session = SessionManager.getSession();
@@ -21,9 +22,7 @@ public class BusquedaManager {
     
 	@SuppressWarnings("unchecked")
 	public ArrayList<Vuelo> buscarVuelos(Busqueda busqueda) {
-		Session session = SessionManager.getSession();
-		Query query = session.createQuery(busqueda.getQuery());
-        return (ArrayList<Vuelo>) query.list();
+        return SessionManager.runInSession(new BuscarVuelos(busqueda));
 	}
 
 }

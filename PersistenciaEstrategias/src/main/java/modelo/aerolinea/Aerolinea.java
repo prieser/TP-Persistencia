@@ -20,7 +20,6 @@ public class Aerolinea {
     }
 
     public Aerolinea() {
-
     }
 
     public Collection<Vuelo> getVuelos() {
@@ -49,7 +48,6 @@ public class Aerolinea {
 
     public Collection<Vuelo> vuelosOfertados() {
         return this.vuelos;
-
     }
 
     public int getIdAerolinea() {
@@ -58,5 +56,9 @@ public class Aerolinea {
 
     public void setIdAerolinea(int idAerolinea) {
         this.idAerolinea = idAerolinea;
+    }
+
+    public void agregarVuelo(Vuelo vuelo) {
+        this.getVuelos().add(vuelo);
     }
 }

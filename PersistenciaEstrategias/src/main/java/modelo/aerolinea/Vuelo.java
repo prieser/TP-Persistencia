@@ -8,8 +8,7 @@ public class Vuelo {
     private Set<Tramo> tramos = new HashSet<Tramo>();
     private int id;
 
-    public Vuelo(int id) {
-        this.id = id;
+    public Vuelo() {
         this.tramos = new HashSet<Tramo>();
     }
 

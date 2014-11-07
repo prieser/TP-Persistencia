@@ -141,6 +141,10 @@ public class Tramo {
     public int hashCode() {
         return codigoDelTramo.hashCode();
     }
+
+    public void agregarAsiento(Asiento asientoAAgregar) {
+        this.getAsientos().add(asientoAAgregar);
+    }
 }
     
     

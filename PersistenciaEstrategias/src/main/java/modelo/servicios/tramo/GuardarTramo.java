@@ -10,14 +10,12 @@ public class GuardarTramo implements Operation<Object> {
 
     public GuardarTramo(Tramo tramo) {
         this.tramo = tramo;
-
     }
 
     @Override
     public Object execute() {
         new GenericDAO<Tramo>(Tramo.class).save(this.tramo);
         return null;
-
     }
 
 
