@@ -9,7 +9,7 @@
             <generator class="identity"/>
         </id>
 
-        <set name="tramos" table="Vuelos_Y_Tramos">
+        <set name="tramos" table="Vuelos_Y_Tramos" cascade="all" lazy="false">
             <key column="VUELO"/>
             <many-to-many class="modelo.aerolinea.Tramo"/>
         </set>

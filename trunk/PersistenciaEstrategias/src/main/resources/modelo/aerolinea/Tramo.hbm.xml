@@ -22,16 +22,16 @@
         </property>
 
         <property name="horaDeLlegada" type="java.util.Date">
-            <column name="HORA_LLEGADA" length="20" not-null="true"/>
-        </property>
+        <column name="HORA_LLEGADA" length="20" not-null="true"/>
+    </property>
 
-        <property name="horaDeSalida" type="java.util.Date">
-            <column name="HORA_SALIDA" length="20" not-null="true"/>
-        </property>
+    <property name="horaDeSalida" type="java.util.Date">
+        <column name="HORA_SALIDA" length="20" not-null="true"/>
+    </property>
 
-        <property name="precio" type="java.lang.Integer">
-            <column name="PRECIO" length="20" not-null="true"/>
-        </property>
+    <property name="precio" type="java.lang.Integer">
+        <column name="PRECIO" length="20" not-null="true"/>
+    </property>
 
         <set name="asientos" table="Tramo_Y_Asientos" cascade="all" lazy="false">
             <key column="ASIENTO"/>

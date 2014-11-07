@@ -17,7 +17,7 @@ public class BuscarAerolineaPorNombre implements Operation<Aerolinea> {
     @Override
     public Aerolinea execute() {
         Session session = SessionManager.getSession();
-        Query query = session.createQuery("from Aerolinea where NOMBRE = :nombreParametro");
+        Query query = session.createQuery("from Aerolinea WHERE nombre = :nombreParametro");
         query.setParameter("nombreParametro", this.nombre);
         query.setMaxResults(1);
         return (Aerolinea) query.uniqueResult();

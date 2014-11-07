@@ -14,7 +14,7 @@ public class CrearVuelo implements Operation<Vuelo> {
     }
 
     public Vuelo execute() {
-        Vuelo v = new Vuelo(id);
+        Vuelo v = new Vuelo();
         new GenericDAO<Vuelo>(Vuelo.class).save(v);
         return v;
     }

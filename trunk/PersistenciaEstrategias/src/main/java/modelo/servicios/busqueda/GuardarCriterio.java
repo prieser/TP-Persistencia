@@ -1,18 +1,16 @@
-package modelo.servicios;
+package modelo.servicios.busqueda;
 
 import modelo.busquedas.Criterio;
 import modelo.daos.GenericDAO;
+import modelo.servicios.Operation;
 
-/**
- * Created by prieser on 01/11/14.
- */
-public class CrearCriterio implements Operation<Criterio> {
+public class GuardarCriterio implements Operation<Criterio> {
 
     private String clave;
     private String valor;
 
 
-    public CrearCriterio(String clave, String valor) {
+    public GuardarCriterio(String clave, String valor) {
         super();
         this.clave = clave;
         this.valor = valor;

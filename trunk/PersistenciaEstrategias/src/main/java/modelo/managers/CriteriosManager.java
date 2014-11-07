@@ -1,14 +1,12 @@
 package modelo.managers;
 
+import modelo.busquedas.Criterio;
 import modelo.daos.SessionManager;
-import modelo.servicios.CrearCriterio;
+import modelo.servicios.busqueda.GuardarCriterio;
 
-/**
- * Created by prieser on 01/11/14.
- */
 public class CriteriosManager {
 
-    public void crearCriterio(String clave, String valor) {
-        SessionManager.runInSession(new CrearCriterio(clave, valor));
+    public Criterio crearCriterio(String clave, String valor) {
+       return SessionManager.runInSession(new GuardarCriterio(clave, valor));
     }
 }

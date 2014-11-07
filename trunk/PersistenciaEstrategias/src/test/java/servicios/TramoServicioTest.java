@@ -19,7 +19,8 @@ public class TramoServicioTest extends AbstractHibernateTest {
     }
 
     public void testCrearTramo() throws Exception {
-        manager.crearTramo("BRA101", "Brasil", "Argentina", new Date(01 / 01 / 2000), new Date(01 / 01 / 2000), 1100);
+        Tramo tramoGuardado = manager.crearTramo("BRA101", "Brasil", "Argentina", new Date(01 / 01 / 2000), new Date(01 / 01 / 2000), 1100);
+        assertEquals(tramoGuardado, manager.buscarTramoPorCodigo("BRA101"));
     }
 
     public void testConsultarTramo() {

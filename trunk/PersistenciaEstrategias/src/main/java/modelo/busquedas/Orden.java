@@ -8,7 +8,10 @@ public class Orden {
     public Orden(String valor) {
         this.setValor(valor);
     }
-    
+
+    public Orden() {
+    }
+
     public int getIdOrden() {
         return idOrden;
     }
@@ -26,7 +29,7 @@ public class Orden {
     }
 
     public String getQuery() {
-        return "order by " + this.getValor();
+        return " ORDER BY " + this.getValor();
     }
 
 }

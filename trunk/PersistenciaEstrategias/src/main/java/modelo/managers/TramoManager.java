@@ -25,8 +25,8 @@ public class TramoManager {
         return SessionManager.runInSession(new EliminarTramo(tramo));
     }
 
-    public void crearTramo(String codigoDelTramo, String origen, String destino, Date horarioLlegada, Date horarioSalida, int precio) {
-        SessionManager.runInSession(new CrearTramo(codigoDelTramo, origen, destino, horarioLlegada, horarioSalida, precio));
+    public Tramo crearTramo(String codigoDelTramo, String origen, String destino, Date horarioLlegada, Date horarioSalida, int precio) {
+       return SessionManager.runInSession(new CrearTramo(codigoDelTramo, origen, destino, horarioLlegada, horarioSalida, precio));
     }
 
     public List<Asiento> TraerAsientosTramo(Tramo tramo) {
