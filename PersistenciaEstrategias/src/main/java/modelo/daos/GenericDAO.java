@@ -15,4 +15,8 @@ public class GenericDAO<T> {
     public void save(T instanciaT) {
         SessionManager.getSession().saveOrUpdate(instanciaT);
     }
+
+    public void remove(T instanciaT) {
+        SessionManager.getSession().delete(instanciaT);
+    }
 }
