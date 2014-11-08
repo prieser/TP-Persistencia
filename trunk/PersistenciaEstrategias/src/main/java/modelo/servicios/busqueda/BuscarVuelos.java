@@ -9,7 +9,7 @@ import org.hibernate.Session;
 
 import java.util.ArrayList;
 
-public class BuscarVuelos implements Operation<ArrayList<Vuelo>> {
+public class BuscarVuelos implements Operation<ArrayList<String>> {
 
     private Busqueda busqueda;
 
@@ -19,10 +19,9 @@ public class BuscarVuelos implements Operation<ArrayList<Vuelo>> {
 
 
     @Override
-    public ArrayList<Vuelo> execute() {
+    public ArrayList<String> execute() {
         Session session = SessionManager.getSession();
-//        Query query = session.createQuery(busqueda.getQuery());
-        Query query = session.createQuery("FROM Vuelo v INNER JOIN v.tramos t WHERE origen = 'BsAs'");
-        return (ArrayList<Vuelo>) query.list();
+        Query query = session.createQuery(busqueda.getQuery());
+        return (ArrayList<String>) query.list();
     }
 }

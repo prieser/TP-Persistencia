@@ -5,11 +5,24 @@ import java.util.Set;
 
 
 public class Vuelo {
+    private String codigoVuelo;
     private Set<Tramo> tramos = new HashSet<Tramo>();
     private int id;
 
-    public Vuelo() {
+    public Vuelo(String codigoVuelo) {
+        this.codigoVuelo = codigoVuelo;
         this.tramos = new HashSet<Tramo>();
+    }
+
+    public Vuelo() {
+    }
+
+    public String getCodigoVuelo() {
+        return codigoVuelo;
+    }
+
+    public void setCodigoVuelo(String codigoVuelo) {
+        this.codigoVuelo = codigoVuelo;
     }
 
     public Set<Tramo> getTramos() {

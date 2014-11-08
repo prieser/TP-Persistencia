@@ -9,6 +9,10 @@
             <generator class="identity"/>
         </id>
 
+        <property name="codigoVuelo" type="java.lang.String">
+            <column name="CODIGO_VUELO" length="20" not-null="true" unique="true"/>
+        </property>
+
         <set name="tramos" table="Vuelos_Y_Tramos" cascade="all" lazy="false">
             <key column="VUELO"/>
             <many-to-many class="modelo.aerolinea.Tramo"/>

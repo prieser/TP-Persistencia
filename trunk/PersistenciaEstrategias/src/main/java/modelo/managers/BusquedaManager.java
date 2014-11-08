@@ -21,7 +21,7 @@ public class BusquedaManager {
     }
     
 	@SuppressWarnings("unchecked")
-	public ArrayList<Vuelo> buscarVuelos(Busqueda busqueda) {
+	public ArrayList<String> buscarVuelos(Busqueda busqueda) {
         return SessionManager.runInSession(new BuscarVuelos(busqueda));
 	}
 

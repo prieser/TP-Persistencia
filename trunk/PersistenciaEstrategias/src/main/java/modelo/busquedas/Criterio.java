@@ -37,6 +37,6 @@ public class Criterio implements Componente {
 	}
 
 	public String getQuery() {
-		return "(" + this.getClave() + " = " + this.getValor() + ")";
+		return "(" + this.getClave() + " = " + "'" + this.getValor()+  "'" + ")";
 	};
 }

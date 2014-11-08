@@ -47,13 +47,17 @@ public class Busqueda {
         this.criterios.add(criterioAAgregar);
     }
 
+    public void agregarOrden (Orden ordenAAgregar) {
+        this.setOrden(ordenAAgregar);
+    }
+
     public Busqueda(Usuario usuario) {
         this.criterios = new ArrayList<Componente>();
         this.usuario = usuario;
     }
 
     public String getQuery() {
-        String query = "FROM Tramos INNER JOIN Vuelos WHERE ";
+        String query = "SELECT v.codigoVuelo FROM Vuelo v INNER JOIN v.tramos t WHERE ";
 
         for (Componente unCriterio : this.criterios) {
             query = query + unCriterio.getQuery();

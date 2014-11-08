@@ -4,6 +4,7 @@ import modelo.aerolinea.Vuelo;
 import modelo.daos.SessionManager;
 import modelo.servicios.vuelo.ConsultarVuelo;
 import modelo.servicios.vuelo.CrearVuelo;
+import modelo.servicios.vuelo.EliminarVuelo;
 import modelo.servicios.vuelo.GuardarVuelo;
 
 
@@ -20,6 +21,10 @@ public class VueloManager {
 
     public void guardarVuelo(Vuelo vueloAGuardar) {
         SessionManager.runInSession(new GuardarVuelo(vueloAGuardar));
+    }
+
+    public void eliminarVuelo(Vuelo vueloAEliminar) {
+        SessionManager.runInSession(new EliminarVuelo(vueloAEliminar));
     }
 
 }
