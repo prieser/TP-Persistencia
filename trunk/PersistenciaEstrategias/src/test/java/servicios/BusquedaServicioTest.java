@@ -126,6 +126,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
      * Tests de orden
      * **********************************************************/
 
+//    Test orden de ejemplo
     @Test
     public void testBuscarVuelosConOrigenOrdenadoPorPrecio() {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
