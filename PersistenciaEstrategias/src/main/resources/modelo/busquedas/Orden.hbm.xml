@@ -3,15 +3,19 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="modelo.busquedas.Orden" table="Orden">
-        <id name="idOrden" type="java.lang.Integer">
-            <column name="ID_ORDEN"/>
-            <generator class="identity"/>
-        </id>
+	<class name="modelo.busquedas.orden.Orden" abstract="true" table="Orden">
+		<id name="idOrden" type="java.lang.Integer">
+			<column name="ID_ORDEN" />
+			<generator class="identity" />
+		</id>
 
-        <property name="valor" type="string">
-            <column name="VALOR" length="20" not-null="true" unique="false"/>
-        </property>
+	<discriminator column="TIPO_DE_ORDEN" type="string" />
 
-    </class>
+	<subclass name="modelo.busquedas.orden.OrdenPorPrecio" discriminator-value="POR_PRECIO">
+	</subclass>
+	
+	<subclass name="modelo.busquedas.orden.OrdenPorEscalas" discriminator-value="POR_ESCALA">
+	</subclass>
+
+	</class>
 </hibernate-mapping>
