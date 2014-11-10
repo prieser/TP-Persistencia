@@ -1,16 +1,9 @@
-package modelo.busquedas;
+package modelo.busquedas.orden;
 
-public class Orden {
+public abstract class Orden {
 
     private int idOrden;
     private String valor;
-
-    public Orden(String valor) {
-        this.setValor(valor);
-    }
-
-    public Orden() {
-    }
 
     public int getIdOrden() {
         return idOrden;
@@ -28,8 +21,6 @@ public class Orden {
         this.valor = valor;
     }
 
-    public String getQuery() {
-        return " ORDER BY " + this.getValor();
-    }
+    public abstract String getQuery();
 
 }

@@ -2,6 +2,7 @@ package modelo.busquedas;
 
 import java.util.ArrayList;
 
+import modelo.busquedas.orden.Orden;
 import modelo.usuario.Usuario;
 
 public class Busqueda {
