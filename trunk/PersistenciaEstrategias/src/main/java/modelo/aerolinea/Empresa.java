@@ -1,8 +1,8 @@
 package modelo.aerolinea;
 
-import modelo.usuario.Usuario;
-
 import java.util.Collection;
+
+import modelo.usuario.Usuario;
 
 /**
  * Created by Pablo Rieser on 11/09/2014.

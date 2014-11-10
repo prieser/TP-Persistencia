@@ -1,13 +1,15 @@
 package modelo;
 
-import excepciones.UsuarioYaExisteException;
 import junit.framework.Assert;
 import modelo.usuario.Sistema;
 import modelo.usuario.Usuario;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import repository.UsuarioRepository;
+import excepciones.UsuarioYaExisteException;
 
 @SuppressWarnings("deprecation")
 public class SistemaTest {

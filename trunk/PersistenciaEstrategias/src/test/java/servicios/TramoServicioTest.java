@@ -1,12 +1,13 @@
 package servicios;
 
+import java.util.Date;
+
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.managers.TramoManager;
+
 import org.junit.Assert;
 import org.junit.Before;
-
-import java.util.Date;
 
 
 public class TramoServicioTest extends AbstractHibernateTest {

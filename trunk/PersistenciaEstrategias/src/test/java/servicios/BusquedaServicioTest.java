@@ -1,5 +1,8 @@
 package servicios;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import modelo.aerolinea.Tramo;
 import modelo.aerolinea.Vuelo;
 import modelo.busquedas.Busqueda;
@@ -11,11 +14,9 @@ import modelo.managers.BusquedaManager;
 import modelo.managers.TramoManager;
 import modelo.managers.VueloManager;
 import modelo.usuario.Usuario;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 public class BusquedaServicioTest extends AbstractHibernateTest {
 
@@ -27,29 +28,30 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     Vuelo v2 = new Vuelo("V102");
     Vuelo v3 = new Vuelo("V103");
 
-    Tramo t1 = new Tramo("CODT1", "BsAs", "Montevideo", new Date(20141105), new Date(20141105), 400);
-    Tramo t2 = new Tramo("CODT2", "Montevideo", "San Pablo", new Date(20141105), new Date(201411015), 1500);
-    Tramo t3 = new Tramo("CODT3", "San Pablo", "Miami", new Date(20141105), new Date(201411016), 3000);
+    Tramo t1 = new Tramo("CODT1", "BsAs", "Montevideo", new Date(114, 10, 10),new Date(114, 10, 10), 400);
+    Tramo t2 = new Tramo("CODT2", "Montevideo", "San Pablo", new Date(114, 10, 10), new Date(114, 10, 10), 1500);
 
-    Tramo t4 = new Tramo("CODT4", "BsAs", "Montevideo", new Date(20141112), new Date(201411012), 600);
-    Tramo t5 = new Tramo("CODT5", "Montevideo", "San Pablo", new Date(20141112), new Date(201411012), 1600);
-    Tramo t6 = new Tramo("CODT6", "San Pablo", "Pretoria", new Date(20141111), new Date(201411011), 3500);
+    Tramo t3 = new Tramo("CODT3", "BsAs", "Montevideo", new Date(114, 10, 11), new Date(114, 10, 11), 600);
+    Tramo t4 = new Tramo("CODT4", "Montevideo", "San Pablo", new Date(114, 10, 11), new Date(114, 10, 11), 1600);
+    Tramo t5 = new Tramo("CODT5", "San Pablo", "Pretoria", new Date(114, 10, 11), new Date(114, 10, 11), 3500);
 
-    Tramo t7 = new Tramo("CODT7", "BsAs", "Montevideo", new Date(20141112), new Date(201411012), 300);
-    Tramo t8 = new Tramo("CODT8", "Montevideo", "Asuncion", new Date(20141112), new Date(201411012), 1000);
-    Tramo t9 = new Tramo("CODT9", "Asuncion", "Quito", new Date(20141112), new Date(201411012), 1200);
+    Tramo t6 = new Tramo("CODT6", "BsAs", "Montevideo", new Date(114, 10, 12), new Date(114, 10, 12), 300);
+    Tramo t7 = new Tramo("CODT7", "Montevideo", "Asuncion", new Date(114, 10, 12), new Date(114, 10, 12), 1000);
+    Tramo t8 = new Tramo("CODT8", "Asuncion", "Quito", new Date(114, 10, 12), new Date(114, 10, 12), 1200);
+    Tramo t9 = new Tramo("CODT9", "Quito", "Caracas", new Date(114, 10, 12), new Date(114, 10, 12), 1000);
+
 
 
     @Before
     public void setUp() throws Exception {
         v1.agregarTramo(t1);
         v1.agregarTramo(t2);
-        v1.agregarTramo(t3);
 
+        v2.agregarTramo(t3);
         v2.agregarTramo(t4);
         v2.agregarTramo(t5);
-        v2.agregarTramo(t6);
 
+        v3.agregarTramo(t6);
         v3.agregarTramo(t7);
         v3.agregarTramo(t8);
         v3.agregarTramo(t9);
@@ -68,7 +70,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
 
     @Test
     public void testConstruirQueryCorrectamente() {
-        String consultaEsperada = "SELECT v.codigoVuelo FROM Vuelo v INNER JOIN v.tramos t WHERE ((nombre = 'pepe') AND ((nombre = 'tartu') OR (edad = '23'))) ORDER BY nombre";
+        String consultaEsperada = "SELECT v FROM Vuelo v INNER JOIN v.tramos t WHERE ((nombre = 'pepe') AND ((nombre = 'tartu') OR (edad = '23'))) ORDER BY nombre";
         Busqueda busqueda = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("nombre", "pepe");
         Criterio c2 = new Criterio("nombre", "tartu");
@@ -83,10 +85,10 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<String> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
-        assertTrue(resultado.contains("V101"));
-        assertTrue(resultado.contains("V102"));
-        assertTrue(resultado.contains("V103"));
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        assertTrue(resultado.contains(v1));
+        assertTrue(resultado.contains(v2));
+        assertTrue(resultado.contains(v3));
     }
 
     @Test
@@ -94,10 +96,21 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("DESTINO", "Quito");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<String> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
-        assertTrue(resultado.contains("V103"));
-        assertFalse(resultado.contains("V101"));
-        assertFalse(resultado.contains("V102"));
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        assertTrue(resultado.contains(v3));
+        assertFalse(resultado.contains(v1));
+        assertFalse(resultado.contains(v2));
+    }
+    
+    @Test
+    public void testBuscarVuelosConFecha() {
+        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Criterio c1 = new Criterio("HORA_SALIDA", "2014-11-10");
+        busquedaARealizar.agregarCriterio(c1);
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        assertTrue(resultado.contains(v1));
+        assertFalse(resultado.contains(v2));
+        assertFalse(resultado.contains(v3));
     }
 
     @Test
@@ -106,7 +119,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Criterio c1 = new Criterio("ORIGEN", "Montevideo");
         Criterio c2 = new Criterio("DESTINO", "Miami");
         busquedaARealizar.agregarCriterio(new And(c1, c2));
-        ArrayList<String> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
         assertTrue(resultado.isEmpty());
     }
 
@@ -114,31 +127,42 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     public void testBuscarVuelosConOrigenYDestinoCompatibles() {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("ORIGEN", "San Pablo");
-        Criterio c2 = new Criterio("DESTINO", "Miami");
+        Criterio c2 = new Criterio("DESTINO", "Pretoria");
         busquedaARealizar.agregarCriterio(new And(c1, c2));
-        ArrayList<String> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
-        assertTrue(resultado.contains("V101"));
-        assertFalse(resultado.contains("V102"));
-        assertFalse(resultado.contains("V103"));
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        assertTrue(resultado.contains(v2));
+        assertFalse(resultado.contains(v1));
+        assertFalse(resultado.contains(v3));
     }
 
     /* **********************************************************
      * Tests de orden
      * **********************************************************/
 
-//    Test orden de ejemplo
     @Test
     public void testBuscarVuelosConOrigenOrdenadoPorPrecio() {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
-        Orden orden = new Orden("PRECIO");
+        Orden orden = new Orden("t.precio asc");
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
-        ArrayList<String> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
-        assertTrue("V103".equals(resultado.get(0)));
-        assertTrue("V101".equals(resultado.get(1)));
-        assertTrue("V102".equals(resultado.get(2)));
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        assertTrue(v3.equals(resultado.get(0)));
+        assertTrue(v1.equals(resultado.get(1)));
+        assertTrue(v2.equals(resultado.get(2)));
     }
-
+    
+    @Test
+    public void testBuscarVuelosConOrigenOrdenadoPorCantidadDeEscalas() {
+        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Criterio c1 = new Criterio("ORIGEN", "BsAs");
+        Orden orden = new Orden("COUNT(v.tramos) desc");
+        busquedaARealizar.agregarCriterio(c1);
+        busquedaARealizar.agregarOrden(orden);
+        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        assertTrue(v1.equals(resultado.get(0)));
+        assertTrue(v2.equals(resultado.get(1)));
+        assertTrue(v3.equals(resultado.get(2)));
+    }
 
 }

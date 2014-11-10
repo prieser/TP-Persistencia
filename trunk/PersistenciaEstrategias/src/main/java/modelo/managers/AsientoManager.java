@@ -3,6 +3,7 @@ package modelo.managers;
 import modelo.aerolinea.Asiento;
 import modelo.daos.GenericDAO;
 import modelo.daos.SessionManager;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 

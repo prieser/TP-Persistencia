@@ -1,15 +1,16 @@
 package modelo.servicios.busqueda;
 
+import java.util.ArrayList;
+
 import modelo.aerolinea.Vuelo;
 import modelo.busquedas.Busqueda;
 import modelo.daos.SessionManager;
 import modelo.servicios.Operation;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
-
-public class BuscarVuelos implements Operation<ArrayList<String>> {
+public class BuscarVuelos implements Operation<ArrayList<Vuelo>> {
 
     private Busqueda busqueda;
 
@@ -19,9 +20,11 @@ public class BuscarVuelos implements Operation<ArrayList<String>> {
 
 
     @Override
-    public ArrayList<String> execute() {
+    public ArrayList<Vuelo> execute() {
         Session session = SessionManager.getSession();
+        System.out.println(busqueda.getQuery());
         Query query = session.createQuery(busqueda.getQuery());
-        return (ArrayList<String>) query.list();
+        return (ArrayList<Vuelo>) query.list();
     }
 }
+
