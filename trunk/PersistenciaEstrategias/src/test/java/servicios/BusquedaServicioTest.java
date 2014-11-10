@@ -7,9 +7,11 @@ import modelo.aerolinea.Tramo;
 import modelo.aerolinea.Vuelo;
 import modelo.busquedas.Busqueda;
 import modelo.busquedas.Criterio;
-import modelo.busquedas.Orden;
 import modelo.busquedas.operadores.And;
 import modelo.busquedas.operadores.Or;
+import modelo.busquedas.orden.Orden;
+import modelo.busquedas.orden.OrdenPorEscalas;
+import modelo.busquedas.orden.OrdenPorPrecio;
 import modelo.managers.BusquedaManager;
 import modelo.managers.TramoManager;
 import modelo.managers.VueloManager;
@@ -70,13 +72,12 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
 
     @Test
     public void testConstruirQueryCorrectamente() {
-        String consultaEsperada = "SELECT v FROM Vuelo v INNER JOIN v.tramos t WHERE ((nombre = 'pepe') AND ((nombre = 'tartu') OR (edad = '23'))) ORDER BY nombre";
+        String consultaEsperada = "SELECT v FROM Vuelo v INNER JOIN v.tramos t WHERE ((nombre = 'pepe') AND ((nombre = 'tartu') OR (edad = '23')))";
         Busqueda busqueda = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("nombre", "pepe");
         Criterio c2 = new Criterio("nombre", "tartu");
         Criterio c3 = new Criterio("edad", "23");
         busqueda.agregarCriterio(new And(c1, new Or(c2, c3)));
-        busqueda.setOrden(new Orden("nombre"));
         assertEquals("Se espera que los dos strings sean iguales", consultaEsperada, busqueda.getQuery());
     }
 
@@ -143,7 +144,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     public void testBuscarVuelosConOrigenOrdenadoPorPrecio() {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
-        Orden orden = new Orden("t.precio asc");
+        Orden orden = new OrdenPorPrecio();
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
         ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
@@ -156,7 +157,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     public void testBuscarVuelosConOrigenOrdenadoPorCantidadDeEscalas() {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
-        Orden orden = new Orden("COUNT(v.tramos) desc");
+        Orden orden = new OrdenPorEscalas();
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
         ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
