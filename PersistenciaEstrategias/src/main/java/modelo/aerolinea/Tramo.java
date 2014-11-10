@@ -1,12 +1,12 @@
 package modelo.aerolinea;
 
-import excepciones.AsientoYaReservadoException;
-import modelo.usuario.Usuario;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import modelo.usuario.Usuario;
+import excepciones.AsientoYaReservadoException;
 
 public class Tramo {
 

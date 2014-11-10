@@ -1,10 +1,7 @@
 package modelo.usuario;
 
-import excepciones.AsientoYaReservadoException;
 import modelo.aerolinea.Tramo;
-import modelo.busquedas.Busqueda;
-
-import java.util.ArrayList;
+import excepciones.AsientoYaReservadoException;
 
 public class Usuario {
 

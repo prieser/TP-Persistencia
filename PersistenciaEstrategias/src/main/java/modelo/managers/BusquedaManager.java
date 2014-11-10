@@ -7,6 +7,7 @@ import modelo.busquedas.Busqueda;
 import modelo.daos.SessionManager;
 import modelo.servicios.busqueda.BuscarVuelos;
 import modelo.usuario.Usuario;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -21,7 +22,7 @@ public class BusquedaManager {
     }
     
 	@SuppressWarnings("unchecked")
-	public ArrayList<String> buscarVuelos(Busqueda busqueda) {
+	public ArrayList<Vuelo> buscarVuelos(Busqueda busqueda) {
         return SessionManager.runInSession(new BuscarVuelos(busqueda));
 	}
 

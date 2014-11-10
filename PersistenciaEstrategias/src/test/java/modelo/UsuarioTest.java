@@ -3,9 +3,11 @@ package modelo;
 
 import junit.framework.Assert;
 import modelo.usuario.Usuario;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import repository.UsuarioRepository;
 
 @SuppressWarnings("deprecation")

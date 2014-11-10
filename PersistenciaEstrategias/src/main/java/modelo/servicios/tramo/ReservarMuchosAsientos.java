@@ -1,12 +1,12 @@
 package modelo.servicios.tramo;
 
 
-import excepciones.AsientoYaReservadoException;
+import java.util.ArrayList;
+
 import modelo.aerolinea.Tramo;
 import modelo.servicios.Operation;
 import modelo.usuario.Usuario;
-
-import java.util.ArrayList;
+import excepciones.AsientoYaReservadoException;
 
 public class ReservarMuchosAsientos implements Operation<Tramo> {
 

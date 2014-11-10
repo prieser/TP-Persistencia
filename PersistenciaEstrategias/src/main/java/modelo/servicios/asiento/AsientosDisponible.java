@@ -1,14 +1,15 @@
 package modelo.servicios.asiento;
 
 
+import java.util.List;
+
 import modelo.aerolinea.Asiento;
 import modelo.aerolinea.Tramo;
 import modelo.daos.SessionManager;
 import modelo.servicios.Operation;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import java.util.List;
 
 public class AsientosDisponible implements Operation<List<Asiento>> {
 

@@ -1,12 +1,12 @@
 package modelo.usuario;
 
+import java.util.Random;
+
+import repository.UsuarioRepository;
 import excepciones.NuevaPasswordInvalidaException;
 import excepciones.PasswordIncorrectaException;
 import excepciones.UsuarioNoExiste;
 import excepciones.UsuarioYaExisteException;
-import repository.UsuarioRepository;
-
-import java.util.Random;
 
 public class Sistema {
 

@@ -1,8 +1,8 @@
 package modelo.busquedas;
 
-import modelo.usuario.Usuario;
-
 import java.util.ArrayList;
+
+import modelo.usuario.Usuario;
 
 public class Busqueda {
 
@@ -57,7 +57,7 @@ public class Busqueda {
     }
 
     public String getQuery() {
-        String query = "SELECT v.codigoVuelo FROM Vuelo v INNER JOIN v.tramos t WHERE ";
+        String query = "SELECT v FROM Vuelo v INNER JOIN v.tramos t WHERE ";
 
         for (Componente unCriterio : this.criterios) {
             query = query + unCriterio.getQuery();
