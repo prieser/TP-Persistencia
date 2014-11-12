@@ -1,7 +1,11 @@
 package modelo.usuario;
 
-import modelo.aerolinea.Tramo;
 import excepciones.AsientoYaReservadoException;
+import modelo.aerolinea.Tramo;
+import modelo.busquedas.Busqueda;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Usuario {
 
@@ -14,6 +18,7 @@ public class Usuario {
     private String contrasenia;
     private String codigoDeValidacion;
     private boolean activo;
+    private Set<Busqueda> busquedasDelUsuario;
 
     public Usuario(String nombre, String apellido, String nombreUsuario, String email, String fechaDeNacimiento, String contrasenia) {
         super();
@@ -23,6 +28,7 @@ public class Usuario {
         this.email = email;
         this.fechaDeNacimiento = fechaDeNacimiento;
         this.contrasenia = contrasenia;
+        this.busquedasDelUsuario = new HashSet<Busqueda>();
     }
 
     public Usuario() {
@@ -33,6 +39,7 @@ public class Usuario {
         super();
         this.nombre = nombreDelUsuario;
         this.apellido = apellidoDelUsuario;
+        this.busquedasDelUsuario = new HashSet<Busqueda>();
     }
 
 
@@ -106,6 +113,14 @@ public class Usuario {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public Set<Busqueda> getBusquedasDelUsuario() {
+        return busquedasDelUsuario;
+    }
+
+    public void setBusquedasDelUsuario(Set<Busqueda> busquedasDelUsuario) {
+        this.busquedasDelUsuario = busquedasDelUsuario;
     }
 
     @Override

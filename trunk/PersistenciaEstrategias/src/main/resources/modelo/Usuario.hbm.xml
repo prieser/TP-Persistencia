@@ -14,5 +14,10 @@
             <column name="NOMBRE" length="20" not-null="true" unique="true"/>
         </property>
 
+        <set name="busquedasDelUsuario" table="Usuario_y_Busquedas" cascade="all" lazy="false">
+            <key column="BUSQUEDAS"/>
+            <many-to-many class="modelo.busquedas.Busqueda"/>
+        </set>
+
     </class>
 </hibernate-mapping>

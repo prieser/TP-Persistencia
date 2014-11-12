@@ -5,11 +5,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-
         <property name="hibernate.connection.url">jdbc:mysql://localhost/database</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
-
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
@@ -21,7 +19,7 @@
         <mapping resource="modelo/Tramo.hbm.xml"></mapping>
         <mapping resource="modelo/Asiento.hbm.xml"></mapping>
         <mapping resource="modelo/Usuario.hbm.xml"></mapping>
-        <mapping resource="modelo/aerolinea/Busqueda.hbm.xml"></mapping>
+        <mapping resource="modelo/Busqueda.hbm.xml"></mapping>
         <mapping resource="modelo/Orden.hbm.xml"></mapping>
         <mapping resource="modelo/Criterio.hbm.xml"></mapping>
         <mapping resource="modelo/Operador.hbm.xml"></mapping>

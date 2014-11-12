@@ -22,7 +22,6 @@ public class BuscarVuelos implements Operation<ArrayList<Vuelo>> {
     @Override
     public ArrayList<Vuelo> execute() {
         Session session = SessionManager.getSession();
-        System.out.println(busqueda.getQuery());
         Query query = session.createQuery(busqueda.getQuery());
         return (ArrayList<Vuelo>) query.list();
     }
