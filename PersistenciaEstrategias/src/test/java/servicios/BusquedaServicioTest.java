@@ -86,7 +86,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(resultado.contains(v1));
         assertTrue(resultado.contains(v2));
         assertTrue(resultado.contains(v3));
@@ -97,7 +97,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("DESTINO", "Quito");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(resultado.contains(v3));
         assertFalse(resultado.contains(v1));
         assertFalse(resultado.contains(v2));
@@ -108,7 +108,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
         Criterio c1 = new Criterio("HORA_SALIDA", "2014-11-10");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(resultado.contains(v1));
         assertFalse(resultado.contains(v2));
         assertFalse(resultado.contains(v3));
@@ -120,7 +120,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Criterio c1 = new Criterio("ORIGEN", "Montevideo");
         Criterio c2 = new Criterio("DESTINO", "Miami");
         busquedaARealizar.agregarCriterio(new And(c1, c2));
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(resultado.isEmpty());
     }
 
@@ -130,7 +130,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Criterio c1 = new Criterio("ORIGEN", "San Pablo");
         Criterio c2 = new Criterio("DESTINO", "Pretoria");
         busquedaARealizar.agregarCriterio(new And(c1, c2));
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(resultado.contains(v2));
         assertFalse(resultado.contains(v1));
         assertFalse(resultado.contains(v3));
@@ -147,7 +147,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Orden orden = new OrdenPorPrecio();
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(v3.equals(resultado.get(0)));
         assertTrue(v1.equals(resultado.get(1)));
         assertTrue(v2.equals(resultado.get(2)));
@@ -160,7 +160,7 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
         Orden orden = new OrdenPorEscalas();
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
-        ArrayList<Vuelo> resultado = new BusquedaManager().buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
         assertTrue(v1.equals(resultado.get(0)));
         assertTrue(v2.equals(resultado.get(1)));
         assertTrue(v3.equals(resultado.get(2)));
