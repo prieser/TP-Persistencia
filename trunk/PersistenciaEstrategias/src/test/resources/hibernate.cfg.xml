@@ -17,15 +17,15 @@
 		<property name="show_sql">true</property>
 
 
-		<mapping resource="modelo/aerolinea/Empresa.hbm.xml"></mapping>
-		<mapping resource="modelo/aerolinea/Aerolinea.hbm.xml"></mapping>
-		<mapping resource="modelo/aerolinea/Vuelo.hbm.xml"></mapping>
-		<mapping resource="modelo/aerolinea/Tramo.hbm.xml"></mapping>
-		<mapping resource="modelo/aerolinea/Asiento.hbm.xml"></mapping>
-		<mapping resource="modelo/aerolinea/Usuario.hbm.xml"></mapping>
-		<mapping resource="modelo/busquedas/Orden.hbm.xml"></mapping>
-		<mapping resource="modelo/busquedas/Criterio.hbm.xml"></mapping>
-		<mapping resource="modelo/busquedas/Operador.hbm.xml"></mapping>
+		<mapping resource="modelo/Empresa.hbm.xml"></mapping>
+		<mapping resource="modelo/Aerolinea.hbm.xml"></mapping>
+		<mapping resource="modelo/Vuelo.hbm.xml"></mapping>
+		<mapping resource="modelo/Tramo.hbm.xml"></mapping>
+		<mapping resource="modelo/Asiento.hbm.xml"></mapping>
+		<mapping resource="modelo/Usuario.hbm.xml"></mapping>
+		<mapping resource="modelo/Orden.hbm.xml"></mapping>
+		<mapping resource="modelo/Criterio.hbm.xml"></mapping>
+		<mapping resource="modelo/Operador.hbm.xml"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
