@@ -1,29 +1,30 @@
 package modelo.managers;
 
-import java.util.ArrayList;
-
 import modelo.aerolinea.Vuelo;
 import modelo.busquedas.Busqueda;
 import modelo.daos.SessionManager;
 import modelo.servicios.busqueda.BuscarVuelos;
+import modelo.servicios.busqueda.GuardarBusqueda;
+import modelo.servicios.busqueda.TraerBusquedas;
 import modelo.usuario.Usuario;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
+import java.util.ArrayList;
 
 public class BusquedaManager {
 
     @SuppressWarnings("unchecked")
-	public ArrayList<Busqueda> traerBusquedas(Usuario usuario) {
-    	Session session = SessionManager.getSession();
-		Query query = session.createQuery("SELECT busqueda from Usuario usuario join usuario.busquedas busqueda where usuario = :usuario");
-        query.setParameter("usuario", usuario);
-		return (ArrayList<Busqueda>) query.list();
+    public ArrayList<Busqueda> traerBusquedas(Usuario usuario) {
+        return SessionManager.runInSession(new TraerBusquedas(usuario));
     }
-    
-	@SuppressWarnings("unchecked")
-	public ArrayList<Vuelo> buscarVuelos(Busqueda busqueda) {
+
+    @SuppressWarnings("unchecked")
+    public ArrayList<Vuelo> buscarVuelos(Busqueda busqueda, Usuario usuarioQueRealizaBusqueda) {
         return SessionManager.runInSession(new BuscarVuelos(busqueda));
-	}
+    }
+
+    @SuppressWarnings("unchecked")
+    public Busqueda guardarBusqueda(Busqueda busqueda) {
+        return SessionManager.runInSession(new GuardarBusqueda(busqueda));
+    }
 
 }

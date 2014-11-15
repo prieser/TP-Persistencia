@@ -2,21 +2,22 @@ package modelo.servicios.busqueda;
 
 import modelo.busquedas.Busqueda;
 import modelo.daos.GenericDAO;
+import modelo.daos.SessionManager;
 import modelo.servicios.Operation;
-import modelo.usuario.Usuario;
+import org.hibernate.Session;
 
 public class GuardarBusqueda implements Operation<Busqueda> {
 
-    private Usuario usuarioQueRealizaBusqueda;
+    private Busqueda busquedaRealizada;
 
-    public GuardarBusqueda(Usuario usuarioQueRealizaBusqueda) {
-        this.usuarioQueRealizaBusqueda = usuarioQueRealizaBusqueda;
+    public GuardarBusqueda(Busqueda busquedaRealizada) {
+        this.busquedaRealizada = busquedaRealizada;
     }
 
     @Override
     public Busqueda execute() {
-        Busqueda a = new Busqueda(usuarioQueRealizaBusqueda);
-        new GenericDAO<Busqueda>(Busqueda.class).save(a);
-        return a;
+        Session session = SessionManager.getSession();
+        new GenericDAO<Busqueda>(Busqueda.class).save(this.busquedaRealizada);
+        return busquedaRealizada;
     }
 }

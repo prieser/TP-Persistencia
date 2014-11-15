@@ -154,4 +154,7 @@ public class Usuario {
     }
 
 
+    public void agregarBusqueda(Busqueda busquedaRealizada) {
+        this.getBusquedasDelUsuario().add(busquedaRealizada);
+    }
 }

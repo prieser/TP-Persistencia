@@ -5,16 +5,16 @@ import modelo.daos.GenericDAO;
 import modelo.servicios.Operation;
 
 public class CrearVuelo implements Operation<Vuelo> {
-    private int id;
+    private String codigoVuelo;
 
 
-    public CrearVuelo(int id) {
+    public CrearVuelo(String codigoVuelo) {
         super();
-        this.id = id;
+        this.codigoVuelo = codigoVuelo;
     }
 
     public Vuelo execute() {
-        Vuelo v = new Vuelo();
+        Vuelo v = new Vuelo(codigoVuelo);
         new GenericDAO<Vuelo>(Vuelo.class).save(v);
         return v;
     }

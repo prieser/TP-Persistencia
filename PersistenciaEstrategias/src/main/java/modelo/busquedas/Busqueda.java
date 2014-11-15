@@ -1,6 +1,7 @@
 package modelo.busquedas;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import modelo.busquedas.orden.Orden;
 import modelo.usuario.Usuario;
@@ -8,9 +9,8 @@ import modelo.usuario.Usuario;
 public class Busqueda {
 
     private int idBusqueda;
-    private ArrayList<Componente> criterios = new ArrayList<Componente>();
+    private HashSet<Componente> criterios;
     private Orden orden;
-    private Usuario usuario;
 
     public int getIdBusqueda() {
         return idBusqueda;
@@ -20,11 +20,11 @@ public class Busqueda {
         this.idBusqueda = idBusqueda;
     }
 
-    public ArrayList<Componente> getCriterios() {
+    public HashSet<Componente> getCriterios() {
         return criterios;
     }
 
-    public void setCriterios(ArrayList<Componente> criterios) {
+    public void setCriterios(HashSet<Componente> criterios) {
         this.criterios = criterios;
     }
 
@@ -36,14 +36,6 @@ public class Busqueda {
         this.orden = orden;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public void agregarCriterio(Componente criterioAAgregar) {
         this.criterios.add(criterioAAgregar);
     }
@@ -52,9 +44,8 @@ public class Busqueda {
         this.setOrden(ordenAAgregar);
     }
 
-    public Busqueda(Usuario usuario) {
-        this.criterios = new ArrayList<Componente>();
-        this.usuario = usuario;
+    public Busqueda() {
+        this.criterios = new HashSet<Componente>();
     }
 
     public String getQuery() {

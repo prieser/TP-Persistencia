@@ -14,6 +14,7 @@ import modelo.busquedas.orden.OrdenPorEscalas;
 import modelo.busquedas.orden.OrdenPorPrecio;
 import modelo.managers.BusquedaManager;
 import modelo.managers.TramoManager;
+import modelo.managers.UsuarioManager;
 import modelo.managers.VueloManager;
 import modelo.usuario.Usuario;
 
@@ -23,6 +24,7 @@ import org.junit.Test;
 public class BusquedaServicioTest extends AbstractHibernateTest {
 
     Usuario usuarioQueRealizaBusqueda = new Usuario("joaquin", "ramirez", "jramirez", null, null, null);
+    UsuarioManager usuarioManager = new UsuarioManager();
     VueloManager vueloManager = new VueloManager();
     TramoManager tramoManager = new TramoManager();
     BusquedaManager busquedaManager = new BusquedaManager();
@@ -71,9 +73,23 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     }
 
     @Test
+    public void testGuardaLaBusqueda() {
+
+        usuarioManager.guardarUsuario(usuarioQueRealizaBusqueda);
+
+        Busqueda busquedaARealizar = new Busqueda();
+        Criterio c1 = new Criterio("ORIGEN", "BsAs");
+        busquedaARealizar.agregarCriterio(c1);
+        busquedaManager.guardarBusqueda(busquedaARealizar);
+
+        ArrayList<Busqueda> busquedasDelUsuario = busquedaManager.traerBusquedas(this.usuarioQueRealizaBusqueda);
+        assertTrue(busquedasDelUsuario.contains(busquedaARealizar));
+    }
+
+    @Test
     public void testConstruirQueryCorrectamente() {
         String consultaEsperada = "SELECT v FROM Vuelo v INNER JOIN v.tramos t WHERE ((nombre = 'pepe') AND ((nombre = 'tartu') OR (edad = '23')))";
-        Busqueda busqueda = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busqueda = new Busqueda();
         Criterio c1 = new Criterio("nombre", "pepe");
         Criterio c2 = new Criterio("nombre", "tartu");
         Criterio c3 = new Criterio("edad", "23");
@@ -83,10 +99,10 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
 
     @Test
     public void testBuscarVuelosConOrigen() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(resultado.contains(v1));
         assertTrue(resultado.contains(v2));
         assertTrue(resultado.contains(v3));
@@ -94,10 +110,10 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
 
     @Test
     public void testBuscarVuelosConDestino() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("DESTINO", "Quito");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(resultado.contains(v3));
         assertFalse(resultado.contains(v1));
         assertFalse(resultado.contains(v2));
@@ -105,10 +121,10 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     
     @Test
     public void testBuscarVuelosConFecha() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("HORA_SALIDA", "2014-11-10");
         busquedaARealizar.agregarCriterio(c1);
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(resultado.contains(v1));
         assertFalse(resultado.contains(v2));
         assertFalse(resultado.contains(v3));
@@ -116,21 +132,21 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
 
     @Test
     public void testBuscarVuelosConOrigenYDestinoNoCompatibles() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("ORIGEN", "Montevideo");
         Criterio c2 = new Criterio("DESTINO", "Miami");
         busquedaARealizar.agregarCriterio(new And(c1, c2));
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(resultado.isEmpty());
     }
 
     @Test
     public void testBuscarVuelosConOrigenYDestinoCompatibles() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("ORIGEN", "San Pablo");
         Criterio c2 = new Criterio("DESTINO", "Pretoria");
         busquedaARealizar.agregarCriterio(new And(c1, c2));
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(resultado.contains(v2));
         assertFalse(resultado.contains(v1));
         assertFalse(resultado.contains(v3));
@@ -142,12 +158,12 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
 
     @Test
     public void testBuscarVuelosConOrigenOrdenadoPorPrecio() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
         Orden orden = new OrdenPorPrecio();
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(v3.equals(resultado.get(0)));
         assertTrue(v1.equals(resultado.get(1)));
         assertTrue(v2.equals(resultado.get(2)));
@@ -155,12 +171,12 @@ public class BusquedaServicioTest extends AbstractHibernateTest {
     
     @Test
     public void testBuscarVuelosConOrigenOrdenadoPorCantidadDeEscalas() {
-        Busqueda busquedaARealizar = new Busqueda(usuarioQueRealizaBusqueda);
+        Busqueda busquedaARealizar = new Busqueda();
         Criterio c1 = new Criterio("ORIGEN", "BsAs");
         Orden orden = new OrdenPorEscalas();
         busquedaARealizar.agregarCriterio(c1);
         busquedaARealizar.agregarOrden(orden);
-        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar);
+        ArrayList<Vuelo> resultado = busquedaManager.buscarVuelos(busquedaARealizar, usuarioQueRealizaBusqueda);
         assertTrue(v1.equals(resultado.get(0)));
         assertTrue(v2.equals(resultado.get(1)));
         assertTrue(v3.equals(resultado.get(2)));
