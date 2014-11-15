@@ -15,8 +15,8 @@ public class VueloManager {
         return SessionManager.runInSession(new ConsultarVuelo(id));
     }
 
-    public void crearVuelo(int id) {
-        SessionManager.runInSession(new CrearVuelo(id));
+    public void crearVuelo(String codigoVuelo) {
+        SessionManager.runInSession(new CrearVuelo(codigoVuelo));
     }
 
     public void guardarVuelo(Vuelo vueloAGuardar) {

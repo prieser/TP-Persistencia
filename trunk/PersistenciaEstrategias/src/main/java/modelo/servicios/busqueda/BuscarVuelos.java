@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modelo.aerolinea.Vuelo;
 import modelo.busquedas.Busqueda;
+import modelo.daos.GenericDAO;
 import modelo.daos.SessionManager;
 import modelo.servicios.Operation;
 
@@ -17,7 +18,6 @@ public class BuscarVuelos implements Operation<ArrayList<Vuelo>> {
     public BuscarVuelos(Busqueda busqueda) {
         this.busqueda = busqueda;
     }
-
 
     @Override
     public ArrayList<Vuelo> execute() {

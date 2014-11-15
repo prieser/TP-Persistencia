@@ -14,6 +14,10 @@
             <column name="NOMBRE" length="20" not-null="true" unique="true"/>
         </property>
 
+        <property name="nombreUsuario" type="java.lang.String">
+            <column name="NOMBRE_DE_USUARIO" length="20" not-null="false" unique="true"/>
+        </property>
+
         <set name="busquedasDelUsuario" table="Usuario_y_Busquedas" cascade="all" lazy="false">
             <key column="BUSQUEDAS"/>
             <many-to-many class="modelo.busquedas.Busqueda"/>
