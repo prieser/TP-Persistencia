@@ -1,7 +1,9 @@
 package unq.tpi.persistencia.performanceEj.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.classic.Session;
 
 import unq.tpi.persistencia.performanceEj.model.Employee;
@@ -27,6 +29,14 @@ public class EmployeeDAO {
 	public Employee getByCode(int id) {
 		Session session = SessionManager.getSession();
 		return (Employee) session.load(Employee.class, id);
+	}
+
+	public ArrayList<Employee> tenMaxSalaryEmployee() {
+		Session session = SessionManager.getSession();
+		String consulta = "SELECT e FROM Employee e JOIN e.salaries s WHERE s.to = '9999-01-01' ORDER BY s.amount";
+		Query query = session.createQuery(consulta);
+		query.setMaxResults(10);
+		return (ArrayList<Employee>) query.list();
 	}
 
 }
