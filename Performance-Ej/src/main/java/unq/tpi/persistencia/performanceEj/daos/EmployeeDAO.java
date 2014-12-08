@@ -14,8 +14,7 @@ public class EmployeeDAO {
 	public Employee getByName(final String name, final String lastName) {
 		Session session = SessionManager.getSession();
 		return (Employee) session
-				.createQuery(
-						"from Employee where firstName = :name and lastName = :lastName")
+				.createQuery("from Employee where firstName = :name and lastName = :lastName")
 				.setParameter("name", name).setParameter("lastName", lastName)
 				.uniqueResult();
 	}
