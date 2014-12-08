@@ -27,8 +27,11 @@ public class EmployeeTest extends TestCase {
 					assertNull(e.getDepartment());
 					assertEquals(2,e.getHistoricDepartments().size());
 					assertNull(e.getTitle());					
-					assertEquals(1,e.getHistoricTitles().size());	
+					assertEquals(1,e.getHistoricTitles().size());
+
+//					El problema aca es que se trae todos los salarios y solo esta mirando el ultimo. El ultimo salario NO ES 9999-01-01
 					assertEquals(51339.0, e.getSalary());
+
 					return null;
 				} catch (Exception e) {
 					throw new RuntimeException(e);
