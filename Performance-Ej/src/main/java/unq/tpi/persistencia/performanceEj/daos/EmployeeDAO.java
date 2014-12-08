@@ -14,8 +14,9 @@ public class EmployeeDAO {
 	public Employee getByName(final String name, final String lastName) {
 		Session session = SessionManager.getSession();
 		return (Employee) session
-				.createQuery("from Employee where firstName = :name and lastName = :lastName")
+				.createQuery("select e from Employee e join e.salaries s where e.firstName = :name and e.lastName = :lastName Order by s.amount")
 				.setParameter("name", name).setParameter("lastName", lastName)
+				.setFirstResult(1)
 				.uniqueResult();
 	}
 
