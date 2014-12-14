@@ -1,9 +1,9 @@
-package java;
+package test.java;
+
 
 import main.java.Collection;
 import main.java.SistemDB;
 import main.java.nosqltp.model.Usuario;
-import net.vz.mongodb.jackson.DBCursor;
 import net.vz.mongodb.jackson.DBQuery;
 import org.junit.Assert;
 import org.junit.Test;
