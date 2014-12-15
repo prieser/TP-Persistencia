@@ -24,7 +24,7 @@ public class DepartmentDAO {
 
 	public Department getByCodeToPagosReview(String num) {
 		Session session = SessionManager.getSession();
-		Query query = session.createQuery("select distinct e.nom d from Department d join d.employees e join e.salaries s where d.number = :number and s.to = '9999-01-01'");
+		Query query = session.createQuery("select distinct d from Department d join d.employees e join e.salaries s where d.number = :number and s.to = '9999-01-01'");
 		query.setParameter("number", num);
 		return (Department) query.uniqueResult();
 	}
