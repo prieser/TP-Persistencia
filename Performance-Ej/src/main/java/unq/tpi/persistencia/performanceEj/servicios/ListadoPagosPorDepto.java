@@ -22,21 +22,21 @@ public class ListadoPagosPorDepto extends AbstractListado {
 		// Con la nueva query la busqueda se hace bien pero el problema esta que en el get totalsalaries de abajo hace una consulta
 		// x cada empleado para obtener el salario 
 		
-//		this.newLine();
-//		this.addColumn("Total").addColumn(depto.getTotalSalaries()).newLine();
-//		this.newLine();
+		this.newLine();
+		this.addColumn("Total").addColumn(depto.getTotalSalaries()).newLine();
+    	this.newLine();
 		
 		this.addColumn("Nombre");
 		this.addColumn("Titulo");
 		this.addColumn("Monto");
 		this.newLine();
 
-//		for (Employee e : depto.getEmployees()) {
-//			this.addColumn(e.getFullName());
-//			this.addColumn(e.getTitle());
-//			this.addColumn(e.getSalary());
-//			this.newLine();
-//		}
+    	for (Employee e : depto.getEmployees()) {
+			this.addColumn(e.getFullName());
+			this.addColumn(e.getTitle());
+     		this.addColumn(e.getSalary());
+			this.newLine();
+		}
 	}
 
 	@Override
