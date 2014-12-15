@@ -1,13 +1,12 @@
-package main.java.nosqltp.servicios;
-
-import main.java.Collection;
-import main.java.SistemDB;
-import main.java.nosqltp.exceptions.YaExisteException;
-import main.java.nosqltp.model.Destino;
-import main.java.nosqltp.model.Usuario;
-import net.vz.mongodb.jackson.DBQuery;
+package nosqltp.servicios;
 
 import java.util.List;
+
+import net.vz.mongodb.jackson.DBQuery;
+import nosqltp.Collection;
+import nosqltp.SistemDB;
+import nosqltp.exceptions.YaExisteException;
+import nosqltp.model.Usuario;
 
 public class AgregarUsuarioService {
 

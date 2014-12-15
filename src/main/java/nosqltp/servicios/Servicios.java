@@ -1,17 +1,17 @@
-package main.java.nosqltp.servicios;
+package nosqltp.servicios;
 
-import main.java.nosqltp.exceptions.NoExisteException;
-import main.java.nosqltp.exceptions.YaExisteException;
-import main.java.nosqltp.model.Destino;
-import main.java.nosqltp.model.Estado;
-import main.java.nosqltp.model.Privacidad;
-import main.java.nosqltp.model.Usuario;
+import nosqltp.exceptions.NoExisteException;
+import nosqltp.exceptions.YaExisteException;
+import nosqltp.model.Destino;
+import nosqltp.model.Estado;
+import nosqltp.model.Privacidad;
+import nosqltp.model.Usuario;
 
 public abstract class Servicios {
 
-    public static void agregarDestino(String nombreDelDestino) throws YaExisteException {
+    public static void agregarDestino(String nombreDelDestino, String nombreDeUsuario) throws YaExisteException {
         Destino destinoAAgregar = new Destino(nombreDelDestino);
-        new AgregarDestinoService(destinoAAgregar).ejecutar();
+        new AgregarDestinoService(nombreDeUsuario, destinoAAgregar).ejecutar();
     }
 
     public static void agregarUsuario(String nombreDelUsuario) throws YaExisteException {
@@ -19,7 +19,11 @@ public abstract class Servicios {
         new AgregarUsuarioService(usuarioAAgregar).ejecutar();
     }
 
-    public static void comentarDestino(String s, String s1, Estado megusta, Privacidad publico) throws YaExisteException, NoExisteException {
-        new AgregarComentario(s, s1, megusta, publico);
+    public static void comentarDestino(String usuarioQueComenta, String destinoQueComenta, String comentario, Estado estado, Privacidad privacidad) throws YaExisteException, NoExisteException {
+        new AgregarComentario(usuarioQueComenta, destinoQueComenta, comentario, estado, privacidad);
+    }
+    
+    public static void verComentariosDeUnUsuario(String nombreDeUsuario) throws YaExisteException {
+    	new VerComentariosDeUnUsuarioService(nombreDeUsuario).ejecutar();
     }
 }

@@ -1,6 +1,7 @@
-package main.java.nosqltp.model;
+package nosqltp.model;
 
 import net.vz.mongodb.jackson.ObjectId;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Comentario {
