@@ -1,12 +1,14 @@
-package main.java;
+package nosqltp;
+
+import java.util.List;
+
+import com.mongodb.MongoException;
 
 import net.vz.mongodb.jackson.JacksonDBCollection;
 import net.vz.mongodb.jackson.MapReduce;
 import net.vz.mongodb.jackson.MapReduce.MapReduceCommand;
 import net.vz.mongodb.jackson.MapReduceOutput;
 import net.vz.mongodb.jackson.WriteResult;
-
-import java.util.List;
 
 public class Collection<T> {
     private JacksonDBCollection<T, String> mongoCollection;
@@ -48,5 +50,9 @@ public class Collection<T> {
 
     public JacksonDBCollection<T, String> getMongoCollection() {
         return mongoCollection;
+    }
+
+    public WriteResult<T, String> updateById(String id, T object) throws MongoException {
+        return mongoCollection.updateById(id, object);
     }
 }

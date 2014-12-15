@@ -1,11 +1,12 @@
-package main.java;
+package nosqltp;
+
+import java.net.UnknownHostException;
+
+import net.vz.mongodb.jackson.JacksonDBCollection;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
-import net.vz.mongodb.jackson.JacksonDBCollection;
-
-import java.net.UnknownHostException;
 
 public class SistemDB {
     private static SistemDB INSTANCE;

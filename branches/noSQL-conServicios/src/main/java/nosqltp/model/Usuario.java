@@ -1,91 +1,113 @@
 package main.java.nosqltp.model;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import net.vz.mongodb.jackson.ObjectId;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import nosqltp.exceptions.YaExisteException;
+import nosqltp.servicios.Comentario;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class Usuario {
-    @ObjectId
-    @JsonProperty("_id")
-    private String idUsuario;
+	@ObjectId
+	@JsonProperty("_id")
+	private String idUsuario;
 
-    private String nombreDeUsuario;
-    private List<Usuario> usuariosQueSigo;
-    private List<Destino> destinos;
+	private String nombreDeUsuario;
+	private List<Usuario> usuariosQueSigo;
+	private List<Destino> destinos;
 
-    public String getIdUsuario() {
-        return idUsuario;
-    }
+	public String getIdUsuario() {
+		return idUsuario;
+	}
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-    public String getNombreDeUsuario() {
-        return nombreDeUsuario;
-    }
+	public String getNombreDeUsuario() {
+		return nombreDeUsuario;
+	}
 
-    public void setNombreDeUsuario(String nombreDeUsuario) {
-        this.nombreDeUsuario = nombreDeUsuario;
-    }
+	public void setNombreDeUsuario(String nombreDeUsuario) {
+		this.nombreDeUsuario = nombreDeUsuario;
+	}
 
-    public List<Usuario> getUsuariosQueSigo() {
-        return usuariosQueSigo;
-    }
+	public List<Usuario> getUsuariosQueSigo() {
+		return usuariosQueSigo;
+	}
 
-    public void setUsuariosQueSigo(List<Usuario> usuariosQueSigo) {
-        this.usuariosQueSigo = usuariosQueSigo;
-    }
+	public void setUsuariosQueSigo(List<Usuario> usuariosQueSigo) {
+		this.usuariosQueSigo = usuariosQueSigo;
+	}
 
-    public List<Destino> getDestinos() {
-        return destinos;
-    }
+	public List<Destino> getDestinos() {
+		return destinos;
+	}
 
-    public void setDestinos(List<Destino> destinos) {
-        this.destinos = destinos;
-    }
+	public void setDestinos(List<Destino> destinos) {
+		this.destinos = destinos;
+	}
 
-    public Usuario(String nombreDeUsuario) {
-        this.nombreDeUsuario = nombreDeUsuario;
-        this.usuariosQueSigo = new ArrayList<Usuario>();
-        this.destinos = new ArrayList<Destino>();
-    }
+	public Usuario(String nombreDeUsuario) {
+		this.nombreDeUsuario = nombreDeUsuario;
+		this.usuariosQueSigo = new ArrayList<Usuario>();
+		this.destinos = new ArrayList<Destino>();
+	}
 
-    public Usuario() {
-    }
+	public Usuario() {
+	}
 
-    public void seguir(Usuario seguidor) {
-        this.getUsuariosQueSigo().add(seguidor);
-    }
+	public void seguir(Usuario seguidor) {
+		this.getUsuariosQueSigo().add(seguidor);
+	}
 
-    public void agregarDestino(Destino destinoNuevo) {
-        this.getDestinos().add(destinoNuevo);
-    }
+	public void agregarDestino(Destino destinoNuevo) {
+		if (!this.getDestinos().contains(destinoNuevo)) {
+			this.getDestinos().add(destinoNuevo);
+		} else {
+			throw new YaExisteException("El destino que intenta guardar ya existe");
+		}
+	}
 
-    public void comentarDestino(Destino destinoAComentar, Comentario comentario) {
-        destinoAComentar.agregarComentario(comentario);
-    }
+	public void comentarDestino(Destino destinoAComentar, Comentario comentario) {
+		destinoAComentar.agregarComentario(comentario);
+	}
 
-    public boolean isSeguidor(Usuario amigoPosible){
-        return this.getUsuariosQueSigo().contains(amigoPosible);
-    }
+	public boolean isSeguidor(Usuario amigoPosible) {
+		return this.getUsuariosQueSigo().contains(amigoPosible);
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	public void agregarComentario(String nombreDestino, Comentario comentario) {
+		for (Destino unDestino : this.getDestinos()) {
+			if (unDestino.getNombreDestino().equals(nombreDestino)) {
+				unDestino.agregarComentario(comentario);
+			}
+		}
+	}
 
-        Usuario usuario = (Usuario) o;
+	public List<Comentario> getAllComentarios() {
+		List<Comentario> comentarios;
+		for (Destino unDestino : this.getDestinos()) {
+			comentarios.addAll(unDestino.getComentarios());
+		}
+		return comentarios;
+	}
 
-        if (!nombreDeUsuario.equals(usuario.nombreDeUsuario)) return false;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
-        return true;
-    }
+		Usuario usuario = (Usuario) o;
+
+		if (!nombreDeUsuario.equals(usuario.nombreDeUsuario))
+			return false;
+
+		return true;
+	}
 
 }

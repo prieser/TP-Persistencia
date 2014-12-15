@@ -1,10 +1,11 @@
 package main.java.nosqltp.model;
 
-import net.vz.mongodb.jackson.ObjectId;
-import org.codehaus.jackson.annotate.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import net.vz.mongodb.jackson.ObjectId;
+
+import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Destino {
 
