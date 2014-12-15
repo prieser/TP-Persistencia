@@ -12,7 +12,7 @@ public class ListadosTest extends TestCase {
 		new ListadoPagosPorDepto("d007").listado();
 	}
 
-//	Test Arreglado
+
 	public void testListadoDeptos() throws Exception {
 		new ListadoDeptos().listado();
 	}

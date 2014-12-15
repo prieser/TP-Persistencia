@@ -12,9 +12,11 @@ public class ListadoDeptos extends AbstractListado {
 		return "./target/Deptos.csv";
 	}
 
+	/* Es correcto armar otra query */
 	@Override
 	protected void doListado() throws Exception {
-		List<Department> deptos = new DepartmentDAO().getAll();
+		List<Department> deptos = new DepartmentDAO().getAllWithManager();
+//		List<Department> deptos = new DepartmentDAO().getAll();
 		this.addColumn("Codigo").addColumn("Nombre").addColumn("Manager").newLine();
 		
 		for(Department d: deptos){
