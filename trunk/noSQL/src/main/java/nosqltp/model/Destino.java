@@ -3,15 +3,17 @@ package main.java.nosqltp.model;
 import net.vz.mongodb.jackson.ObjectId;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Destino {
 
     @ObjectId
     @JsonProperty("_id")
     private String idDestino;
 
-    private String comentario;
-    private Estado estado;
-    private Privacidad politicaDePrivacidad;
+    private String nombreDestino;
+    private List<Comentario> comentarios;
 
     public String getIdDestino() {
         return idDestino;
@@ -21,49 +23,32 @@ public class Destino {
         this.idDestino = idDestino;
     }
 
-    public String getComentario() {
-        return comentario;
+    public String getNombreDestino() {
+        return nombreDestino;
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setNombreDestino(String nombreDestino) {
+        this.nombreDestino = nombreDestino;
     }
 
-    public Privacidad getPoliticaDePrivacidad() {
-        return politicaDePrivacidad;
+    public List<Comentario> getComentarios() {
+        return comentarios;
     }
 
-    public void setPoliticaDePrivacidad(Privacidad politicaDePrivacidad) {
-        this.politicaDePrivacidad = politicaDePrivacidad;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
     public Destino() {
     }
 
-    public Destino(String comentario, Estado estado, Privacidad politicaDePrivacidad) {
-        this.comentario = comentario;
-        this.estado = estado;
-        this.politicaDePrivacidad = Privacidad.PUBLICO;
+    public Destino(String nombreDestino) {
+        this.nombreDestino = nombreDestino;
+        this.comentarios = new ArrayList<Comentario>();
     }
 
-    public void meGusta() {
-        this.setEstado(Estado.MEGUSTA);
-    }
-
-    public void noMeGusta() {
-        this.setEstado(Estado.NOMEGUSTA);
-    }
-
-    public void comentar(String comentario) {
-        this.setComentario(comentario);
+    public void agregarComentario(Comentario comentario) {
+        this.getComentarios().add(comentario);
     }
 
     @Override
@@ -73,9 +58,8 @@ public class Destino {
 
         Destino destino = (Destino) o;
 
-        if (comentario != null ? !comentario.equals(destino.comentario) : destino.comentario != null) return false;
-        if (estado != destino.estado) return false;
-        if (politicaDePrivacidad != destino.politicaDePrivacidad) return false;
+        if (nombreDestino != null ? !nombreDestino.equals(destino.nombreDestino) : destino.nombreDestino != null)
+            return false;
 
         return true;
     }

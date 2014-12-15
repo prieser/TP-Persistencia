@@ -68,8 +68,8 @@ public class Usuario {
         this.getDestinos().add(destinoNuevo);
     }
 
-    public void comentarDestino(Destino destinoAComentar, String comentario) {
-        destinoAComentar.comentar(comentario);
+    public void comentarDestino(Destino destinoAComentar, Comentario comentario) {
+        destinoAComentar.agregarComentario(comentario);
     }
 
     public boolean isSeguidor(Usuario amigoPosible){

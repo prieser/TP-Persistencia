@@ -25,7 +25,7 @@ public class UsuarioTest {
     }
 
     @Test
-    public void testInsertarUsuario() {
+    public void testGuardarUsuario() {
         Usuario usuarioNuevo = new Usuario("USUARIONew");
         homeUsuarios.insert(usuarioNuevo);
 
@@ -51,7 +51,7 @@ public class UsuarioTest {
 
     @Test
     public void testGuardarUnDestino(){
-        Destino destino = new Destino("Me parecio lindo", Estado.MEGUSTA, Privacidad.PUBLICO);
+        Destino destino = new Destino("Cancun");
         homeDestinos.insert(destino);
 
         Destino destinoGuardado = homeDestinos.getMongoCollection().find().next();
@@ -61,7 +61,7 @@ public class UsuarioTest {
     @Test
     public void testUsuarioAgregaUnDestino() {
         Usuario usuarioComun = new Usuario("UsuarioComun");
-        Destino destino = new Destino("Me parecio feo", Estado.NOMEGUSTA, Privacidad.PUBLICO);
+        Destino destino = new Destino("Mar del Plata");
         usuarioComun.agregarDestino(destino);
 
         homeUsuarios.insert(usuarioComun);
