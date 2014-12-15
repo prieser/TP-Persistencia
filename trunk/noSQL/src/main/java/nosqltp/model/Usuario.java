@@ -2,9 +2,12 @@ package main.java.nosqltp.model;
 
 
 import net.vz.mongodb.jackson.ObjectId;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Usuario {
@@ -13,8 +16,8 @@ public class Usuario {
     private String idUsuario;
 
     private String nombreDeUsuario;
-    private Set<Usuario> amigos;
-    private Set<Destino> destinos;
+    private List<Usuario> usuariosQueSigo;
+    private List<Destino> destinos;
 
     public String getIdUsuario() {
         return idUsuario;
@@ -32,34 +35,33 @@ public class Usuario {
         this.nombreDeUsuario = nombreDeUsuario;
     }
 
-    public Set<Usuario> getAmigos() {
-        return amigos;
+    public List<Usuario> getUsuariosQueSigo() {
+        return usuariosQueSigo;
     }
 
-    public void setAmigos(Set<Usuario> amigos) {
-        this.amigos = amigos;
+    public void setUsuariosQueSigo(List<Usuario> usuariosQueSigo) {
+        this.usuariosQueSigo = usuariosQueSigo;
     }
 
-    public Set<Destino> getDestinos() {
+    public List<Destino> getDestinos() {
         return destinos;
     }
 
-    public void setDestinos(Set<Destino> destinos) {
+    public void setDestinos(List<Destino> destinos) {
         this.destinos = destinos;
     }
 
     public Usuario(String nombreDeUsuario) {
         this.nombreDeUsuario = nombreDeUsuario;
-        this.amigos = new HashSet<Usuario>();
-        this.destinos = new HashSet<Destino>();
+        this.usuariosQueSigo = new ArrayList<Usuario>();
+        this.destinos = new ArrayList<Destino>();
     }
 
     public Usuario() {
     }
 
-    public void agregarAmigo(Usuario amigoNuevo) {
-        this.getAmigos().add(amigoNuevo);
-        amigoNuevo.getAmigos().add(this);
+    public void seguir(Usuario seguidor) {
+        this.getUsuariosQueSigo().add(seguidor);
     }
 
     public void agregarDestino(Destino destinoNuevo) {
@@ -68,6 +70,10 @@ public class Usuario {
 
     public void comentarDestino(Destino destinoAComentar, String comentario) {
         destinoAComentar.comentar(comentario);
+    }
+
+    public boolean isSeguidor(Usuario amigoPosible){
+        return this.getUsuariosQueSigo().contains(amigoPosible);
     }
 
     @Override
