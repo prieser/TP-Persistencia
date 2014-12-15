@@ -17,10 +17,11 @@ public class AgregarComentario {
 
     private Collection<Destino> homeDestinos = SistemDB.instance().collection(Destino.class);
     private Collection<Usuario> homeUsuarios = SistemDB.instance().collection(Usuario.class);
+    private Collection<Comentario> homeComentarios = SistemDB.instance().collection(Comentario.class);
     private Comentario comentarioAAgregar;
 
     public AgregarComentario(String nombreDeUsuario, String destino, String comentario, Estado estado, Privacidad privacidad) throws NoExisteException {
-        comentarioAAgregar = new Comentario(comentario, estado, privacidad);
+        comentarioAAgregar = new Comentario(nombreDeUsuario,comentario, estado, privacidad);
        
         Destino destinoGuardado = homeDestinos.getMongoCollection().find(DBQuery.is("nombreDestino", destino)).next();
         Usuario usuarioGuardado = homeUsuarios.getMongoCollection().find(DBQuery.is("nombreDeUsuario", nombreDeUsuario)).next();
@@ -31,9 +32,9 @@ public class AgregarComentario {
             destinoGuardado.agregarComentario(comentarioAAgregar);
             usuarioGuardado.agregarComentario(destino, comentarioAAgregar);
             
-            //¿como hago para actualizar un usuario?
-            homeDestinos.insert(destinoGuardado);
-            homeUsuarios.insert(usuarioGuardado);
+            homeDestinos.updateById(destinoGuardado.getIdDestino(), destinoGuardado);
+            homeUsuarios.updateById(usuarioGuardado.getIdUsuario(), usuarioGuardado);
+            homeComentarios.insert(comentarioAAgregar);
         }
 
     }

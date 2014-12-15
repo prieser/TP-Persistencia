@@ -20,7 +20,7 @@ public class AgregarDestinoService {
     }
 
     public void ejecutar() throws YaExisteException {
-        Usuario usuarioGuardado = homeUsuarios.getMongoCollection().find(DBQuery.is("nombreDeUsuario", this.nombreDeusuarioQueAgregaElDestino)).next();
+        Usuario usuarioGuardado = homeUsuarios.getMongoCollection().find(DBQuery.is("nombreDeUsuario", nombreDeusuarioQueAgregaElDestino)).next();
         usuarioGuardado.agregarDestino(destinoAAgregar);
         homeUsuarios.updateById(usuarioGuardado.getIdUsuario(), usuarioGuardado);
         homeDestinos.insert(destinoAAgregar);

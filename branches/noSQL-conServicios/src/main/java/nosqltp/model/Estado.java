@@ -1,5 +1,4 @@
-package main.java.nosqltp.model;
-
+package nosqltp.model;
 
 public enum Estado {
 

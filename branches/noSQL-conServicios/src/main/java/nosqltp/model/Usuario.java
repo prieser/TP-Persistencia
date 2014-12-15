@@ -1,11 +1,10 @@
-package main.java.nosqltp.model;
+package nosqltp.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import net.vz.mongodb.jackson.ObjectId;
 import nosqltp.exceptions.YaExisteException;
-import nosqltp.servicios.Comentario;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -85,14 +84,6 @@ public class Usuario {
 				unDestino.agregarComentario(comentario);
 			}
 		}
-	}
-
-	public List<Comentario> getAllComentarios() {
-		List<Comentario> comentarios;
-		for (Destino unDestino : this.getDestinos()) {
-			comentarios.addAll(unDestino.getComentarios());
-		}
-		return comentarios;
 	}
 
 	@Override
