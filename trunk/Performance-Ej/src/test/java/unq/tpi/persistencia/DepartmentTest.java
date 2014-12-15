@@ -18,8 +18,8 @@ public class DepartmentTest extends TestCase {
 				
 				assertNotNull(d);
 				assertEquals("d002", d.getNumber());
-//				assertEquals(12437, d.getEmployees().size());
-//				assertEquals(4909, d.getHistoricEmployees().size());
+    			assertEquals(12437, d.getEmployees().size());
+				assertEquals(4909, d.getHistoricEmployees().size());
 				
 				return null;
 			}
