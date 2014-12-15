@@ -1,7 +1,10 @@
 package nosqltp.servicios;
 
+import java.util.List;
+
 import nosqltp.exceptions.NoExisteException;
 import nosqltp.exceptions.YaExisteException;
+import nosqltp.model.Comentario;
 import nosqltp.model.Destino;
 import nosqltp.model.Estado;
 import nosqltp.model.Privacidad;
@@ -9,7 +12,7 @@ import nosqltp.model.Usuario;
 
 public abstract class Servicios {
 
-    public static void agregarDestino(String nombreDelDestino, String nombreDeUsuario) throws YaExisteException {
+    public static void agregarDestino(String nombreDeUsuario, String nombreDelDestino) throws YaExisteException {
         Destino destinoAAgregar = new Destino(nombreDelDestino);
         new AgregarDestinoService(nombreDeUsuario, destinoAAgregar).ejecutar();
     }
@@ -23,7 +26,11 @@ public abstract class Servicios {
         new AgregarComentario(usuarioQueComenta, destinoQueComenta, comentario, estado, privacidad);
     }
     
-    public static void verComentariosDeUnUsuario(String nombreDeUsuario) throws YaExisteException {
-    	new VerComentariosDeUnUsuarioService(nombreDeUsuario).ejecutar();
+    public static List<Comentario> verComentariosDeUnUsuario(String nombreDeUsuario) throws YaExisteException {
+    	return new VerComentariosDeUnUsuarioService(nombreDeUsuario).ejecutar();
+    }
+    
+    public static List<Comentario> verComentariosDeUnDestino(String nombreDestino) throws YaExisteException, NoExisteException {
+    	return new VerComentariosDeUnDestinoService(nombreDestino).ejecutar();
     }
 }

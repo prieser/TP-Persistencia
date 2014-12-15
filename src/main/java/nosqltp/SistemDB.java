@@ -3,6 +3,7 @@ package nosqltp;
 import java.net.UnknownHostException;
 
 import net.vz.mongodb.jackson.JacksonDBCollection;
+import nosqltp.model.Comentario;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -27,6 +28,8 @@ public class SistemDB {
             throw new RuntimeException(e);
         }
         db = mongoClient.getDB("persistencia");
+        
+        collection(Comentario.class).getMongoCollection().ensureIndex("nombreComentador");
     }
 
 

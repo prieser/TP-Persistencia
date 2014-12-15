@@ -1,4 +1,4 @@
-package main.java.nosqltp.model;
+package nosqltp.model;
 
 import java.util.ArrayList;
 import java.util.List;

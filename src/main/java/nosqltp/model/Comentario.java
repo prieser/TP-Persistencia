@@ -10,11 +10,20 @@ public class Comentario {
     @JsonProperty("_id")
     private String idComentario;
 
+    private String nombreDelComentador;
     private String comentario;
     private Estado estado;
     private Privacidad politicaDePrivacidad;
 
-    public String getComentario() {
+    public String getNombreDelComentador() {
+		return nombreDelComentador;
+	}
+
+	public void setNombreDelComentador(String nombreDelComentador) {
+		this.nombreDelComentador = nombreDelComentador;
+	}
+
+	public String getComentario() {
         return comentario;
     }
 
@@ -46,7 +55,8 @@ public class Comentario {
         this.politicaDePrivacidad = politicaDePrivacidad;
     }
 
-    public Comentario(String comentario, Estado estado, Privacidad politicaDePrivacidad) {
+    public Comentario(String nombreDelUsuario, String comentario, Estado estado, Privacidad politicaDePrivacidad) {
+    	this.nombreDelComentador = nombreDelUsuario;
         this.comentario = comentario;
         this.estado = estado;
         this.politicaDePrivacidad = politicaDePrivacidad;

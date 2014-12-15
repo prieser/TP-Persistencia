@@ -1,4 +1,4 @@
-package main.java.nosqltp.exceptions;
+package nosqltp.exceptions;
 
 /**
  * Created by prieser on 15/12/14.
