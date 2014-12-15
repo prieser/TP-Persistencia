@@ -18,6 +18,9 @@ public class ListadoPagosPorDepto extends AbstractListado {
 		depto = new DepartmentDAO().getByCodeToPagosReview(num);
 //		depto = new DepartmentDAO().getByCode(num);
 
+		
+		// Con la nueva query la busqueda se hace bien pero el problema esta que en el get totalsalaries de abajo hace una consulta
+		// x cada empleado para obtener el salario
 		this.newLine();
 		this.addColumn("Total").addColumn(depto.getTotalSalaries()).newLine();
 		this.newLine();
